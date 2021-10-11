@@ -34,6 +34,8 @@
 
 void ACEEvaluator::init(ACEAbstractBasisSet *basis_set) {
     A.init(basis_set->nelements, basis_set->nradmax + 1, basis_set->lmax + 1, "A");
+    //!
+    B1_arr.init(basis_set->nelements, basis_set->nradbase, "B1_arr");
     A_rank1.init(basis_set->nelements, basis_set->nradbase, "A_rank1");
 
     rhos.init(basis_set->ndensitymax + 1, "rhos"); // +1 density for core repulsion
@@ -131,7 +133,6 @@ ACECTildeEvaluator::compute_atom(int i, DOUBLE_TYPE **x, const SPECIES_TYPE *typ
     if(basis_set== nullptr) {
         throw std::invalid_argument("ACECTildeEvaluator: basis set is not assigned");
     }
-    //printf("Hello world!\n");
     per_atom_calc_timer.start();
 #ifdef PRINT_MAIN_STEPS
     printf("\n ATOM: ind = %d r_norm=(%f, %f, %f)\n",i, x[i][0], x[i][1], x[i][2]);
@@ -221,6 +222,8 @@ ACECTildeEvaluator::compute_atom(int i, DOUBLE_TYPE **x, const SPECIES_TYPE *typ
     //TODO: shift nullifications to place where arrays are used
     weights.fill({0});
     weights_rank1.fill(0);
+    //!
+    B1_arr.fill({0});
     A.fill({0});
     A_rank1.fill(0);
     rhos.fill(0);
@@ -380,14 +383,14 @@ ACECTildeEvaluator::compute_atom(int i, DOUBLE_TYPE **x, const SPECIES_TYPE *typ
             rhos(p) += func->ctildes[p] * A_cur;
             //! build rank 1 invariant array
             // is this how to grab those indices in the ctilde and A_cur arrays?
-            //B1_arr(func_rank1_ind) += func->ctildes[p]*A_cur;
+            B1_arr(func->mus[0],func_rank1_ind) += func->ctildes[p]*A_cur;
 #ifdef EXTRA_C_PROJECTIONS
             //aggregate C-projections separately
             basis_projections_rank1(func_rank1_ind, p)+= func->ctildes[p] * A_cur;
 #endif
         }
         //!access with parenthesis because of Array1D structure?
-        //printf("one entry in B array: %f\n", B1_arr(func_rank1_ind));
+        printf("one entry in B array: %f\n", B1_arr(func->mus[0],func_rank1_ind));
         //throws error:
 
         //error: invalid operands to binary expression ('const char [25]' and 'double')
