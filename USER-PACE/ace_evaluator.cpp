@@ -131,7 +131,7 @@ ACECTildeEvaluator::compute_atom(int i, DOUBLE_TYPE **x, const SPECIES_TYPE *typ
     if(basis_set== nullptr) {
         throw std::invalid_argument("ACECTildeEvaluator: basis set is not assigned");
     }
-    printf("Hello world!\n");
+    //printf("Hello world!\n");
     per_atom_calc_timer.start();
 #ifdef PRINT_MAIN_STEPS
     printf("\n ATOM: ind = %d r_norm=(%f, %f, %f)\n",i, x[i][0], x[i][1], x[i][2]);
@@ -163,8 +163,8 @@ ACECTildeEvaluator::compute_atom(int i, DOUBLE_TYPE **x, const SPECIES_TYPE *typ
 
     //!
     //initialize the array of invariants
-    Array1D<DOUBLE_TYPE> B_arr; //for ranks above 1
-    Array1D<DOUBLE_TYPE> B1_arr; //for rank 1
+    //Array1D<DOUBLE_TYPE> B_arr; //for ranks above 1
+    //Array1D<DOUBLE_TYPE> B1_arr; //for rank 1
 
     //DOUBLE_TYPE B_arr;
     //DOUBLE_TYPE B1_arr;
@@ -340,6 +340,7 @@ ACECTildeEvaluator::compute_atom(int i, DOUBLE_TYPE **x, const SPECIES_TYPE *typ
     // for rank > 1
     for (mu_j = 0; mu_j < basis_set->nelements; mu_j++) {
         for (n = 0; n < nradiali; n++) {
+            //! NOTE, this is where the code crashes if we use initialize the B_arr and B1_arr variables
             auto &A_lm = A(mu_j, n);
             for (l = 0; l <= lmaxi; l++) {
                 //fill in -m part in the outer loop using the same m <-> -m symmetry as for Ylm
@@ -379,14 +380,14 @@ ACECTildeEvaluator::compute_atom(int i, DOUBLE_TYPE **x, const SPECIES_TYPE *typ
             rhos(p) += func->ctildes[p] * A_cur;
             //! build rank 1 invariant array
             // is this how to grab those indices in the ctilde and A_cur arrays?
-            B1_arr(func_rank1_ind) += func->ctildes[p]*A_cur;
+            //B1_arr(func_rank1_ind) += func->ctildes[p]*A_cur;
 #ifdef EXTRA_C_PROJECTIONS
             //aggregate C-projections separately
             basis_projections_rank1(func_rank1_ind, p)+= func->ctildes[p] * A_cur;
 #endif
         }
         //!access with parenthesis because of Array1D structure?
-        printf("one entry in B array: %f\n", B1_arr(func_rank1_ind));
+        //printf("one entry in B array: %f\n", B1_arr(func_rank1_ind));
         //throws error:
 
         //error: invalid operands to binary expression ('const char [25]' and 'double')
@@ -454,7 +455,7 @@ ACECTildeEvaluator::compute_atom(int i, DOUBLE_TYPE **x, const SPECIES_TYPE *typ
                 //real-part only multiplication
                 rhos(p) += B.real_part_product(func->ctildes[ms_ind * ndensity + p]);
 		//!
-                B_arr(func_ind) += B.real_part_product(func->ctildes[ms_ind *ndensity +p]);
+                //B_arr(func_ind) += B.real_part_product(func->ctildes[ms_ind *ndensity +p]);
 		
 #ifdef EXTRA_C_PROJECTIONS
                 //aggregate C-projections separately

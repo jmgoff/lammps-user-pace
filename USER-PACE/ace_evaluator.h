@@ -185,6 +185,7 @@ class ACECTildeEvaluator : public ACEEvaluator {
     /**
      * pointer to the ACEBasisSet object
      */
+    //! NOTE does the name of this pointer ruin the pointer in compute_pace.cpp?
     ACECTildeBasisSet *basis_set = nullptr;
 
     /**
