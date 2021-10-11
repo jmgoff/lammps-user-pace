@@ -48,6 +48,9 @@ protected:
     Array2D<DOUBLE_TYPE> A_rank1 = Array2D<DOUBLE_TYPE>("A_rank1"); ///< 2D-array for storing A's for rank=1, shape: A(mu_j,n)
     Array4DLM<ACEComplex> A = Array4DLM<ACEComplex>("A"); ///< 4D array with (l,m) last indices  for storing A's for rank>1: A(mu_j, n, l, m)
 
+    //! added array for B (rank>1)
+    Array3D<DOUBLE_TYPE> B_arr = Array3D<DOUBLE_TYPE>("B_arr"); //rank 2+ invariants shape B(mu_j,n,l)
+
     //! added array cache for Bs
     Array2D<DOUBLE_TYPE>  B1_arr = Array2D<DOUBLE_TYPE>("B1_arr"); // rank 1 Bs B(mu_j,n)
 

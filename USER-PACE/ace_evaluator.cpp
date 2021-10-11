@@ -36,6 +36,7 @@ void ACEEvaluator::init(ACEAbstractBasisSet *basis_set) {
     A.init(basis_set->nelements, basis_set->nradmax + 1, basis_set->lmax + 1, "A");
     //!
     B1_arr.init(basis_set->nelements, basis_set->nradbase, "B1_arr");
+    B_arr.init(basis_set->nelements, basis_set->nradmax+1, basis_set->lmax+1,"B_arr");
     A_rank1.init(basis_set->nelements, basis_set->nradbase, "A_rank1");
 
     rhos.init(basis_set->ndensitymax + 1, "rhos"); // +1 density for core repulsion
@@ -223,7 +224,9 @@ ACECTildeEvaluator::compute_atom(int i, DOUBLE_TYPE **x, const SPECIES_TYPE *typ
     weights.fill({0});
     weights_rank1.fill(0);
     //!
-    B1_arr.fill({0});
+    //fill without {} b/c invariants are real-valued
+    B1_arr.fill(0);
+    B_arr.fill(0);
     A.fill({0});
     A_rank1.fill(0);
     rhos.fill(0);
@@ -458,7 +461,8 @@ ACECTildeEvaluator::compute_atom(int i, DOUBLE_TYPE **x, const SPECIES_TYPE *typ
                 //real-part only multiplication
                 rhos(p) += B.real_part_product(func->ctildes[ms_ind * ndensity + p]);
 		//!
-                //B_arr(func_ind) += B.real_part_product(func->ctildes[ms_ind *ndensity +p]);
+                //NOTE hard coded for single species
+                B_arr(func->mus[0],func->ns[rank],func->ls[rank]) += B.real_part_product(func->ctildes[ms_ind *ndensity +p]);
 		
 #ifdef EXTRA_C_PROJECTIONS
                 //aggregate C-projections separately
