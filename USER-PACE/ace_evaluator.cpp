@@ -134,6 +134,7 @@ ACECTildeEvaluator::compute_atom(int i, DOUBLE_TYPE **x, const SPECIES_TYPE *typ
     if(basis_set== nullptr) {
         throw std::invalid_argument("ACECTildeEvaluator: basis set is not assigned");
     }
+    printf("hello world (from ace evaluator)\n");
     per_atom_calc_timer.start();
 #ifdef PRINT_MAIN_STEPS
     printf("\n ATOM: ind = %d r_norm=(%f, %f, %f)\n",i, x[i][0], x[i][1], x[i][2]);
@@ -246,7 +247,6 @@ ACECTildeEvaluator::compute_atom(int i, DOUBLE_TYPE **x, const SPECIES_TYPE *typ
     int neighbour_index_mapping[jnum]; // jj_actual -> jj
     //loop over neighbours, compute distance, consider only atoms within with r<cutoff(mu_i, mu_j)
     for (jj = 0; jj < jnum; ++jj) {
-
         j = jlist[jj];
         xn = x[j][0] - xtmp;
         yn = x[j][1] - ytmp;
@@ -257,7 +257,12 @@ ACECTildeEvaluator::compute_atom(int i, DOUBLE_TYPE **x, const SPECIES_TYPE *typ
         else
             mu_j = type_j;
 
+	//!LOOK
+        //printf("mu_i=%d, mu_j=%d",mu_i,mu_j);
         DOUBLE_TYPE current_cutoff = basis_set->radial_functions->cut(mu_i, mu_j);
+        //DOUBLE_TYPE current_cutoff = basis_set->radial_functions->cut(0, 0);
+        printf("inside neighbor distance loop: current_cutoff = %f , actual # of neighbors = %d \n", current_cutoff,jj_actual);
+        
         r_xyz = sqrt(xn * xn + yn * yn + zn * zn);
 
         if (r_xyz >= current_cutoff)
@@ -276,7 +281,7 @@ ACECTildeEvaluator::compute_atom(int i, DOUBLE_TYPE **x, const SPECIES_TYPE *typ
     }
 
     int jnum_actual = jj_actual;
-
+    printf("finished neighbor loop, jnum_actual = %d\n", jnum_actual);
     //ALGORITHM 1: Atomic base A
     for (jj = 0; jj < jnum_actual; ++jj) {
         r_norm = r_norms[jj];
@@ -390,11 +395,13 @@ ACECTildeEvaluator::compute_atom(int i, DOUBLE_TYPE **x, const SPECIES_TYPE *typ
         //error: invalid operands to binary expression ('const char [25]' and 'double')
 
     } // end loop for rank=1
-
+    printf("atom id %d , exit statement , rank1 basis size %d\n",i, total_basis_size_rank1);
     //! added loop for printing
     for (int func_rank1_ind = 0; func_rank1_ind < total_basis_size_rank1; ++func_rank1_ind) {
         ACECTildeBasisFunction *func = &basis_rank1[func_rank1_ind];
-        printf("one entry in B1 array: %f\n", B1_arr(func->mus[0],func_rank1_ind));
+        if (i==0){
+            printf("one entry in B1 array: %f\n", B1_arr(func->mus[0],func_rank1_ind));
+        }
     }
     //rank>1
     int func_ms_ind = 0;
@@ -474,11 +481,11 @@ ACECTildeEvaluator::compute_atom(int i, DOUBLE_TYPE **x, const SPECIES_TYPE *typ
         }//end of loop over {ms} combinations in sum
     }// end loop for rank>1
     //! added loop to print rank >1
-    for (func_ind = 0; func_ind < total_basis_size; ++func_ind) {
-        ACECTildeBasisFunction *func = &basis[func_ind];
-        rank = func->rank;
-        printf("one entry in B array: %f\n", B_arr(func->mus[0],func->ns[rank],func->ls[rank]));
-    }
+    //for (func_ind = 0; func_ind < total_basis_size; ++func_ind) {
+    //    ACECTildeBasisFunction *func = &basis[func_ind];
+    //    rank = func->rank;
+    //    printf("one entry in B array: %f\n", B_arr(func->mus[0],func->ns[rank],func->ls[rank]));
+    //}
 #ifdef DEBUG_FORCES_CALCULATIONS
     printf("rhos = ");
     for(DENSITY_TYPE p =0; p<ndensity; ++p) printf(" %.20f ",rhos(p));
