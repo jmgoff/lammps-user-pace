@@ -49,10 +49,10 @@ protected:
     Array4DLM<ACEComplex> A = Array4DLM<ACEComplex>("A"); ///< 4D array with (l,m) last indices  for storing A's for rank>1: A(mu_j, n, l, m)
 
     //! added array for B (rank>1)
-    Array3D<DOUBLE_TYPE> B_arr = Array3D<DOUBLE_TYPE>("B_arr"); //rank 2+ invariants shape B(mu_j,n,l)
+    //Array3D<DOUBLE_TYPE> B_arr = Array3D<DOUBLE_TYPE>("B_arr"); //rank 2+ invariants shape B(mu_j,n,l)
 
-    //! added array cache for Bs
-    Array2D<DOUBLE_TYPE>  B1_arr = Array2D<DOUBLE_TYPE>("B1_arr"); // rank 1 Bs B(mu_j,n)
+    //! added array for Bs
+    //Array2D<DOUBLE_TYPE>  B1_arr = Array2D<DOUBLE_TYPE>("B1_arr"); // rank 1 Bs B(mu_j,n)
 
     Array1D<DOUBLE_TYPE> rhos = Array1D<DOUBLE_TYPE>("rhos"); ///< densities \f$ \rho^{(p)} \f$(ndensity), p  = 0 .. ndensity-1
     Array1D<DOUBLE_TYPE> dF_drho = Array1D<DOUBLE_TYPE>("dF_drho"); ///< derivatives of cluster functional wrt. densities, index = 0 .. ndensity-1
@@ -64,6 +64,12 @@ protected:
     void init(ACEAbstractBasisSet *basis_set);
 
 public:
+    //! added array for B (rank>1)
+    Array3D<DOUBLE_TYPE> B_arr = Array3D<DOUBLE_TYPE>("B_arr"); //rank 2+ invariants shape B(mu_j,n,l)
+
+    //! added array for BS (rank =1)
+    Array2D<DOUBLE_TYPE>  B1_arr = Array2D<DOUBLE_TYPE>("B1_arr"); // rank 1 Bs B(mu_j,n)
+
     // set of timers for code profiling
 
     ACETimer loop_over_neighbour_timer; ///< timer for loop over neighbours when constructing A's for single central atom

@@ -163,14 +163,6 @@ ACECTildeEvaluator::compute_atom(int i, DOUBLE_TYPE **x, const SPECIES_TYPE *typ
     ACEComplex dB{0};
     ACEComplex A_cache[basis_set->rankmax];
 
-    //!
-    //initialize the array of invariants
-    //Array1D<DOUBLE_TYPE> B_arr; //for ranks above 1
-    //Array1D<DOUBLE_TYPE> B1_arr; //for rank 1
-
-    //DOUBLE_TYPE B_arr;
-    //DOUBLE_TYPE B1_arr;
-
     dB_flatten.fill({0.});
 
     ACEDYcomponent grad_phi_nlm{0}, DY{0.};
@@ -381,25 +373,29 @@ ACECTildeEvaluator::compute_atom(int i, DOUBLE_TYPE **x, const SPECIES_TYPE *typ
         printf("A_r=1(x=%d, n=%d)=(%f)\n", func->mus[0], func->ns[0], A_cur);
         printf("     coeff[0] = %f\n", func->ctildes[0]);
 #endif
+
+        //! build rank 1 invariant array
+        B1_arr(func->mus[0],func_rank1_ind) += func->ctildes[0]*A_cur; //ctildes[0] because we should only sum over 1 density to get invariants
+        //printf("one contribution in B1 array: %f\n", B1_arr(func->mus[0],func_rank1_ind));
         for (DENSITY_TYPE p = 0; p < ndensity; ++p) {
             //for rank=1 (r=0) only 1 ms-combination exists (ms_ind=0), so index of func.ctildes is 0..ndensity-1
             rhos(p) += func->ctildes[p] * A_cur;
-            //! build rank 1 invariant array
-            // is this how to grab those indices in the ctilde and A_cur arrays?
-            B1_arr(func->mus[0],func_rank1_ind) += func->ctildes[p]*A_cur;
 #ifdef EXTRA_C_PROJECTIONS
             //aggregate C-projections separately
             basis_projections_rank1(func_rank1_ind, p)+= func->ctildes[p] * A_cur;
 #endif
         }
-        //!access with parenthesis because of Array1D structure?
-        printf("one entry in B array: %f\n", B1_arr(func->mus[0],func_rank1_ind));
         //throws error:
 
         //error: invalid operands to binary expression ('const char [25]' and 'double')
 
     } // end loop for rank=1
 
+    //! added loop for printing
+    for (int func_rank1_ind = 0; func_rank1_ind < total_basis_size_rank1; ++func_rank1_ind) {
+        ACECTildeBasisFunction *func = &basis_rank1[func_rank1_ind];
+        printf("one entry in B1 array: %f\n", B1_arr(func->mus[0],func_rank1_ind));
+    }
     //rank>1
     int func_ms_ind = 0;
     int func_ms_t_ind = 0;// index for dB
@@ -456,14 +452,14 @@ ACECTildeEvaluator::compute_atom(int i, DOUBLE_TYPE **x, const SPECIES_TYPE *typ
                 printf("dB(n,l,m)(%d,%d,%d) = (%f, %f)\n", ns[t], ls[t], m_t, (dB).real, (dB).img);
 #endif
             }
+		//!
+                //NOTE hard coded for single species
+            B_arr(func->mus[0],func->ns[rank],func->ls[rank]) += B.real_part_product(func->ctildes[ms_ind *ndensity +0]);//+0 at end for density_index=0
+            //printf("one contribution in B array: %f\n", B_arr(func->mus[0],func->ns[rank],func->ls[rank]));
 
             for (DENSITY_TYPE p = 0; p < ndensity; ++p) {
                 //real-part only multiplication
                 rhos(p) += B.real_part_product(func->ctildes[ms_ind * ndensity + p]);
-		//!
-                //NOTE hard coded for single species
-                B_arr(func->mus[0],func->ns[rank],func->ls[rank]) += B.real_part_product(func->ctildes[ms_ind *ndensity +p]);
-		
 #ifdef EXTRA_C_PROJECTIONS
                 //aggregate C-projections separately
                 basis_projections(func_ind, p)+=B.real_part_product(func->ctildes[ms_ind * ndensity + p]);
@@ -477,7 +473,12 @@ ACECTildeEvaluator::compute_atom(int i, DOUBLE_TYPE **x, const SPECIES_TYPE *typ
             }
         }//end of loop over {ms} combinations in sum
     }// end loop for rank>1
-
+    //! added loop to print rank >1
+    for (func_ind = 0; func_ind < total_basis_size; ++func_ind) {
+        ACECTildeBasisFunction *func = &basis[func_ind];
+        rank = func->rank;
+        printf("one entry in B array: %f\n", B_arr(func->mus[0],func->ns[rank],func->ls[rank]));
+    }
 #ifdef DEBUG_FORCES_CALCULATIONS
     printf("rhos = ");
     for(DENSITY_TYPE p =0; p<ndensity; ++p) printf(" %.20f ",rhos(p));
