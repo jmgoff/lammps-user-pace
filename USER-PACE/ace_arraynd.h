@@ -28,9 +28,6 @@
 
 //automatically generate source code
 
-//! NOTE added this
-//#define MULTIARRAY_INDICES_CHECK 1
-
 #ifndef ACE_MULTIARRAY_H
 #define ACE_MULTIARRAY_H
 

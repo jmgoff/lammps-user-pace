@@ -1,3 +1,17 @@
+// clang-format off
+/* ----------------------------------------------------------------------
+   LAMMPS - Large-scale Atomic/Molecular Massively Parallel Simulator
+   https://www.lammps.org/, Sandia National Laboratories
+   Steve Plimpton, sjplimp@sandia.gov
+
+   Copyright (2003) Sandia Corporation.  Under the terms of Contract
+   DE-AC04-94AL85000 with Sandia Corporation, the U.S. Government retains
+   certain rights in this software.  This software is distributed under
+   the GNU General Public License.
+
+   See the README file in the top-level LAMMPS directory.
+------------------------------------------------------------------------- */
+
 /*
 Copyright 2021 Yury Lysogorskiy^1, Cas van der Oord^2, Anton Bochkarev^1,
  Sarath Menon^1, Matteo Rinaldi^1, Thomas Hammerschmidt^1, Matous Mrovec^1,
@@ -7,21 +21,7 @@ Copyright 2021 Yury Lysogorskiy^1, Cas van der Oord^2, Anton Bochkarev^1,
 ^2: University of Cambridge, Cambridge, United Kingdom
 ^3: Sandia National Laboratories, Albuquerque, New Mexico, USA
 ^4: University of British Columbia, Vancouver, BC, Canada
-
-
-    This FILENAME is free software: you can redistribute it and/or modify
-    it under the terms of the GNU General Public License as published by
-    the Free Software Foundation, either version 3 of the License, or
-    (at your option) any later version.
-
-    This program is distributed in the hope that it will be useful,
-    but WITHOUT ANY WARRANTY; without even the implied warranty of
-    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-    GNU General Public License for more details.
-
-    You should have received a copy of the GNU General Public License
-    along with this program.  If not, see <http://www.gnu.org/licenses/>.
- */
+*/
 
 
 //
@@ -39,8 +39,8 @@ Copyright 2021 Yury Lysogorskiy^1, Cas van der Oord^2, Anton Bochkarev^1,
 #include "neigh_list.h"
 #include "neigh_request.h"
 #include "neighbor.h"
+#include "update.h"
 
-#include <cmath>
 #include <cstring>
 
 #include "ace_evaluator.h"
@@ -50,6 +50,8 @@ Copyright 2021 Yury Lysogorskiy^1, Cas van der Oord^2, Anton Bochkarev^1,
 
 namespace LAMMPS_NS {
   struct ACEImpl {
+    ACEImpl() : basis_set(nullptr), ace(nullptr){}
+    ~ACEImpl() {delete basis_set; delete ace;}
     ACECTildeBasisSet *basis_set;
     ACERecursiveEvaluator *ace;
   };
@@ -93,8 +95,6 @@ PairPACE::PairPACE(LAMMPS *lmp) : Pair(lmp) {
   manybody_flag = 1;
 
   aceimpl = new ACEImpl;
-  aceimpl->ace = nullptr;
-  aceimpl->basis_set = nullptr;
   recursive = false;
 
   scale = nullptr;
@@ -107,8 +107,6 @@ PairPACE::PairPACE(LAMMPS *lmp) : Pair(lmp) {
 PairPACE::~PairPACE() {
   if (copymode) return;
 
-  delete aceimpl->basis_set;
-  delete aceimpl->ace;
   delete aceimpl;
 
   if (allocated) {
@@ -132,16 +130,12 @@ void PairPACE::compute(int eflag, int vflag) {
 
   double **x = atom->x;
   double **f = atom->f;
-  tagint *tag = atom->tag;
   int *type = atom->type;
 
   // number of atoms in cell
   int nlocal = atom->nlocal;
 
   int newton_pair = force->newton_pair;
-
-  // number of atoms including ghost atoms
-  int nall = nlocal + atom->nghost;
 
   // inum: length of the neighborlists list
   inum = list->inum;
@@ -156,7 +150,7 @@ void PairPACE::compute(int eflag, int vflag) {
   firstneigh = list->firstneigh;
 
   if (inum != nlocal)
-    error->all(FLERR,fmt::format("inum: {} nlocal: {} are different",inum, nlocal));
+    error->all(FLERR,"inum: {} nlocal: {} are different",inum, nlocal);
 
   // Aidan Thompson told RD (26 July 2019) that practically always holds:
   // inum = nlocal
@@ -201,7 +195,6 @@ void PairPACE::compute(int eflag, int vflag) {
     // jlist(neigh ind of 0-atom) = [1,2,10,7,99,25, .. 50 element in total]
 
     try {
-      printf("Hello world! (From pair_pace)\n");
       aceimpl->ace->compute_atom(i, x, type, jnum, jlist);
     } catch (exception &e) {
       error->one(FLERR, e.what());
@@ -267,6 +260,10 @@ void PairPACE::settings(int narg, char **arg) {
   if (narg > 1)
     error->all(FLERR,"Illegal pair_style command.");
 
+  // ACE potentials are parameterized in metal units
+  if (strcmp("metal",update->unit_style) != 0)
+    error->all(FLERR,"ACE potentials require 'metal' units");
+
   recursive = true; // default evaluator style: RECURSIVE
   if (narg > 0) {
     if (strcmp(arg[0], RECURSIVE_KEYWORD) == 0)
@@ -277,8 +274,8 @@ void PairPACE::settings(int narg, char **arg) {
   }
 
   if (comm->me == 0) {
-    utils::logmesg(lmp,fmt::format("ACE version: {}.{}.{}\n",
-                                   VERSION_YEAR, VERSION_MONTH, VERSION_DAY));
+    utils::logmesg(lmp,"ACE version: {}.{}.{}\n",
+                   VERSION_YEAR, VERSION_MONTH, VERSION_DAY);
     if (recursive) utils::logmesg(lmp,"Recursive evaluator is used\n");
     else utils::logmesg(lmp,"Product evaluator is used\n");
   }
@@ -298,9 +295,10 @@ void PairPACE::coeff(int narg, char **arg) {
   char **elemtypes = &arg[3];
 
   //load potential file
+  delete aceimpl->basis_set;
   aceimpl->basis_set = new ACECTildeBasisSet();
   if (comm->me == 0)
-    utils::logmesg(lmp,fmt::format("Loading {}\n", potential_file_name));
+    utils::logmesg(lmp,"Loading {}\n", potential_file_name);
   aceimpl->basis_set->load(potential_file_name);
 
   if (comm->me == 0) {
@@ -309,7 +307,7 @@ void PairPACE::coeff(int narg, char **arg) {
     for (SPECIES_TYPE mu = 0; mu < aceimpl->basis_set->nelements; mu++) {
       int n_r1 = aceimpl->basis_set->total_basis_size_rank1[mu];
       int n = aceimpl->basis_set->total_basis_size[mu];
-      utils::logmesg(lmp,fmt::format("\t{}: {} (r=1) {} (r>1)\n", aceimpl->basis_set->elements_name[mu], n_r1, n));
+      utils::logmesg(lmp,"\t{}: {} (r=1) {} (r>1)\n", aceimpl->basis_set->elements_name[mu], n_r1, n);
     }
   }
 
@@ -317,6 +315,7 @@ void PairPACE::coeff(int narg, char **arg) {
   // map[i] = which element the Ith atom type is, -1 if not mapped
   // map[0] is not used
 
+  delete aceimpl->ace;
   aceimpl->ace = new ACERecursiveEvaluator();
   aceimpl->ace->set_recursive(recursive);
   aceimpl->ace->element_type_mapping.init(atom->ntypes + 1);
@@ -326,17 +325,17 @@ void PairPACE::coeff(int narg, char **arg) {
     char *elemname = elemtypes[i - 1];
     int atomic_number = AtomicNumberByName_pace(elemname);
     if (atomic_number == -1)
-      error->all(FLERR,fmt::format("'{}' is not a valid element\n", elemname));
+      error->all(FLERR,"'{}' is not a valid element\n", elemname);
 
     SPECIES_TYPE mu = aceimpl->basis_set->get_species_index_by_name(elemname);
     if (mu != -1) {
       if (comm->me == 0)
-        utils::logmesg(lmp,fmt::format("Mapping LAMMPS atom type #{}({}) -> "
-                                       "ACE species type #{}\n", i, elemname, mu));
+        utils::logmesg(lmp,"Mapping LAMMPS atom type #{}({}) -> "
+                       "ACE species type #{}\n", i, elemname, mu);
       map[i] = mu;
       aceimpl->ace->element_type_mapping(i) = mu; // set up LAMMPS atom type to ACE species  mapping for ace evaluator
     } else {
-      error->all(FLERR, fmt::format("Element {} is not supported by ACE-potential from file {}", elemname,potential_file_name));
+      error->all(FLERR,"Element {} is not supported by ACE-potential from file {}", elemname,potential_file_name);
     }
   }
 

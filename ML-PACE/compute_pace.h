@@ -71,15 +71,15 @@ Self-explanatory.  Check the input script syntax and compare to the
 documentation for the command.  You can use -echo screen as a
 command-line option when running LAMMPS to see the offending line.
 
-E: Compute snap requires a pair style be defined
+E: Compute pace requires a pair style be defined
 
 Self-explanatory.
 
-E: Compute snap cutoff is longer than pairwise cutoff
+E: Compute pace cutoff is longer than pairwise cutoff
 
 UNDOCUMENTED
 
-W: More than one compute snad/atom
+W: More than one compute pace/atom
 
 Self-explanatory.
 

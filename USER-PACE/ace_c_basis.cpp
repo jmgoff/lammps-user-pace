@@ -715,7 +715,7 @@ void ACECTildeBasisSet::load(const string filename) {
 
     fclose(fptr);
 
-    radial_functions->radbasename = radbasename;
+//    radial_functions->radbasename = radbasename;
     radial_functions->setuplookupRadspline();
     pack_flatten_basis();
 }

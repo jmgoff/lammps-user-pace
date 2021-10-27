@@ -201,7 +201,6 @@ void PairPACE::compute(int eflag, int vflag) {
     // jlist(neigh ind of 0-atom) = [1,2,10,7,99,25, .. 50 element in total]
 
     try {
-      printf("Hello world! (From pair_pace)\n");
       aceimpl->ace->compute_atom(i, x, type, jnum, jlist);
     } catch (exception &e) {
       error->one(FLERR, e.what());

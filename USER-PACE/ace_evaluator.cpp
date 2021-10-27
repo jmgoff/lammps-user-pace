@@ -16,6 +16,7 @@
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
+
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
@@ -33,9 +34,6 @@
 
 void ACEEvaluator::init(ACEAbstractBasisSet *basis_set) {
     A.init(basis_set->nelements, basis_set->nradmax + 1, basis_set->lmax + 1, "A");
-    //!
-    B1_arr.init(basis_set->nelements, basis_set->nradbase, "B1_arr");
-    B_arr.init(basis_set->nelements, basis_set->nradmax+1, basis_set->lmax+1,"B_arr");
     A_rank1.init(basis_set->nelements, basis_set->nradbase, "A_rank1");
 
     rhos.init(basis_set->ndensitymax + 1, "rhos"); // +1 density for core repulsion
@@ -120,7 +118,6 @@ void ACECTildeEvaluator::resize_neighbours_cache(int max_jnum) {
         //hard-core repulsion
         DCR_cache.init(max_jnum, "DCR_cache");
         DCR_cache.fill(0);
-
     }
 }
 
@@ -137,7 +134,6 @@ ACECTildeEvaluator::compute_atom(int i, DOUBLE_TYPE **x, const SPECIES_TYPE *typ
     if(basis_set== nullptr) {
         throw std::invalid_argument("ACECTildeEvaluator: basis set is not assigned");
     }
-    printf("hello world (from ace evaluator)\n");
     per_atom_calc_timer.start();
 #ifdef PRINT_MAIN_STEPS
     printf("\n ATOM: ind = %d r_norm=(%f, %f, %f)\n",i, x[i][0], x[i][1], x[i][2]);
@@ -164,7 +160,6 @@ ACECTildeEvaluator::compute_atom(int i, DOUBLE_TYPE **x, const SPECIES_TYPE *typ
 
     ACEComplex Y{0}, Y_DR{0.};
     ACEComplex B{0.};
-    ACEComplex Br{0.};
     ACEComplex dB{0};
     ACEComplex A_cache[basis_set->rankmax];
 
@@ -187,14 +182,12 @@ ACECTildeEvaluator::compute_atom(int i, DOUBLE_TYPE **x, const SPECIES_TYPE *typ
     DOUBLE_TYPE f_ji[3];
 
     bool is_element_mapping = element_type_mapping.get_size() > 0;
-    //bool is_element_mapping = false;//element_type_mapping.get_size() > 0;
     SPECIES_TYPE mu_i;
     if (is_element_mapping)
         mu_i = element_type_mapping(type[i]);
     else
-        //mu_i = type[i];
-        mu_i=0;
-    printf("mu_i %d\n" , mu_i);
+        mu_i = type[i];
+
     const SHORT_INT_TYPE total_basis_size_rank1 = basis_set->total_basis_size_rank1[mu_i];
     const SHORT_INT_TYPE total_basis_size = basis_set->total_basis_size[mu_i];
 
@@ -222,12 +215,8 @@ ACECTildeEvaluator::compute_atom(int i, DOUBLE_TYPE **x, const SPECIES_TYPE *typ
     //TODO: shift nullifications to place where arrays are used
     weights.fill({0});
     weights_rank1.fill(0);
-    //!
-    //fill without {} b/c invariants are real-valued
-    B1_arr.fill(0);
-    B_arr.fill(0);
-    B_all.fill(0);
     A.fill({0});
+    B_all.fill(0);
     A_rank1.fill(0);
     rhos.fill(0);
     dF_drho.fill(0);
@@ -254,6 +243,7 @@ ACECTildeEvaluator::compute_atom(int i, DOUBLE_TYPE **x, const SPECIES_TYPE *typ
     int neighbour_index_mapping[jnum]; // jj_actual -> jj
     //loop over neighbours, compute distance, consider only atoms within with r<cutoff(mu_i, mu_j)
     for (jj = 0; jj < jnum; ++jj) {
+
         j = jlist[jj];
         xn = x[j][0] - xtmp;
         yn = x[j][1] - ytmp;
@@ -264,12 +254,7 @@ ACECTildeEvaluator::compute_atom(int i, DOUBLE_TYPE **x, const SPECIES_TYPE *typ
         else
             mu_j = type_j;
 
-	//!LOOK
-        //printf("mu_i=%d, mu_j=%d",mu_i,mu_j);
         DOUBLE_TYPE current_cutoff = basis_set->radial_functions->cut(mu_i, mu_j);
-        //DOUBLE_TYPE current_cutoff = basis_set->radial_functions->cut(0, 0);
-        //printf("inside neighbor distance loop: current_cutoff = %f , actual # of neighbors = %d \n", current_cutoff,jj_actual);
-        
         r_xyz = sqrt(xn * xn + yn * yn + zn * zn);
 
         if (r_xyz >= current_cutoff)
@@ -288,7 +273,7 @@ ACECTildeEvaluator::compute_atom(int i, DOUBLE_TYPE **x, const SPECIES_TYPE *typ
     }
 
     int jnum_actual = jj_actual;
-    printf("finished neighbor loop, jnum_actual = %d\n", jnum_actual);
+
     //ALGORITHM 1: Atomic base A
     for (jj = 0; jj < jnum_actual; ++jj) {
         r_norm = r_norms[jj];
@@ -316,7 +301,6 @@ ACECTildeEvaluator::compute_atom(int i, DOUBLE_TYPE **x, const SPECIES_TYPE *typ
         }
         //loop for computing A's
         // for rank > 1
-        //NOTE this is just the atomic base
         for (n = 0; n < nradiali; n++) {
             auto &A_lm = A(mu_j, n);
             for (l = 0; l <= lmaxi; l++) {
@@ -350,7 +334,6 @@ ACECTildeEvaluator::compute_atom(int i, DOUBLE_TYPE **x, const SPECIES_TYPE *typ
     // for rank > 1
     for (mu_j = 0; mu_j < basis_set->nelements; mu_j++) {
         for (n = 0; n < nradiali; n++) {
-            //! NOTE, this is where the code crashes if we use initialize the B_arr and B1_arr variables
             auto &A_lm = A(mu_j, n);
             for (l = 0; l <= lmaxi; l++) {
                 //fill in -m part in the outer loop using the same m <-> -m symmetry as for Ylm
@@ -385,11 +368,7 @@ ACECTildeEvaluator::compute_atom(int i, DOUBLE_TYPE **x, const SPECIES_TYPE *typ
         printf("A_r=1(x=%d, n=%d)=(%f)\n", func->mus[0], func->ns[0], A_cur);
         printf("     coeff[0] = %f\n", func->ctildes[0]);
 #endif
-
-        //! build rank 1 invariant array
-        B1_arr(func->mus[0],func_rank1_ind) += func->ctildes[0]*A_cur; //ctildes[0] because we should only sum over 1 density to get invariants
-	B_all(func_rank1_ind) += func->ctildes[0]*A_cur;
-        //printf("one contribution in B1 array: %f\n", B1_arr(func->mus[0],func_rank1_ind));
+        B_all(func_rank1_ind) += func->ctildes[0]*A_cur;
         for (DENSITY_TYPE p = 0; p < ndensity; ++p) {
             //for rank=1 (r=0) only 1 ms-combination exists (ms_ind=0), so index of func.ctildes is 0..ndensity-1
             rhos(p) += func->ctildes[p] * A_cur;
@@ -398,19 +377,8 @@ ACECTildeEvaluator::compute_atom(int i, DOUBLE_TYPE **x, const SPECIES_TYPE *typ
             basis_projections_rank1(func_rank1_ind, p)+= func->ctildes[p] * A_cur;
 #endif
         }
-        //throws error:
-
-        //error: invalid operands to binary expression ('const char [25]' and 'double')
-
     } // end loop for rank=1
-    printf("atom id %d , exit statement , rank1 basis size %d\n",i, total_basis_size_rank1);
-    //! added loop for printing
-    /*for (int func_rank1_ind = 0; func_rank1_ind < total_basis_size_rank1; ++func_rank1_ind) {
-        ACECTildeBasisFunction *func = &basis_rank1[func_rank1_ind];
-        if (i==0){
-            printf("one entry in B1 array: %f\n", B1_arr(func->mus[0],func_rank1_ind));
-        }
-    }*/
+
     //rank>1
     int func_ms_ind = 0;
     int func_ms_t_ind = 0;// index for dB
@@ -447,9 +415,9 @@ ACECTildeEvaluator::compute_atom(int i, DOUBLE_TYPE **x, const SPECIES_TYPE *typ
 #endif
                 A_forward_prod[t + 1] = A_forward_prod[t] * A_cache[t];
             }
-            //TODO make data structure that stores Bs
+
             B = A_forward_prod[t];
-            Br = A_backward_prod[t];
+            
 #ifdef DEBUG_FORCES_CALCULATIONS
             printf("B = (%f, %f)\n", (B).real, (B).img);
 #endif
@@ -467,38 +435,26 @@ ACECTildeEvaluator::compute_atom(int i, DOUBLE_TYPE **x, const SPECIES_TYPE *typ
                 printf("dB(n,l,m)(%d,%d,%d) = (%f, %f)\n", ns[t], ls[t], m_t, (dB).real, (dB).img);
 #endif
             }
+
             DENSITY_TYPE dp = 0;
             B_all(func_ind + total_basis_size_rank1) += B.real_part_product(func->ctildes[ms_ind *ndensity + dp]);
-            //THis backward product contribution adds nothing
-            //B_all(func_ind + total_basis_size_rank1) += Br.real_part_product(func->ctildes[ms_ind *ndensity + dp]);
-            //if (func_ind ==1) {
-            //printf("func_ind %d, ms_ind %d, contribution %f \n",func_ind, ms_ind, B.real_part_product(func->ctildes[ms_ind *ndensity + dp]));
-            //}
-
             for (DENSITY_TYPE p = 0; p < ndensity; ++p) {
                 //real-part only multiplication
                 rhos(p) += B.real_part_product(func->ctildes[ms_ind * ndensity + p]);
+
 #ifdef EXTRA_C_PROJECTIONS
                 //aggregate C-projections separately
                 basis_projections(func_ind, p)+=B.real_part_product(func->ctildes[ms_ind * ndensity + p]);
-                //having the b_all loop inside the density loop results in 0 valued rank >2 descriptors
-                //this appears to be due to the for loop not running?
-                //B_all(func_ind + total_basis_size_rank1) += B.real_part_product(func->ctildes[ms_ind *ndensity + p]);
-                //printf("ms_ind %d, contribution %f \n", ms_ind, B.real_part_product(func->ctildes[ms_ind *ndensity + p]));
 #endif
 
 #ifdef PRINT_INTERMEDIATE_VALUES
                 printf("rhos(%d) += %f\n", p, B.real_part_product(func->ctildes[ms_ind * ndensity + p]));
                 printf("Rho[i = %d][p = %d] = %f\n",  i , p , rhos(p));
 #endif
-                //}
             }
         }//end of loop over {ms} combinations in sum
     }// end loop for rank>1
-    //! added loop to print rank >1
-    for (func_ind = 0; func_ind < total_basis_size + total_basis_size_rank1; ++func_ind) {
-        printf("%d %f\n", func_ind, B_all(func_ind));
-    }
+
 #ifdef DEBUG_FORCES_CALCULATIONS
     printf("rhos = ");
     for(DENSITY_TYPE p =0; p<ndensity; ++p) printf(" %.20f ",rhos(p));

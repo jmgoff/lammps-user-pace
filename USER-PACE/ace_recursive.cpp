@@ -458,7 +458,6 @@ void ACERecursiveEvaluator::acejlformat() {
     /* create a 4D lookup table for the 1-p basis 
      * TODO: replace with a map??
      */
-    //$ this is where the structure of AA is made?
     Array4D<int> A_lookup(int(maxmu+1), int(maxn), int(maxl+1), int(2*maxl+1));
     for (int mu = 0; mu < maxmu+1; mu++) 
         for (int n = 0; n < maxn; n++)
@@ -551,7 +550,6 @@ void ACERecursiveEvaluator::acejlformat() {
                     for (t = 0; t < order; t++)
                         if (ms[t] < 0)
                             sig *= -1;
-                    //! NOTE this is where the ctildes are summed
                     for (int p = 0; p < ndensity; ++p) {
                         func->ctildes[ms_ind2 * ndensity + p] += 
                                 func->ctildes[ms_ind * ndensity + p];
@@ -734,7 +732,6 @@ ACERecursiveEvaluator::compute_atom(int i, DOUBLE_TYPE **x, const SPECIES_TYPE *
     if(basis_set== nullptr) {
         throw std::invalid_argument("ACERecursiveEvaluator: basis set is not assigned");
     }
-    //printf("Hello world! (from ace_recursive)\n");
     per_atom_calc_timer.start();
 #ifdef PRINT_MAIN_STEPS
     printf("\n ATOM: ind = %d r_norm=(%f, %f, %f)\n",i, x[i][0], x[i][1], x[i][2]);
@@ -763,7 +760,7 @@ ACERecursiveEvaluator::compute_atom(int i, DOUBLE_TYPE **x, const SPECIES_TYPE *
     ACEComplex B{0.};
     ACEComplex dB{0};
     ACEComplex A_cache[basis_set->rankmax];
-   
+    
     ACEComplex dA[basis_set->rankmax];
     int spec[basis_set->rankmax];
 
@@ -812,16 +809,6 @@ ACERecursiveEvaluator::compute_atom(int i, DOUBLE_TYPE **x, const SPECIES_TYPE *
 
     //TODO: get per-species type number of densities
     const DENSITY_TYPE ndensity= basis_set->ndensitymax;
-
-    //$ initialize the array of invariants
-    //Array1D<DOUBLE_TYPE> B_arr; //for ranks above 1
-    //Array1D<DOUBLE_TYPE> B1_arr; //for rank 1
-
-    printf("total basis size: %d, jl_AAspec dim0: %zu, num2_interior: %d, num2_leaf: %d\n" , (int) total_basis_size, jl_AAspec.get_dim(0), dag.get_num2_int(),dag.get_num2_leaf());
-    DOUBLE_TYPE B_arr[(int) ndensity][(int) total_basis_size]; //for ranks above 1
-    //DOUBLE_TYPE B_arr[(int) ndensity][dag.get_num2_int()]; //for ranks above 1
-    //DOUBLE_TYPE B_arr[(int) ndensity][jl_AAspec.get_dim(0)]; //for ranks above 1
-    DOUBLE_TYPE B1_arr[(int) ndensity][(int) total_basis_size_rank1]; //for rank 1
 
     neighbours_forces.resize(jnum, 3);
     neighbours_forces.fill(0);
@@ -983,13 +970,7 @@ ACERecursiveEvaluator::compute_atom(int i, DOUBLE_TYPE **x, const SPECIES_TYPE *
 #endif
         for (DENSITY_TYPE p = 0; p < ndensity; ++p) {
             //for rank=1 (r=0) only 1 ms-combination exists (ms_ind=0), so index of func.ctildes is 0..ndensity-1
-            //$
             rhos(p) += func->ctildes[p] * A_cur;
-            B1_arr[p][func_rank1_ind] += func->ctildes[p]*A_cur;
-
-            //array print works
-            //double btmp = B1_arr[p][func_rank1_ind];
-            //printf("one entry in B array: %f\n" , btmp);
 #ifdef EXTRA_C_PROJECTIONS
             //aggregate C-projections separately
             basis_projections_rank1(func_rank1_ind, p)+= func->ctildes[p] * A_cur;
@@ -1029,24 +1010,16 @@ ACERecursiveEvaluator::compute_atom(int i, DOUBLE_TYPE **x, const SPECIES_TYPE *
         
         int num2_int = dag.get_num2_int();
         int num2_leaf = dag.get_num2_leaf();
-        // An AA basis function is given by a tuple 𝒗 = vv. Each index 𝒗ᵢ = vv[i]
+
         // interior nodes (save AA)
-        //total basis size: 726, jl_AAspec dim0: 5889, num2_interior: 1456, num2_leaf: 5659
         for (int idx = num1; idx < num1+num2_int; idx++) {    
             i1 = dag_nodes[idx_nodes]; idx_nodes++;
             i2 = dag_nodes[idx_nodes]; idx_nodes++;
             AAcur = dag.AAbuf(i1) * dag.AAbuf(i2);
             dag.AAbuf(idx) = AAcur;
-            for (int p = 0; p < ndensity; p++, idx_coefs++){
+            for (int p = 0; p < ndensity; p++, idx_coefs++)            
                 rhos(p) += AAcur.real_part_product(dag_coefs[idx_coefs]);
-                //$
-                int B_id = idx_coefs/4;//correct B_arr index?
-                B_arr[p][B_id] += AAcur.real_part_product(dag_coefs[idx_coefs]);
-                double btmp = AAcur.real_part_product(dag_coefs[idx_coefs]);
-                printf("density: %d, descriptor_idx: %d, descriptor contribution: %f\n", p,B_id,btmp);
-            }
         }
-        //$ TODO find out what leaf nodes are doing and how they contribute to invariants
 
         // leaf nodes -> no need to store in AAbuf
         DOUBLE_TYPE AAcur_re = 0.0;
@@ -1054,63 +1027,29 @@ ACERecursiveEvaluator::compute_atom(int i, DOUBLE_TYPE **x, const SPECIES_TYPE *
             i1 = dag_nodes[idx_nodes]; idx_nodes++;
             i2 = dag_nodes[idx_nodes]; idx_nodes++;
             AAcur_re = dag.AAbuf(i1).real_part_product(dag.AAbuf(i2));
-            for (int p = 0; p < ndensity; p++, idx_coefs++){            
+            for (int p = 0; p < ndensity; p++, idx_coefs++)            
                 rhos(p) += AAcur_re * dag_coefs[idx_coefs];
-                //int B_id = idx_coefs/4;
-                //B_arr[p][B_id] += AAcur_re * dag_coefs[idx_coefs];
-                //double btmp = AAcur_re * dag_coefs[idx_coefs];
-                //printf("density: %d, descriptor_idx: %d, leaf contribution: %f\n", p,B_id,btmp);
-            }
         }
 
     } else {
-        //$
-        // this is the actual if/else statement for ace_product
-        // the ace_evaluator.cpp code is dead?? 
-        //$
+
         /* non-recursive Julia-style evaluator implementation */
         // TODO: fix array access to enable bounds checking again???
         ACEComplex AAcur{1.0};
         int *AAspec = jl_AAspec_flat.get_data();
-        //printf("AAspec: %n \n",AAspec);
         DOUBLE_TYPE *coeffs = jl_coeffs.get_data();
         int idx_spec = 0;
         int idx_coefs = 0;
-        int idx_B = 0;
         int order = 0;
         int max_order = jl_AAspec.get_dim(1);
-        //total basis size: 726, jl_AAspec dim0: 5889, num2_interior: 1456, num2_leaf: 5659
         for (int iAA = 0; iAA < jl_AAspec.get_dim(0); iAA ++) {
             AAcur = 1.0;
             order = jl_orders(iAA);
-            printf("order %d\n",order);
-            for (int r = 0; r < order; r++, idx_spec++){
+            for (int r = 0; r < order; r++, idx_spec++)
                 AAcur *= dag.AAbuf( AAspec[idx_spec] );
-                //printf("idx_spec: %d\n",idx_spec);
-                }
-            for (int p = 0; p < ndensity; p++, idx_coefs++){ 
+            for (int p = 0; p < ndensity; p++, idx_coefs++)            
                 rhos(p) += AAcur.real_part_product(coeffs[idx_coefs]);
-                //$ Try using only entries with non-zero coefficients?
-		// according to dusson, the coefficients should be 0 for these
-                // tests show that these 'coeffs' are all non-zero
-		// maybe the coeffs are some other coefficents in the auxiliary base
-		// that ensures that the c_tildes for the auxiliary functions are 0?
-                printf("idx_B: %d, idx_coeff: %d,  coeff: %f\n", idx_B, idx_coefs,coeffs[idx_coefs]);
-                if (coeffs[idx_coefs] ==0.){
-                //printf("idx_coef: %d, B_id: %d\n" , idx_coefs,B_id);
-                    int B_id = idx_B/2;
-                    B_arr[p][B_id] += AAcur.real_part_product(coeffs[idx_coefs]);
-                    double btmp = AAcur.real_part_product(coeffs[idx_coefs]);
-                    printf("density: %d, descriptor_idx: %d, descriptor contribution: %f\n", p,idx_B,btmp); 
-                    idx_B +=1;
-                }
-            }
         }
-        //    for (int p=0; p<ndensity;p++){
-        //        double btmp = B_arr[p][iAA];
-        //        printf("density: %d, descriptor_idx: %d, descriptor: %f\n", p,iAA,btmp);
-        //    }
-        //}
     }
 
     /* we now have rho and can evaluate lots of things. 

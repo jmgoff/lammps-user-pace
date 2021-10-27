@@ -1,3 +1,13 @@
+/* -*- c++ -*- ----------------------------------------------------------
+   LAMMPS - Large-scale Atomic/Molecular Massively Parallel Simulator
+   https://www.lammps.org/, Sandia National Laboratories
+   Steve Plimpton, sjplimp@sandia.gov
+
+   This software is distributed under the GNU General Public License.
+
+   See the README file in the top-level LAMMPS directory.
+------------------------------------------------------------------------- */
+
 /*
 Copyright 2021 Yury Lysogorskiy^1, Cas van der Oord^2, Anton Bochkarev^1,
  Sarath Menon^1, Matteo Rinaldi^1, Thomas Hammerschmidt^1, Matous Mrovec^1,
@@ -7,32 +17,16 @@ Copyright 2021 Yury Lysogorskiy^1, Cas van der Oord^2, Anton Bochkarev^1,
 ^2: University of Cambridge, Cambridge, United Kingdom
 ^3: Sandia National Laboratories, Albuquerque, New Mexico, USA
 ^4: University of British Columbia, Vancouver, BC, Canada
-
-
-    This FILENAME is free software: you can redistribute it and/or modify
-    it under the terms of the GNU General Public License as published by
-    the Free Software Foundation, either version 3 of the License, or
-    (at your option) any later version.
-
-    This program is distributed in the hope that it will be useful,
-    but WITHOUT ANY WARRANTY; without even the implied warranty of
-    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-    GNU General Public License for more details.
-
-    You should have received a copy of the GNU General Public License
-    along with this program.  If not, see <http://www.gnu.org/licenses/>.
- */
-
+*/
 
 //
 // Created by Lysogorskiy Yury on 27.02.20.
 //
 
-
 #ifdef PAIR_CLASS
-
-PairStyle(pace,PairPACE)
-
+// clang-format off
+PairStyle(pace,PairPACE);
+// clang-format on
 #else
 
 #ifndef LMP_PAIR_PACE_H
@@ -61,10 +55,9 @@ class PairPACE : public Pair {
   virtual void allocate();
 
   double **scale;
-  bool recursive;             // "recursive" option for ACERecursiveEvaluator
+  bool recursive;    // "recursive" option for ACERecursiveEvaluator
 };
-}
+}    // namespace LAMMPS_NS
 
 #endif
 #endif
-

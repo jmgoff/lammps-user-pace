@@ -16,6 +16,7 @@
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
+
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
@@ -47,12 +48,6 @@ protected:
     Array2D<DOUBLE_TYPE> A_rank1 = Array2D<DOUBLE_TYPE>("A_rank1"); ///< 2D-array for storing A's for rank=1, shape: A(mu_j,n)
     Array4DLM<ACEComplex> A = Array4DLM<ACEComplex>("A"); ///< 4D array with (l,m) last indices  for storing A's for rank>1: A(mu_j, n, l, m)
 
-    //! added array for B (rank>1)
-    //Array3D<DOUBLE_TYPE> B_arr = Array3D<DOUBLE_TYPE>("B_arr"); //rank 2+ invariants shape B(mu_j,n,l)
-
-    //! added array for Bs
-    //Array2D<DOUBLE_TYPE>  B1_arr = Array2D<DOUBLE_TYPE>("B1_arr"); // rank 1 Bs B(mu_j,n)
-
     Array1D<DOUBLE_TYPE> rhos = Array1D<DOUBLE_TYPE>("rhos"); ///< densities \f$ \rho^{(p)} \f$(ndensity), p  = 0 .. ndensity-1
     Array1D<DOUBLE_TYPE> dF_drho = Array1D<DOUBLE_TYPE>("dF_drho"); ///< derivatives of cluster functional wrt. densities, index = 0 .. ndensity-1
 
@@ -63,13 +58,6 @@ protected:
     void init(ACEAbstractBasisSet *basis_set);
 
 public:
-    //! added array for B (rank>1)
-    Array3D<DOUBLE_TYPE> B_arr = Array3D<DOUBLE_TYPE>("B_arr"); //rank 2+ invariants shape B(mu_j,n,l)
-    Array1D<DOUBLE_TYPE> B_all = Array1D<DOUBLE_TYPE>("B_all"); //rank 1+ invariants shape B(ncoeffs)
-
-    //! added array for BS (rank =1)
-    Array2D<DOUBLE_TYPE>  B1_arr = Array2D<DOUBLE_TYPE>("B1_arr"); // rank 1 Bs B(mu_j,n)
-
     // set of timers for code profiling
 
     ACETimer loop_over_neighbour_timer; ///< timer for loop over neighbours when constructing A's for single central atom
@@ -92,6 +80,7 @@ public:
      */
     Array1D<int> element_type_mapping = Array1D<int>("element_type_mapping");
 
+    Array1D<DOUBLE_TYPE> B_all = Array1D<DOUBLE_TYPE>("B_all"); //rank 1+ invariants shape B(ncoeffs)
 
     DOUBLE_TYPE e_atom = 0; ///< energy of current atom, including core-repulsion
 
@@ -197,7 +186,6 @@ class ACECTildeEvaluator : public ACEEvaluator {
     /**
      * pointer to the ACEBasisSet object
      */
-    //! NOTE does the name of this pointer ruin the pointer in compute_pace.cpp?
     ACECTildeBasisSet *basis_set = nullptr;
 
     /**
@@ -241,3 +229,4 @@ public:
 
 
 #endif //ACE_EVALUATOR_H
+
