@@ -16,6 +16,7 @@
 #include "ace_abstract_basis.h"
 #include "ace_types.h"
 #include <cstring>
+#include <map>
 
 #include "atom.h"
 #include "update.h"
@@ -32,7 +33,27 @@
 using namespace LAMMPS_NS;
 
 enum{SCALAR,VECTOR,ARRAY};
+/*TODO
+  store coupling coefficients in a C++ map : std::map<m_inds, ccs>
+  m_inds: indices for m combinations  (e.g. all m quantum number combinations for l1,l2=1,1)
+  1 : -1,1
+  2 :  0,0
+  3 :  1,-1
+  m_inds = { 1, 2, 3}
+  ccs: generalized clebsch-gordan coefficients for the m combinations allowed by a set l
+  for the example above:
+  ccs = { -1, 1, -1 }
 
+  I believe a map is needed because these become harder to store in arrays with high-order ACE descriptors.
+  for a rank 6 descriptor with l1,l2,l3,l4,l5,l6 = 2, there are thousands of m combinations. Storing in an
+  array of dimension [m1][m2][m3][m4][m5][m6] becomes cumbersome (and we may reach a limit for array dimensions
+  for higher ranked descriptors eventually). If the order of the ccs dont exactly match up exactly with the correct m
+  combination, then the descriptor will be incorrect.
+
+  being able to access the coupling coefficients by index, or a more descriptive key=("%d,%d,%d,%d", l1,l2,m1,m2)
+  would be ideal. The coupling coefficients are accessed multiple times for different descriptors characterized by
+  n1,n2,l1,l2 -provided that l1 and l2 are the same between descriptors with different n1 and n2.
+*/
 ComputePACE::ComputePACE(LAMMPS *lmp, int narg, char **arg) :
   Compute(lmp, narg, arg), cutsq(nullptr), list(nullptr), pace(nullptr),
   paceall(nullptr), pace_peratom(nullptr), radelem(nullptr), wjelem(nullptr),
