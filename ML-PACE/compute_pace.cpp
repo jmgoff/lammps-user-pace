@@ -29,6 +29,7 @@
 #include "comm.h"
 #include "memory.h"
 #include "error.h"
+#include "coupling.h"
 
 using namespace LAMMPS_NS;
 
@@ -57,48 +58,28 @@ enum{SCALAR,VECTOR,ARRAY};
 ComputePACE::ComputePACE(LAMMPS *lmp, int narg, char **arg) :
   Compute(lmp, narg, arg), cutsq(nullptr), list(nullptr), pace(nullptr),
   paceall(nullptr), pace_peratom(nullptr), radelem(nullptr), wjelem(nullptr),
-  basis_set(nullptr),ace(nullptr),map(nullptr)
+  basis_set(nullptr),ace(nullptr),map(nullptr),cg(nullptr)
 {
 
   array_flag = 1;
   extarray = 0;
 
-  double rfac0, rmin0;
-  int twojmax, switchflag, bzeroflag, bnormflag, wselfallflag;
+  //double rfac0, rmin0;
+  //int twojmax, switchflag, bzeroflag, bnormflag, wselfallflag;
 
   int ntypes = atom->ntypes;
-  int nargmin = 6+2*ntypes;
+  int nargmin =1;  //6+2*ntypes;
 
   if (narg < nargmin) error->all(FLERR,"Illegal compute pace command");
 
-  // default values
-  // TODO: remove dummy variables left over from snap
-
-  rmin0 = 0.0;
-  switchflag = 1;
-  bzeroflag = 1;
-  chemflag = 0;
-  bnormflag = 0;
-  wselfallflag = 0;
-  nelements = 1;
-
-  // process required arguments
 
   //! add in map array for types up here
   memory->create(map,ntypes+1,"pace:map");
+  // process potential file indexed at iarg = 3
+  int iarg = nargmin + 2;
 
-  memory->create(radelem,ntypes+1,"pace:radelem"); // offset by 1 to match up with types
-  memory->create(wjelem,ntypes+1,"pace:wjelem");
-  rcutfac = atof(arg[3]);
-  rfac0 = atof(arg[4]);
-  twojmax = atoi(arg[5]);
-  for (int i = 0; i < ntypes; i++)
-    radelem[i+1] = atof(arg[6+i]);
-  for (int i = 0; i < ntypes; i++)
-    wjelem[i+1] = atof(arg[6+ntypes+i]);
-
-  // construct cutsq
-
+  //TODO verify that checks for elements inside cutoff is correct inside the ace_evaluator code itself
+  /*
   double cut;
   cutmax = 0.0;
   memory->create(cutsq,ntypes+1,ntypes+1,"pace:cutsq");
@@ -110,59 +91,18 @@ ComputePACE::ComputePACE(LAMMPS *lmp, int narg, char **arg) :
       cut = (radelem[i]+radelem[j])*rcutfac;
       cutsq[i][j] = cutsq[j][i] = cut*cut;
     }
-  }
+  } 
+  */
 
-  // process optional args
-  // TODO change optional args for PACE
-
-  int iarg = nargmin;
-
-  while (iarg < narg) {
-    if (strcmp(arg[iarg],"rmin0") == 0) {
-      if (iarg+2 > narg)
-        error->all(FLERR,"Illegal compute pace command");
-      rmin0 = atof(arg[iarg+1]);
-      iarg += 2;
-    } else if (strcmp(arg[iarg],"bzeroflag") == 0) {
-      if (iarg+2 > narg)
-        error->all(FLERR,"Illegal compute pace command");
-      bzeroflag = atoi(arg[iarg+1]);
-      iarg += 2;
-    } else if (strcmp(arg[iarg],"switchflag") == 0) {
-      if (iarg+2 > narg)
-        error->all(FLERR,"Illegal compute pace command");
-      switchflag = atoi(arg[iarg+1]);
-      iarg += 2;
-    } else if (strcmp(arg[iarg],"chem") == 0) {
-      if (iarg+2 > narg)
-        error->all(FLERR,"Illegal compute pace command");
-      chemflag = 1;
-      //memory->create(map,ntypes+1,"compute_pace:map");
-      nelements = utils::inumeric(FLERR,arg[iarg+1],false,lmp);
-      for (int i = 0; i < ntypes; i++) {
-        int jelem = utils::inumeric(FLERR,arg[iarg+2+i],false,lmp);
-        if (jelem < 0 || jelem >= nelements)
-          error->all(FLERR,"Illegal compute pace command");
-        map[i+1] = jelem;
-      }
-      iarg += 2+ntypes;
-    } else if (strcmp(arg[iarg],"bnormflag") == 0) {
-      if (iarg+2 > narg)
-        error->all(FLERR,"Illegal compute pace command");
-      bnormflag = atoi(arg[iarg+1]);
-      iarg += 2;
-    } else if (strcmp(arg[iarg],"wselfallflag") == 0) {
-      if (iarg+2 > narg)
-        error->all(FLERR,"Illegal compute pace command");
-      wselfallflag = atoi(arg[iarg+1]);
-      iarg += 2;
-    } else error->all(FLERR,"Illegal compute pace command");
-  }
+ 
   //------------------------------------------------------------
   // this block added for ACE implementation
 
   //read in dummy file with coefficients
-  basis_set = new ACECTildeBasisSet("coupling_coefficients.ace");
+  //basis_set = new ACECTildeBasisSet("coupling_coefficients.ace");
+  //
+  printf("file %s\n", arg[iarg]);
+  basis_set = new ACECTildeBasisSet(arg[iarg]);
   //manually set mu index to 0 (for single component system)
   SPECIES_TYPE mu = 0;
   //# of rank 1, rank > 1 functions
@@ -187,7 +127,7 @@ ComputePACE::ComputePACE(LAMMPS *lmp, int narg, char **arg) :
   size_peratom = ndims_peratom*nperdim*atom->ntypes;
 
   nmax = 0;
-  delete basis_set;
+  //delete basis_set;
 }
 
 /* ---------------------------------------------------------------------- */
@@ -197,9 +137,6 @@ ComputePACE::~ComputePACE()
   memory->destroy(pace);
   memory->destroy(paceall);
   memory->destroy(pace_peratom);
-  memory->destroy(radelem);
-  memory->destroy(wjelem);
-  memory->destroy(cutsq);
 
   memory->destroy(map);
 }
@@ -302,11 +239,16 @@ void ComputePACE::compute_array()
   SPECIES_TYPE *mus;
   NS_TYPE *ns;
   LS_TYPE *ls;
+  //TODO change basis size for multicomponent systems
+  const int flarg = 3;
   SPECIES_TYPE mu = 0;
-
-  basis_set = new ACECTildeBasisSet("coupling_coefficients.ace");
+  
   int n_r1 = basis_set->total_basis_size_rank1[mu];
   int n_rp = basis_set->total_basis_size[mu];
+
+  //cg = new cgcouple();
+  //double cg_coeff= cg.clebsch_gordan(9,-1,9,1,9,0);
+  //printf("clebsch %f \n",cg_coeff);
 
   const int inum = list->inum;
   const int* const ilist = list->ilist;
