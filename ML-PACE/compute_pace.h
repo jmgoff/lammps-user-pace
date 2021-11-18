@@ -45,8 +45,9 @@ class ComputePACE : public Compute {
   double **pace, **paceall;
   double **pace_peratom;
   double rcutfac;
-  double *radelem;
-  double *wjelem;
+  //double *radelem;
+  //double *wjelem;
+  double *cg;
   int *map;    // map types to [0,nelements)
   int nelements, chemflag;
   class ACECTildeEvaluator *ace;
