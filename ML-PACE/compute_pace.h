@@ -21,6 +21,7 @@ ComputeStyle(pace,ComputePACE);
 #define LMP_COMPUTE_PACE_H
 
 #include "compute.h"
+#include "coupling.h"
 #include "ace_c_basis.h"
 #include "ace_evaluator.h"
 #include "ace_abstract_basis.h"
@@ -45,11 +46,11 @@ class ComputePACE : public Compute {
   double **pace, **paceall;
   double **pace_peratom;
   double rcutfac;
-  //double *radelem;
-  //double *wjelem;
-  double *cg;
+  double *radelem;
+  double *wjelem;
   int *map;    // map types to [0,nelements)
   int nelements, chemflag;
+  double *cg;
   class ACECTildeEvaluator *ace;
   class ACECTildeBasisSet *basis_set;
   double cutmax;

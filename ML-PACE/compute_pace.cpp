@@ -101,7 +101,7 @@ ComputePACE::ComputePACE(LAMMPS *lmp, int narg, char **arg) :
   //read in dummy file with coefficients
   //basis_set = new ACECTildeBasisSet("coupling_coefficients.ace");
   //
-  printf("file %s\n", arg[iarg]);
+  //printf("file %s\n", arg[iarg]);
   basis_set = new ACECTildeBasisSet(arg[iarg]);
   //manually set mu index to 0 (for single component system)
   SPECIES_TYPE mu = 0;
@@ -208,7 +208,7 @@ void ComputePACE::init_list(int /*id*/, NeighList *ptr)
 void ComputePACE::compute_array()
 {
   int ntotal = atom->nlocal + atom->nghost;
-
+  double **f = atom->f;
   invoked_array = update->ntimestep;
 
   // grow pace_peratom array if necessary
@@ -240,15 +240,10 @@ void ComputePACE::compute_array()
   NS_TYPE *ns;
   LS_TYPE *ls;
   //TODO change basis size for multicomponent systems
-  const int flarg = 3;
   SPECIES_TYPE mu = 0;
   
   int n_r1 = basis_set->total_basis_size_rank1[mu];
   int n_rp = basis_set->total_basis_size[mu];
-
-  //cg = new cgcouple();
-  //double cg_coeff= cg.clebsch_gordan(9,-1,9,1,9,0);
-  //printf("clebsch %f \n",cg_coeff);
 
   const int inum = list->inum;
   const int* const ilist = list->ilist;
@@ -273,91 +268,28 @@ void ComputePACE::compute_array()
 
   double** const x = atom->x;
   const int* const mask = atom->mask;
+  const int ntypes = atom->ntypes;
 
   for (int ii = 0; ii < inum; ii++) {
     const int i = ilist[ii];
     if (mask[i] & groupbit) {
 
-      const double xtmp = x[i][0];
-      const double ytmp = x[i][1];
-      const double ztmp = x[i][2];
       const int itype = type[i];
       //TODO prepare mapping from mu to ielem (same number?)
       int ielem = 0;
       //SPECIES_TYPE mu = 0;//basis_set->get_species_index_by_name(elemname);
       //map[itype] = mu;
-      const double radi = radelem[itype];
       const int* const jlist = firstneigh[i];
       const int jnum = numneigh[i];
       const int typeoffset_local = ndims_peratom*nperdim*(itype-1);
       const int typeoffset_global = nperdim*(itype-1);
 
-      // insure rij, inside, and typej  are of size jnum
-
-      // rij[][3] = displacements between atom I and those neighbors
-      // inside = indices of neighbors of I within cutoff
-      // typej = types of neighbors of I within cutoff
-      // note Rij sign convention => dU/dRij = dU/dRj = -dU/dRi
-
-      int ninside = 0;
-      for (int jj = 0; jj < jnum; jj++) {
-        int j = jlist[jj];
-        j &= NEIGHMASK;
-
-        const double delx = x[j][0] - xtmp;
-        const double dely = x[j][1] - ytmp;
-        const double delz = x[j][2] - ztmp;
-        const double rsq = delx*delx + dely*dely + delz*delz;
-        int jtype = type[j];
-        int jelem = 0;
-        //TODO consider mapping of jelem to mu_j (same number)
-        //map[jtype] = mu;
-        if (rsq < cutsq[itype][jtype]&&rsq>1e-20) {
-          // snaptr->rij[ninside][0] = delx;
-          // snaptr->rij[ninside][1] = dely;
-          // snaptr->rij[ninside][2] = delz;
-          // snaptr->inside[ninside] = j;
-          // snaptr->wj[ninside] = wjelem[jtype];
-          // snaptr->rcutij[ninside] = (radi+radelem[jtype])*rcutfac;
-          // snaptr->element[ninside] = jelem; // element index for multi-element snap
-          ninside++;
-        }
-      }
-      //TODO: set up forces & virial terms (as in snap code below)
-
-      // snaptr->compute_ui(ninside, ielem);
-      // snaptr->compute_zi();
-      // snaptr->compute_bi(ielem);
-
-      //      for (int jj = 0; jj < ninside; jj++) {
-	//        const int j = snaptr->inside[jj];
-        // snaptr->compute_duidrj(snaptr->rij[jj], snaptr->wj[jj],
-        //                             snaptr->rcutij[jj], jj, snaptr->element[jj]);
-        // snaptr->compute_dbidrj();
-
-        // Accumulate dBi/dRi, -dBi/dRj
-
-        // double *snadi = pace_peratom[i]+typeoffset_local;
-        // double *snadj = pace_peratom[j]+typeoffset_local;
-
-        // for (int icoeff = 0; icoeff < ncoeff; icoeff++) {
-          // snadi[icoeff] += snaptr->dblist[icoeff][0];
-          // snadi[icoeff+yoffset] += snaptr->dblist[icoeff][1];
-          // snadi[icoeff+zoffset] += snaptr->dblist[icoeff][2];
-          // snadj[icoeff] -= snaptr->dblist[icoeff][0];
-          // snadj[icoeff+yoffset] -= snaptr->dblist[icoeff][1];
-          // snadj[icoeff+zoffset] -= snaptr->dblist[icoeff][2];
-      //        }
-
-      // }
-
       // Accumulate Bi
 
       int k = typeoffset_global;
       ace = new ACECTildeEvaluator(*basis_set);
-      ace->element_type_mapping.init(atom->ntypes+1);
-      const int n = atom->ntypes;
-      for (int ik = 1; ik <= n; ik++) {
+      ace->element_type_mapping.init(ntypes+1);
+      for (int ik = 1; ik <= ntypes; ik++) {
         //TODO implement variable mu for multicomponent ace models
         SPECIES_TYPE mu = 0;
         if (mu != -1) {
@@ -374,7 +306,42 @@ void ComputePACE::compute_array()
       SPECIES_TYPE  mu_init = 0;
       ace->compute_atom(i, atom->x, atom->type, list->numneigh[i], list->firstneigh[i]);
       Array1D<DOUBLE_TYPE> Bs =ace->B_all;
+
+      //TODO get jnum for atom i
+      //  & fix neighbour_list lookup (sn
+      for (int jj = 0; jj < jnum; jj++) {
+        const int j = jlist[jj];
+        //replace mapping of jj to j
+        double *pacedi = pace_peratom[i]+typeoffset_local;
+        double *pacedj = pace_peratom[j]+typeoffset_local;
+
       
+        //TODO ask Aidan about implementtion here
+
+        Array3D<DOUBLE_TYPE> fs = ace->neighbours_dB;
+        //force array in (func_ind,neighbour_ind,xyz_ind) format
+        // dimension: (n_descriptors,max_jnum,3)
+        //example to access entries for neighbour jj after running compute_atom for atom i:
+        for (int func_ind =0; func_ind < n_r1 + n_rp; func_ind++){
+          //NOTE changed jj -> j
+          DOUBLE_TYPE fx_dB = fs(func_ind,jj,0);
+          DOUBLE_TYPE fy_dB = fs(func_ind,jj,1);
+          DOUBLE_TYPE fz_dB = fs(func_ind,jj,2);
+          f[i][0] += fx_dB;
+          f[i][1] += fy_dB;
+          f[i][2] += fz_dB;
+          f[j][0] -= fx_dB;
+          f[j][1] -= fy_dB;
+          f[j][2] -= fz_dB;
+          pacedi[func_ind] += fx_dB;
+          pacedi[func_ind+yoffset] += fy_dB;
+          pacedi[func_ind+zoffset] += fz_dB;
+          pacedj[func_ind] -= fx_dB;
+          pacedj[func_ind+yoffset] -= fy_dB;
+          pacedj[func_ind+zoffset] -= fz_dB;
+        // 
+          }
+        }
       for (int icoeff = 0; icoeff < n_r1 + n_rp; icoeff++){
 	pace[0][k++] += Bs(icoeff);
       }
@@ -384,34 +351,42 @@ void ComputePACE::compute_array()
   delete basis_set;
   // accumulate force contributions to global array
 
-  /*for (int itype = 0; itype < atom->ntypes; itype++) {
+  for (int itype = 0; itype < atom->ntypes; itype++) {
     const int typeoffset_local = ndims_peratom*nperdim*itype;
     const int typeoffset_global = nperdim*itype;
     for (int icoeff = 0; icoeff < nperdim; icoeff++) {
       for (int i = 0; i < ntotal; i++) {
-        double *snadi = pace_peratom[i]+typeoffset_local;
+      //for (int i = 0; i < atom->nlocal; i++) {
+        double *pacedi = pace_peratom[i]+typeoffset_local;
         int iglobal = atom->tag[i];
         int irow = 3*(iglobal-1)+1;
-        pace[irow][icoeff+typeoffset_global] += snadi[icoeff];
-        pace[irow+1][icoeff+typeoffset_global] += snadi[icoeff+yoffset];
-        pace[irow+2][icoeff+typeoffset_global] += snadi[icoeff+zoffset];
+        pace[irow][icoeff+typeoffset_global] += pacedi[icoeff];
+        pace[irow+1][icoeff+typeoffset_global] += pacedi[icoeff+yoffset];
+        pace[irow+2][icoeff+typeoffset_global] += pacedi[icoeff+zoffset];
       }
     }
-  }*/
+  }
 
  // accumulate forces to global array
 
-  /*for (int i = 0; i < atom->nlocal; i++) {
+  //uncomment to obtain 
+  //comm->reverse_comm();
+
+  for (int i = 0; i < atom->nlocal; i++) {
     int iglobal = atom->tag[i];
     int irow = 3*(iglobal-1)+1;
+    //keep force lastcol part
     pace[irow][lastcol] = atom->f[i][0];
     pace[irow+1][lastcol] = atom->f[i][1];
     pace[irow+2][lastcol] = atom->f[i][2];
-  }*/
-
+    printf("final fx %f \n", atom->f[i][0]);
+    printf("final fy %f \n", atom->f[i][1]);
+    printf("final fz %f \n", atom->f[i][2]);
+  }
+  //printf("final fx %f \n", atom->f[0][0]);
   // accumulate virial contributions to global array
 
-  //dbdotr_compute();
+  dbdotr_compute();
 
   // sum up over all processes
 
@@ -426,7 +401,7 @@ void ComputePACE::compute_array()
   // assign virial stress to last column
   // switch to Voigt notation
 
-  /*c_virial->compute_vector();
+  c_virial->compute_vector();
   irow += 3*natoms;
   paceall[irow++][lastcol] = c_virial->vector[0];
   paceall[irow++][lastcol] = c_virial->vector[1];
@@ -434,7 +409,7 @@ void ComputePACE::compute_array()
   paceall[irow++][lastcol] = c_virial->vector[5];
   paceall[irow++][lastcol] = c_virial->vector[4];
   paceall[irow++][lastcol] = c_virial->vector[3];
-  */
+  
 }
 
 /* ----------------------------------------------------------------------
@@ -455,11 +430,11 @@ void ComputePACE::dbdotr_compute()
     for (int itype = 0; itype < atom->ntypes; itype++) {
       const int typeoffset_local = ndims_peratom*nperdim*itype;
       const int typeoffset_global = nperdim*itype;
-      double *snadi = pace_peratom[i]+typeoffset_local;
+      double *pacedi = pace_peratom[i]+typeoffset_local;
       for (int icoeff = 0; icoeff < nperdim; icoeff++) {
-        double dbdx = snadi[icoeff];
-        double dbdy = snadi[icoeff+yoffset];
-        double dbdz = snadi[icoeff+zoffset];
+        double dbdx = pacedi[icoeff];
+        double dbdy = pacedi[icoeff+yoffset];
+        double dbdz = pacedi[icoeff+zoffset];
         int irow = irow0;
         pace[irow++][icoeff+typeoffset_global] += dbdx*x[i][0];
         pace[irow++][icoeff+typeoffset_global] += dbdy*x[i][1];

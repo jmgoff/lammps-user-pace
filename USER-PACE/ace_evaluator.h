@@ -90,6 +90,9 @@ public:
      */
     Array2D<DOUBLE_TYPE> neighbours_forces = Array2D<DOUBLE_TYPE>("neighbours_forces");
 
+    // Array to hold the descriptor decomposed force contributions per neighbour
+    Array3D<DOUBLE_TYPE> neighbours_dB = Array3D<DOUBLE_TYPE>("neighbours_dB");
+
     ACEEvaluator() = default;
 
     virtual ~ACEEvaluator() = default;
@@ -136,12 +139,14 @@ class ACECTildeEvaluator : public ACEEvaluator {
      * 'i' is fixed for the current atom, shape: [nelements][nradbase]
      */
     Array2D<DOUBLE_TYPE> weights_rank1 = Array2D<DOUBLE_TYPE>("weights_rank1");
+    Array2D<DOUBLE_TYPE> weights_rank1_dB = Array2D<DOUBLE_TYPE>("weights_rank1_dB"); //for force contributions to A matrix
 
     /**
      * Weights \f$ \omega_{i \mu n l m} \f$ for rank > 1, see Eq.(10) from implementation notes,
      * 'i' is fixed for the current atom, shape: [nelements][nradbase][l=0..lmax, m]
      */
     Array4DLM<ACEComplex> weights = Array4DLM<ACEComplex>("weights");
+    Array4DLM<ACEComplex> weights_dB = Array4DLM<ACEComplex>("weights_dB");
 
     /**
      * cache for gradients of \f$ g(r)\f$: grad_phi(jj,n)=A2DLM(l,m)
