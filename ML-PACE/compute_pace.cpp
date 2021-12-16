@@ -78,23 +78,8 @@ ComputePACE::ComputePACE(LAMMPS *lmp, int narg, char **arg) :
   // process potential file indexed at iarg = 3
   int iarg = nargmin + 2;
 
-  //TODO verify that checks for elements inside cutoff is correct inside the ace_evaluator code itself
-  /*
-  double cut;
-  cutmax = 0.0;
-  memory->create(cutsq,ntypes+1,ntypes+1,"pace:cutsq");
-  for (int i = 1; i <= ntypes; i++) {
-    cut = 2.0*radelem[i]*rcutfac;
-    if (cut > cutmax) cutmax = cut;
-    cutsq[i][i] = cut*cut;
-    for (int j = i+1; j <= ntypes; j++) {
-      cut = (radelem[i]+radelem[j])*rcutfac;
-      cutsq[i][j] = cutsq[j][i] = cut*cut;
-    }
-  } 
-  */
 
- 
+
   //------------------------------------------------------------
   // this block added for ACE implementation
 
@@ -105,12 +90,32 @@ ComputePACE::ComputePACE(LAMMPS *lmp, int narg, char **arg) :
   basis_set = new ACECTildeBasisSet(arg[iarg]);
   //manually set mu index to 0 (for single component system)
   SPECIES_TYPE mu = 0;
+  for (int ik = 1; ik <= ntypes; ik++) {
+        //TODO implement variable mu for multicomponent ace models
+    if (mu != -1) {
+      map[ik] = mu;
+    }
+  }
   //# of rank 1, rank > 1 functions
   int n_r1 = basis_set->total_basis_size_rank1[mu];
   int n_rp = basis_set->total_basis_size[mu];
   
   int ncoeff = n_r1 + n_rp;
   printf("$! number of coefficients: %d\n",ncoeff);
+
+  double cut = basis_set->cutoffmax;
+  cutmax = basis_set->cutoffmax;
+  /*
+  memory->create(cutsq,ntypes+1,ntypes+1,"pace:cutsq");
+  for (int i = 1; i <= ntypes; i++) {
+    cut = basis_set->cutoffmax;
+    if (cut > cutmax) cutmax = cut;
+    cutsq[i][i] = cut*cut;
+    for (int j = i+1; j <= ntypes; j++) {
+      cut = basis_set->cutoffmax;
+      cutsq[i][j] = cutsq[j][i] = cut*cut;
+    }
+  }*/
 
   //-----------------------------------------------------------
   nperdim = ncoeff;
@@ -137,7 +142,7 @@ ComputePACE::~ComputePACE()
   memory->destroy(pace);
   memory->destroy(paceall);
   memory->destroy(pace_peratom);
-
+  //memory->destroy(cutsq);
   memory->destroy(map);
 }
 
@@ -293,9 +298,6 @@ void ComputePACE::compute_array()
         //TODO implement variable mu for multicomponent ace models
         SPECIES_TYPE mu = 0;
         if (mu != -1) {
-          if (comm->me == 0)
-            utils::logmesg(lmp,"Mapping LAMMPS atom type #{}({}) -> "
-                           "ACE species type #{}\n", ik, *"Cu", mu);
           map[ik] = mu;
           ace->element_type_mapping(ik) = mu; // set up LAMMPS atom type to ACE species  mapping for ace evaluator
         } 
@@ -323,16 +325,15 @@ void ComputePACE::compute_array()
         // dimension: (n_descriptors,max_jnum,3)
         //example to access entries for neighbour jj after running compute_atom for atom i:
         for (int func_ind =0; func_ind < n_r1 + n_rp; func_ind++){
-          //NOTE changed jj -> j
           DOUBLE_TYPE fx_dB = fs(func_ind,jj,0);
           DOUBLE_TYPE fy_dB = fs(func_ind,jj,1);
           DOUBLE_TYPE fz_dB = fs(func_ind,jj,2);
-          f[i][0] += fx_dB;
+          /*f[i][0] += fx_dB;
           f[i][1] += fy_dB;
           f[i][2] += fz_dB;
           f[j][0] -= fx_dB;
           f[j][1] -= fy_dB;
-          f[j][2] -= fz_dB;
+          f[j][2] -= fz_dB;*/
           pacedi[func_ind] += fx_dB;
           pacedi[func_ind+yoffset] += fy_dB;
           pacedi[func_ind+zoffset] += fz_dB;
@@ -369,19 +370,17 @@ void ComputePACE::compute_array()
 
  // accumulate forces to global array
 
-  //uncomment to obtain 
   //comm->reverse_comm();
 
   for (int i = 0; i < atom->nlocal; i++) {
     int iglobal = atom->tag[i];
     int irow = 3*(iglobal-1)+1;
-    //keep force lastcol part
     pace[irow][lastcol] = atom->f[i][0];
     pace[irow+1][lastcol] = atom->f[i][1];
     pace[irow+2][lastcol] = atom->f[i][2];
-    printf("final fx %f \n", atom->f[i][0]);
-    printf("final fy %f \n", atom->f[i][1]);
-    printf("final fz %f \n", atom->f[i][2]);
+    //printf("final fx %f \n", atom->f[i][0]);
+    //printf("final fy %f \n", atom->f[i][1]);
+    //printf("final fz %f \n", atom->f[i][2]);
   }
   //printf("final fx %f \n", atom->f[0][0]);
   // accumulate virial contributions to global array
