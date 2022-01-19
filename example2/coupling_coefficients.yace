@@ -1,0 +1,525 @@
+elements: [C, H, O] 
+E0: [0.0, 0.0, 0.0]
+deltaSplineBins: 0.001
+embeddings:
+  0: {ndensity: 1, FS_parameters: [1.0, 1.0], npoti: FinnisSinclair, rho_core_cutoff: 100000, drho_core_cutoff: 250}
+  1: {ndensity: 1, FS_parameters: [1.0, 1.0], npoti: FinnisSinclair, rho_core_cutoff: 100000, drho_core_cutoff: 250}
+  2: {ndensity: 1, FS_parameters: [1.0, 1.0], npoti: FinnisSinclair, rho_core_cutoff: 100000, drho_core_cutoff: 250}
+bonds:
+  [0, 0]: {nradmax: 2, lmax: 2, nradbasemax: 15, radbasename: ChebExpCos, radparameters: [5.25], radcoefficients: [[[1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]], [[0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]]], prehc: 0, lambdahc: 5.25, rcut: 7.0, dcut: 0.01, rcut_in: 0, dcut_in: 0, inner_cutoff_type: distance}
+  [0, 1]: {nradmax: 2, lmax: 2, nradbasemax: 15, radbasename: ChebExpCos, radparameters: [5.25], radcoefficients: [[[1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]], [[0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]]], prehc: 0, lambdahc: 5.25, rcut: 7.0, dcut: 0.01, rcut_in: 0, dcut_in: 0, inner_cutoff_type: distance}
+  [0, 2]: {nradmax: 2, lmax: 2, nradbasemax: 15, radbasename: ChebExpCos, radparameters: [5.25], radcoefficients: [[[1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]], [[0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]]], prehc: 0, lambdahc: 5.25, rcut: 7.0, dcut: 0.01, rcut_in: 0, dcut_in: 0, inner_cutoff_type: distance}
+  [1, 0]: {nradmax: 2, lmax: 2, nradbasemax: 15, radbasename: ChebExpCos, radparameters: [5.25], radcoefficients: [[[1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]], [[0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]]], prehc: 0, lambdahc: 5.25, rcut: 7.0, dcut: 0.01, rcut_in: 0, dcut_in: 0, inner_cutoff_type: distance}
+  [1, 1]: {nradmax: 2, lmax: 2, nradbasemax: 15, radbasename: ChebExpCos, radparameters: [5.25], radcoefficients: [[[1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]], [[0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]]], prehc: 0, lambdahc: 5.25, rcut: 7.0, dcut: 0.01, rcut_in: 0, dcut_in: 0, inner_cutoff_type: distance}
+  [1, 2]: {nradmax: 2, lmax: 2, nradbasemax: 15, radbasename: ChebExpCos, radparameters: [5.25], radcoefficients: [[[1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]], [[0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]]], prehc: 0, lambdahc: 5.25, rcut: 7.0, dcut: 0.01, rcut_in: 0, dcut_in: 0, inner_cutoff_type: distance}
+  [2, 0]: {nradmax: 2, lmax: 2, nradbasemax: 15, radbasename: ChebExpCos, radparameters: [5.25], radcoefficients: [[[1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]], [[0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]]], prehc: 0, lambdahc: 5.25, rcut: 7.0, dcut: 0.01, rcut_in: 0, dcut_in: 0, inner_cutoff_type: distance}
+  [2, 1]: {nradmax: 2, lmax: 2, nradbasemax: 15, radbasename: ChebExpCos, radparameters: [5.25], radcoefficients: [[[1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]], [[0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]]], prehc: 0, lambdahc: 5.25, rcut: 7.0, dcut: 0.01, rcut_in: 0, dcut_in: 0, inner_cutoff_type: distance}
+  [2, 2]: {nradmax: 2, lmax: 2, nradbasemax: 15, radbasename: ChebExpCos, radparameters: [5.25], radcoefficients: [[[1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]], [[0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]]], prehc: 0, lambdahc: 5.25, rcut: 7.0, dcut: 0.01, rcut_in: 0, dcut_in: 0, inner_cutoff_type: distance}
+functions:
+  0:
+    - {mu0: 0, rank: 1, ndensity: 1, num_ms_combs: 1, mus: [0], ns: [1], ls: [0], ms_combs: [0], ctildes: [1.0]}
+    - {mu0: 0, rank: 1, ndensity: 1, num_ms_combs: 1, mus: [1], ns: [1], ls: [0], ms_combs: [0], ctildes: [1.0]}
+    - {mu0: 0, rank: 1, ndensity: 1, num_ms_combs: 1, mus: [2], ns: [1], ls: [0], ms_combs: [0], ctildes: [1.0]}
+    - {mu0: 0, rank: 2, ndensity: 1, num_ms_combs: 1, mus: [0, 0], ns: [1, 1], ls: [0, 0], ms_combs: [0, 0], ctildes: [1]}
+    - {mu0: 0, rank: 2, ndensity: 1, num_ms_combs: 3, mus: [0, 0], ns: [1, 1], ls: [1, 1], ms_combs: [-1, 1, 0, 0, 1, -1], ctildes: [-1.0, 1, -1]}
+    - {mu0: 0, rank: 2, ndensity: 1, num_ms_combs: 5, mus: [0, 0], ns: [1, 1], ls: [2, 2], ms_combs: [-2, 2, -1, 1, 0, 0, 1, -1, 2, -2], ctildes: [1.0, -1.0, 1, -1, 1]}
+    - {mu0: 0, rank: 2, ndensity: 1, num_ms_combs: 1, mus: [0, 0], ns: [2, 1], ls: [0, 0], ms_combs: [0, 0], ctildes: [1]}
+    - {mu0: 0, rank: 2, ndensity: 1, num_ms_combs: 3, mus: [0, 0], ns: [2, 1], ls: [1, 1], ms_combs: [-1, 1, 0, 0, 1, -1], ctildes: [-1.0, 1, -1]}
+    - {mu0: 0, rank: 2, ndensity: 1, num_ms_combs: 5, mus: [0, 0], ns: [2, 1], ls: [2, 2], ms_combs: [-2, 2, -1, 1, 0, 0, 1, -1, 2, -2], ctildes: [1.0, -1.0, 1, -1, 1]}
+    - {mu0: 0, rank: 2, ndensity: 1, num_ms_combs: 1, mus: [0, 0], ns: [2, 2], ls: [0, 0], ms_combs: [0, 0], ctildes: [1]}
+    - {mu0: 0, rank: 2, ndensity: 1, num_ms_combs: 3, mus: [0, 0], ns: [2, 2], ls: [1, 1], ms_combs: [-1, 1, 0, 0, 1, -1], ctildes: [-1.0, 1, -1]}
+    - {mu0: 0, rank: 2, ndensity: 1, num_ms_combs: 5, mus: [0, 0], ns: [2, 2], ls: [2, 2], ms_combs: [-2, 2, -1, 1, 0, 0, 1, -1, 2, -2], ctildes: [1.0, -1.0, 1, -1, 1]}
+    - {mu0: 0, rank: 2, ndensity: 1, num_ms_combs: 1, mus: [1, 0], ns: [1, 1], ls: [0, 0], ms_combs: [0, 0], ctildes: [1]}
+    - {mu0: 0, rank: 2, ndensity: 1, num_ms_combs: 3, mus: [1, 0], ns: [1, 1], ls: [1, 1], ms_combs: [-1, 1, 0, 0, 1, -1], ctildes: [-1.0, 1, -1]}
+    - {mu0: 0, rank: 2, ndensity: 1, num_ms_combs: 5, mus: [1, 0], ns: [1, 1], ls: [2, 2], ms_combs: [-2, 2, -1, 1, 0, 0, 1, -1, 2, -2], ctildes: [1.0, -1.0, 1, -1, 1]}
+    - {mu0: 0, rank: 2, ndensity: 1, num_ms_combs: 1, mus: [1, 0], ns: [2, 1], ls: [0, 0], ms_combs: [0, 0], ctildes: [1]}
+    - {mu0: 0, rank: 2, ndensity: 1, num_ms_combs: 3, mus: [1, 0], ns: [2, 1], ls: [1, 1], ms_combs: [-1, 1, 0, 0, 1, -1], ctildes: [-1.0, 1, -1]}
+    - {mu0: 0, rank: 2, ndensity: 1, num_ms_combs: 5, mus: [1, 0], ns: [2, 1], ls: [2, 2], ms_combs: [-2, 2, -1, 1, 0, 0, 1, -1, 2, -2], ctildes: [1.0, -1.0, 1, -1, 1]}
+    - {mu0: 0, rank: 2, ndensity: 1, num_ms_combs: 1, mus: [1, 0], ns: [2, 2], ls: [0, 0], ms_combs: [0, 0], ctildes: [1]}
+    - {mu0: 0, rank: 2, ndensity: 1, num_ms_combs: 3, mus: [1, 0], ns: [2, 2], ls: [1, 1], ms_combs: [-1, 1, 0, 0, 1, -1], ctildes: [-1.0, 1, -1]}
+    - {mu0: 0, rank: 2, ndensity: 1, num_ms_combs: 5, mus: [1, 0], ns: [2, 2], ls: [2, 2], ms_combs: [-2, 2, -1, 1, 0, 0, 1, -1, 2, -2], ctildes: [1.0, -1.0, 1, -1, 1]}
+    - {mu0: 0, rank: 2, ndensity: 1, num_ms_combs: 1, mus: [0, 1], ns: [1, 1], ls: [0, 0], ms_combs: [0, 0], ctildes: [1]}
+    - {mu0: 0, rank: 2, ndensity: 1, num_ms_combs: 3, mus: [0, 1], ns: [1, 1], ls: [1, 1], ms_combs: [-1, 1, 0, 0, 1, -1], ctildes: [-1.0, 1, -1]}
+    - {mu0: 0, rank: 2, ndensity: 1, num_ms_combs: 5, mus: [0, 1], ns: [1, 1], ls: [2, 2], ms_combs: [-2, 2, -1, 1, 0, 0, 1, -1, 2, -2], ctildes: [1.0, -1.0, 1, -1, 1]}
+    - {mu0: 0, rank: 2, ndensity: 1, num_ms_combs: 1, mus: [0, 1], ns: [2, 1], ls: [0, 0], ms_combs: [0, 0], ctildes: [1]}
+    - {mu0: 0, rank: 2, ndensity: 1, num_ms_combs: 3, mus: [0, 1], ns: [2, 1], ls: [1, 1], ms_combs: [-1, 1, 0, 0, 1, -1], ctildes: [-1.0, 1, -1]}
+    - {mu0: 0, rank: 2, ndensity: 1, num_ms_combs: 5, mus: [0, 1], ns: [2, 1], ls: [2, 2], ms_combs: [-2, 2, -1, 1, 0, 0, 1, -1, 2, -2], ctildes: [1.0, -1.0, 1, -1, 1]}
+    - {mu0: 0, rank: 2, ndensity: 1, num_ms_combs: 1, mus: [0, 1], ns: [2, 2], ls: [0, 0], ms_combs: [0, 0], ctildes: [1]}
+    - {mu0: 0, rank: 2, ndensity: 1, num_ms_combs: 3, mus: [0, 1], ns: [2, 2], ls: [1, 1], ms_combs: [-1, 1, 0, 0, 1, -1], ctildes: [-1.0, 1, -1]}
+    - {mu0: 0, rank: 2, ndensity: 1, num_ms_combs: 5, mus: [0, 1], ns: [2, 2], ls: [2, 2], ms_combs: [-2, 2, -1, 1, 0, 0, 1, -1, 2, -2], ctildes: [1.0, -1.0, 1, -1, 1]}
+    - {mu0: 0, rank: 2, ndensity: 1, num_ms_combs: 1, mus: [2, 0], ns: [1, 1], ls: [0, 0], ms_combs: [0, 0], ctildes: [1]}
+    - {mu0: 0, rank: 2, ndensity: 1, num_ms_combs: 3, mus: [2, 0], ns: [1, 1], ls: [1, 1], ms_combs: [-1, 1, 0, 0, 1, -1], ctildes: [-1.0, 1, -1]}
+    - {mu0: 0, rank: 2, ndensity: 1, num_ms_combs: 5, mus: [2, 0], ns: [1, 1], ls: [2, 2], ms_combs: [-2, 2, -1, 1, 0, 0, 1, -1, 2, -2], ctildes: [1.0, -1.0, 1, -1, 1]}
+    - {mu0: 0, rank: 2, ndensity: 1, num_ms_combs: 1, mus: [2, 0], ns: [2, 1], ls: [0, 0], ms_combs: [0, 0], ctildes: [1]}
+    - {mu0: 0, rank: 2, ndensity: 1, num_ms_combs: 3, mus: [2, 0], ns: [2, 1], ls: [1, 1], ms_combs: [-1, 1, 0, 0, 1, -1], ctildes: [-1.0, 1, -1]}
+    - {mu0: 0, rank: 2, ndensity: 1, num_ms_combs: 5, mus: [2, 0], ns: [2, 1], ls: [2, 2], ms_combs: [-2, 2, -1, 1, 0, 0, 1, -1, 2, -2], ctildes: [1.0, -1.0, 1, -1, 1]}
+    - {mu0: 0, rank: 2, ndensity: 1, num_ms_combs: 1, mus: [2, 0], ns: [2, 2], ls: [0, 0], ms_combs: [0, 0], ctildes: [1]}
+    - {mu0: 0, rank: 2, ndensity: 1, num_ms_combs: 3, mus: [2, 0], ns: [2, 2], ls: [1, 1], ms_combs: [-1, 1, 0, 0, 1, -1], ctildes: [-1.0, 1, -1]}
+    - {mu0: 0, rank: 2, ndensity: 1, num_ms_combs: 5, mus: [2, 0], ns: [2, 2], ls: [2, 2], ms_combs: [-2, 2, -1, 1, 0, 0, 1, -1, 2, -2], ctildes: [1.0, -1.0, 1, -1, 1]}
+    - {mu0: 0, rank: 2, ndensity: 1, num_ms_combs: 1, mus: [0, 2], ns: [1, 1], ls: [0, 0], ms_combs: [0, 0], ctildes: [1]}
+    - {mu0: 0, rank: 2, ndensity: 1, num_ms_combs: 3, mus: [0, 2], ns: [1, 1], ls: [1, 1], ms_combs: [-1, 1, 0, 0, 1, -1], ctildes: [-1.0, 1, -1]}
+    - {mu0: 0, rank: 2, ndensity: 1, num_ms_combs: 5, mus: [0, 2], ns: [1, 1], ls: [2, 2], ms_combs: [-2, 2, -1, 1, 0, 0, 1, -1, 2, -2], ctildes: [1.0, -1.0, 1, -1, 1]}
+    - {mu0: 0, rank: 2, ndensity: 1, num_ms_combs: 1, mus: [0, 2], ns: [2, 1], ls: [0, 0], ms_combs: [0, 0], ctildes: [1]}
+    - {mu0: 0, rank: 2, ndensity: 1, num_ms_combs: 3, mus: [0, 2], ns: [2, 1], ls: [1, 1], ms_combs: [-1, 1, 0, 0, 1, -1], ctildes: [-1.0, 1, -1]}
+    - {mu0: 0, rank: 2, ndensity: 1, num_ms_combs: 5, mus: [0, 2], ns: [2, 1], ls: [2, 2], ms_combs: [-2, 2, -1, 1, 0, 0, 1, -1, 2, -2], ctildes: [1.0, -1.0, 1, -1, 1]}
+    - {mu0: 0, rank: 2, ndensity: 1, num_ms_combs: 1, mus: [0, 2], ns: [2, 2], ls: [0, 0], ms_combs: [0, 0], ctildes: [1]}
+    - {mu0: 0, rank: 2, ndensity: 1, num_ms_combs: 3, mus: [0, 2], ns: [2, 2], ls: [1, 1], ms_combs: [-1, 1, 0, 0, 1, -1], ctildes: [-1.0, 1, -1]}
+    - {mu0: 0, rank: 2, ndensity: 1, num_ms_combs: 5, mus: [0, 2], ns: [2, 2], ls: [2, 2], ms_combs: [-2, 2, -1, 1, 0, 0, 1, -1, 2, -2], ctildes: [1.0, -1.0, 1, -1, 1]}
+    - {mu0: 0, rank: 2, ndensity: 1, num_ms_combs: 1, mus: [1, 1], ns: [1, 1], ls: [0, 0], ms_combs: [0, 0], ctildes: [1]}
+    - {mu0: 0, rank: 2, ndensity: 1, num_ms_combs: 3, mus: [1, 1], ns: [1, 1], ls: [1, 1], ms_combs: [-1, 1, 0, 0, 1, -1], ctildes: [-1.0, 1, -1]}
+    - {mu0: 0, rank: 2, ndensity: 1, num_ms_combs: 5, mus: [1, 1], ns: [1, 1], ls: [2, 2], ms_combs: [-2, 2, -1, 1, 0, 0, 1, -1, 2, -2], ctildes: [1.0, -1.0, 1, -1, 1]}
+    - {mu0: 0, rank: 2, ndensity: 1, num_ms_combs: 1, mus: [1, 1], ns: [2, 1], ls: [0, 0], ms_combs: [0, 0], ctildes: [1]}
+    - {mu0: 0, rank: 2, ndensity: 1, num_ms_combs: 3, mus: [1, 1], ns: [2, 1], ls: [1, 1], ms_combs: [-1, 1, 0, 0, 1, -1], ctildes: [-1.0, 1, -1]}
+    - {mu0: 0, rank: 2, ndensity: 1, num_ms_combs: 5, mus: [1, 1], ns: [2, 1], ls: [2, 2], ms_combs: [-2, 2, -1, 1, 0, 0, 1, -1, 2, -2], ctildes: [1.0, -1.0, 1, -1, 1]}
+    - {mu0: 0, rank: 2, ndensity: 1, num_ms_combs: 1, mus: [1, 1], ns: [2, 2], ls: [0, 0], ms_combs: [0, 0], ctildes: [1]}
+    - {mu0: 0, rank: 2, ndensity: 1, num_ms_combs: 3, mus: [1, 1], ns: [2, 2], ls: [1, 1], ms_combs: [-1, 1, 0, 0, 1, -1], ctildes: [-1.0, 1, -1]}
+    - {mu0: 0, rank: 2, ndensity: 1, num_ms_combs: 5, mus: [1, 1], ns: [2, 2], ls: [2, 2], ms_combs: [-2, 2, -1, 1, 0, 0, 1, -1, 2, -2], ctildes: [1.0, -1.0, 1, -1, 1]}
+    - {mu0: 0, rank: 2, ndensity: 1, num_ms_combs: 1, mus: [2, 1], ns: [1, 1], ls: [0, 0], ms_combs: [0, 0], ctildes: [1]}
+    - {mu0: 0, rank: 2, ndensity: 1, num_ms_combs: 3, mus: [2, 1], ns: [1, 1], ls: [1, 1], ms_combs: [-1, 1, 0, 0, 1, -1], ctildes: [-1.0, 1, -1]}
+    - {mu0: 0, rank: 2, ndensity: 1, num_ms_combs: 5, mus: [2, 1], ns: [1, 1], ls: [2, 2], ms_combs: [-2, 2, -1, 1, 0, 0, 1, -1, 2, -2], ctildes: [1.0, -1.0, 1, -1, 1]}
+    - {mu0: 0, rank: 2, ndensity: 1, num_ms_combs: 1, mus: [2, 1], ns: [2, 1], ls: [0, 0], ms_combs: [0, 0], ctildes: [1]}
+    - {mu0: 0, rank: 2, ndensity: 1, num_ms_combs: 3, mus: [2, 1], ns: [2, 1], ls: [1, 1], ms_combs: [-1, 1, 0, 0, 1, -1], ctildes: [-1.0, 1, -1]}
+    - {mu0: 0, rank: 2, ndensity: 1, num_ms_combs: 5, mus: [2, 1], ns: [2, 1], ls: [2, 2], ms_combs: [-2, 2, -1, 1, 0, 0, 1, -1, 2, -2], ctildes: [1.0, -1.0, 1, -1, 1]}
+    - {mu0: 0, rank: 2, ndensity: 1, num_ms_combs: 1, mus: [2, 1], ns: [2, 2], ls: [0, 0], ms_combs: [0, 0], ctildes: [1]}
+    - {mu0: 0, rank: 2, ndensity: 1, num_ms_combs: 3, mus: [2, 1], ns: [2, 2], ls: [1, 1], ms_combs: [-1, 1, 0, 0, 1, -1], ctildes: [-1.0, 1, -1]}
+    - {mu0: 0, rank: 2, ndensity: 1, num_ms_combs: 5, mus: [2, 1], ns: [2, 2], ls: [2, 2], ms_combs: [-2, 2, -1, 1, 0, 0, 1, -1, 2, -2], ctildes: [1.0, -1.0, 1, -1, 1]}
+    - {mu0: 0, rank: 2, ndensity: 1, num_ms_combs: 1, mus: [1, 2], ns: [1, 1], ls: [0, 0], ms_combs: [0, 0], ctildes: [1]}
+    - {mu0: 0, rank: 2, ndensity: 1, num_ms_combs: 3, mus: [1, 2], ns: [1, 1], ls: [1, 1], ms_combs: [-1, 1, 0, 0, 1, -1], ctildes: [-1.0, 1, -1]}
+    - {mu0: 0, rank: 2, ndensity: 1, num_ms_combs: 5, mus: [1, 2], ns: [1, 1], ls: [2, 2], ms_combs: [-2, 2, -1, 1, 0, 0, 1, -1, 2, -2], ctildes: [1.0, -1.0, 1, -1, 1]}
+    - {mu0: 0, rank: 2, ndensity: 1, num_ms_combs: 1, mus: [1, 2], ns: [2, 1], ls: [0, 0], ms_combs: [0, 0], ctildes: [1]}
+    - {mu0: 0, rank: 2, ndensity: 1, num_ms_combs: 3, mus: [1, 2], ns: [2, 1], ls: [1, 1], ms_combs: [-1, 1, 0, 0, 1, -1], ctildes: [-1.0, 1, -1]}
+    - {mu0: 0, rank: 2, ndensity: 1, num_ms_combs: 5, mus: [1, 2], ns: [2, 1], ls: [2, 2], ms_combs: [-2, 2, -1, 1, 0, 0, 1, -1, 2, -2], ctildes: [1.0, -1.0, 1, -1, 1]}
+    - {mu0: 0, rank: 2, ndensity: 1, num_ms_combs: 1, mus: [1, 2], ns: [2, 2], ls: [0, 0], ms_combs: [0, 0], ctildes: [1]}
+    - {mu0: 0, rank: 2, ndensity: 1, num_ms_combs: 3, mus: [1, 2], ns: [2, 2], ls: [1, 1], ms_combs: [-1, 1, 0, 0, 1, -1], ctildes: [-1.0, 1, -1]}
+    - {mu0: 0, rank: 2, ndensity: 1, num_ms_combs: 5, mus: [1, 2], ns: [2, 2], ls: [2, 2], ms_combs: [-2, 2, -1, 1, 0, 0, 1, -1, 2, -2], ctildes: [1.0, -1.0, 1, -1, 1]}
+    - {mu0: 0, rank: 2, ndensity: 1, num_ms_combs: 1, mus: [2, 2], ns: [1, 1], ls: [0, 0], ms_combs: [0, 0], ctildes: [1]}
+    - {mu0: 0, rank: 2, ndensity: 1, num_ms_combs: 3, mus: [2, 2], ns: [1, 1], ls: [1, 1], ms_combs: [-1, 1, 0, 0, 1, -1], ctildes: [-1.0, 1, -1]}
+    - {mu0: 0, rank: 2, ndensity: 1, num_ms_combs: 5, mus: [2, 2], ns: [1, 1], ls: [2, 2], ms_combs: [-2, 2, -1, 1, 0, 0, 1, -1, 2, -2], ctildes: [1.0, -1.0, 1, -1, 1]}
+    - {mu0: 0, rank: 2, ndensity: 1, num_ms_combs: 1, mus: [2, 2], ns: [2, 1], ls: [0, 0], ms_combs: [0, 0], ctildes: [1]}
+    - {mu0: 0, rank: 2, ndensity: 1, num_ms_combs: 3, mus: [2, 2], ns: [2, 1], ls: [1, 1], ms_combs: [-1, 1, 0, 0, 1, -1], ctildes: [-1.0, 1, -1]}
+    - {mu0: 0, rank: 2, ndensity: 1, num_ms_combs: 5, mus: [2, 2], ns: [2, 1], ls: [2, 2], ms_combs: [-2, 2, -1, 1, 0, 0, 1, -1, 2, -2], ctildes: [1.0, -1.0, 1, -1, 1]}
+    - {mu0: 0, rank: 2, ndensity: 1, num_ms_combs: 1, mus: [2, 2], ns: [2, 2], ls: [0, 0], ms_combs: [0, 0], ctildes: [1]}
+    - {mu0: 0, rank: 2, ndensity: 1, num_ms_combs: 3, mus: [2, 2], ns: [2, 2], ls: [1, 1], ms_combs: [-1, 1, 0, 0, 1, -1], ctildes: [-1.0, 1, -1]}
+    - {mu0: 0, rank: 2, ndensity: 1, num_ms_combs: 5, mus: [2, 2], ns: [2, 2], ls: [2, 2], ms_combs: [-2, 2, -1, 1, 0, 0, 1, -1, 2, -2], ctildes: [1.0, -1.0, 1, -1, 1]}
+    - {mu0: 0, rank: 2, ndensity: 1, num_ms_combs: 1, mus: [0, 0], ns: [1, 1], ls: [0, 0], ms_combs: [0, 0], ctildes: [1]}
+    - {mu0: 0, rank: 2, ndensity: 1, num_ms_combs: 3, mus: [0, 0], ns: [1, 1], ls: [1, 1], ms_combs: [-1, 1, 0, 0, 1, -1], ctildes: [-1.0, 1, -1]}
+    - {mu0: 0, rank: 2, ndensity: 1, num_ms_combs: 5, mus: [0, 0], ns: [1, 1], ls: [2, 2], ms_combs: [-2, 2, -1, 1, 0, 0, 1, -1, 2, -2], ctildes: [1.0, -1.0, 1, -1, 1]}
+    - {mu0: 0, rank: 2, ndensity: 1, num_ms_combs: 1, mus: [0, 0], ns: [2, 1], ls: [0, 0], ms_combs: [0, 0], ctildes: [1]}
+    - {mu0: 0, rank: 2, ndensity: 1, num_ms_combs: 3, mus: [0, 0], ns: [2, 1], ls: [1, 1], ms_combs: [-1, 1, 0, 0, 1, -1], ctildes: [-1.0, 1, -1]}
+    - {mu0: 0, rank: 2, ndensity: 1, num_ms_combs: 5, mus: [0, 0], ns: [2, 1], ls: [2, 2], ms_combs: [-2, 2, -1, 1, 0, 0, 1, -1, 2, -2], ctildes: [1.0, -1.0, 1, -1, 1]}
+    - {mu0: 0, rank: 2, ndensity: 1, num_ms_combs: 1, mus: [0, 0], ns: [2, 2], ls: [0, 0], ms_combs: [0, 0], ctildes: [1]}
+    - {mu0: 0, rank: 2, ndensity: 1, num_ms_combs: 3, mus: [0, 0], ns: [2, 2], ls: [1, 1], ms_combs: [-1, 1, 0, 0, 1, -1], ctildes: [-1.0, 1, -1]}
+    - {mu0: 0, rank: 2, ndensity: 1, num_ms_combs: 5, mus: [0, 0], ns: [2, 2], ls: [2, 2], ms_combs: [-2, 2, -1, 1, 0, 0, 1, -1, 2, -2], ctildes: [1.0, -1.0, 1, -1, 1]}
+    - {mu0: 0, rank: 2, ndensity: 1, num_ms_combs: 1, mus: [1, 0], ns: [1, 1], ls: [0, 0], ms_combs: [0, 0], ctildes: [1]}
+    - {mu0: 0, rank: 2, ndensity: 1, num_ms_combs: 3, mus: [1, 0], ns: [1, 1], ls: [1, 1], ms_combs: [-1, 1, 0, 0, 1, -1], ctildes: [-1.0, 1, -1]}
+    - {mu0: 0, rank: 2, ndensity: 1, num_ms_combs: 5, mus: [1, 0], ns: [1, 1], ls: [2, 2], ms_combs: [-2, 2, -1, 1, 0, 0, 1, -1, 2, -2], ctildes: [1.0, -1.0, 1, -1, 1]}
+    - {mu0: 0, rank: 2, ndensity: 1, num_ms_combs: 1, mus: [1, 0], ns: [2, 1], ls: [0, 0], ms_combs: [0, 0], ctildes: [1]}
+    - {mu0: 0, rank: 2, ndensity: 1, num_ms_combs: 3, mus: [1, 0], ns: [2, 1], ls: [1, 1], ms_combs: [-1, 1, 0, 0, 1, -1], ctildes: [-1.0, 1, -1]}
+    - {mu0: 0, rank: 2, ndensity: 1, num_ms_combs: 5, mus: [1, 0], ns: [2, 1], ls: [2, 2], ms_combs: [-2, 2, -1, 1, 0, 0, 1, -1, 2, -2], ctildes: [1.0, -1.0, 1, -1, 1]}
+    - {mu0: 0, rank: 2, ndensity: 1, num_ms_combs: 1, mus: [1, 0], ns: [2, 2], ls: [0, 0], ms_combs: [0, 0], ctildes: [1]}
+    - {mu0: 0, rank: 2, ndensity: 1, num_ms_combs: 3, mus: [1, 0], ns: [2, 2], ls: [1, 1], ms_combs: [-1, 1, 0, 0, 1, -1], ctildes: [-1.0, 1, -1]}
+    - {mu0: 0, rank: 2, ndensity: 1, num_ms_combs: 5, mus: [1, 0], ns: [2, 2], ls: [2, 2], ms_combs: [-2, 2, -1, 1, 0, 0, 1, -1, 2, -2], ctildes: [1.0, -1.0, 1, -1, 1]}
+    - {mu0: 0, rank: 2, ndensity: 1, num_ms_combs: 1, mus: [0, 1], ns: [1, 1], ls: [0, 0], ms_combs: [0, 0], ctildes: [1]}
+    - {mu0: 0, rank: 2, ndensity: 1, num_ms_combs: 3, mus: [0, 1], ns: [1, 1], ls: [1, 1], ms_combs: [-1, 1, 0, 0, 1, -1], ctildes: [-1.0, 1, -1]}
+    - {mu0: 0, rank: 2, ndensity: 1, num_ms_combs: 5, mus: [0, 1], ns: [1, 1], ls: [2, 2], ms_combs: [-2, 2, -1, 1, 0, 0, 1, -1, 2, -2], ctildes: [1.0, -1.0, 1, -1, 1]}
+    - {mu0: 0, rank: 2, ndensity: 1, num_ms_combs: 1, mus: [0, 1], ns: [2, 1], ls: [0, 0], ms_combs: [0, 0], ctildes: [1]}
+    - {mu0: 0, rank: 2, ndensity: 1, num_ms_combs: 3, mus: [0, 1], ns: [2, 1], ls: [1, 1], ms_combs: [-1, 1, 0, 0, 1, -1], ctildes: [-1.0, 1, -1]}
+    - {mu0: 0, rank: 2, ndensity: 1, num_ms_combs: 5, mus: [0, 1], ns: [2, 1], ls: [2, 2], ms_combs: [-2, 2, -1, 1, 0, 0, 1, -1, 2, -2], ctildes: [1.0, -1.0, 1, -1, 1]}
+    - {mu0: 0, rank: 2, ndensity: 1, num_ms_combs: 1, mus: [0, 1], ns: [2, 2], ls: [0, 0], ms_combs: [0, 0], ctildes: [1]}
+    - {mu0: 0, rank: 2, ndensity: 1, num_ms_combs: 3, mus: [0, 1], ns: [2, 2], ls: [1, 1], ms_combs: [-1, 1, 0, 0, 1, -1], ctildes: [-1.0, 1, -1]}
+    - {mu0: 0, rank: 2, ndensity: 1, num_ms_combs: 5, mus: [0, 1], ns: [2, 2], ls: [2, 2], ms_combs: [-2, 2, -1, 1, 0, 0, 1, -1, 2, -2], ctildes: [1.0, -1.0, 1, -1, 1]}
+    - {mu0: 0, rank: 2, ndensity: 1, num_ms_combs: 1, mus: [2, 0], ns: [1, 1], ls: [0, 0], ms_combs: [0, 0], ctildes: [1]}
+    - {mu0: 0, rank: 2, ndensity: 1, num_ms_combs: 3, mus: [2, 0], ns: [1, 1], ls: [1, 1], ms_combs: [-1, 1, 0, 0, 1, -1], ctildes: [-1.0, 1, -1]}
+    - {mu0: 0, rank: 2, ndensity: 1, num_ms_combs: 5, mus: [2, 0], ns: [1, 1], ls: [2, 2], ms_combs: [-2, 2, -1, 1, 0, 0, 1, -1, 2, -2], ctildes: [1.0, -1.0, 1, -1, 1]}
+    - {mu0: 0, rank: 2, ndensity: 1, num_ms_combs: 1, mus: [2, 0], ns: [2, 1], ls: [0, 0], ms_combs: [0, 0], ctildes: [1]}
+    - {mu0: 0, rank: 2, ndensity: 1, num_ms_combs: 3, mus: [2, 0], ns: [2, 1], ls: [1, 1], ms_combs: [-1, 1, 0, 0, 1, -1], ctildes: [-1.0, 1, -1]}
+    - {mu0: 0, rank: 2, ndensity: 1, num_ms_combs: 5, mus: [2, 0], ns: [2, 1], ls: [2, 2], ms_combs: [-2, 2, -1, 1, 0, 0, 1, -1, 2, -2], ctildes: [1.0, -1.0, 1, -1, 1]}
+    - {mu0: 0, rank: 2, ndensity: 1, num_ms_combs: 1, mus: [2, 0], ns: [2, 2], ls: [0, 0], ms_combs: [0, 0], ctildes: [1]}
+    - {mu0: 0, rank: 2, ndensity: 1, num_ms_combs: 3, mus: [2, 0], ns: [2, 2], ls: [1, 1], ms_combs: [-1, 1, 0, 0, 1, -1], ctildes: [-1.0, 1, -1]}
+    - {mu0: 0, rank: 2, ndensity: 1, num_ms_combs: 5, mus: [2, 0], ns: [2, 2], ls: [2, 2], ms_combs: [-2, 2, -1, 1, 0, 0, 1, -1, 2, -2], ctildes: [1.0, -1.0, 1, -1, 1]}
+    - {mu0: 0, rank: 2, ndensity: 1, num_ms_combs: 1, mus: [0, 2], ns: [1, 1], ls: [0, 0], ms_combs: [0, 0], ctildes: [1]}
+    - {mu0: 0, rank: 2, ndensity: 1, num_ms_combs: 3, mus: [0, 2], ns: [1, 1], ls: [1, 1], ms_combs: [-1, 1, 0, 0, 1, -1], ctildes: [-1.0, 1, -1]}
+    - {mu0: 0, rank: 2, ndensity: 1, num_ms_combs: 5, mus: [0, 2], ns: [1, 1], ls: [2, 2], ms_combs: [-2, 2, -1, 1, 0, 0, 1, -1, 2, -2], ctildes: [1.0, -1.0, 1, -1, 1]}
+    - {mu0: 0, rank: 2, ndensity: 1, num_ms_combs: 1, mus: [0, 2], ns: [2, 1], ls: [0, 0], ms_combs: [0, 0], ctildes: [1]}
+    - {mu0: 0, rank: 2, ndensity: 1, num_ms_combs: 3, mus: [0, 2], ns: [2, 1], ls: [1, 1], ms_combs: [-1, 1, 0, 0, 1, -1], ctildes: [-1.0, 1, -1]}
+    - {mu0: 0, rank: 2, ndensity: 1, num_ms_combs: 5, mus: [0, 2], ns: [2, 1], ls: [2, 2], ms_combs: [-2, 2, -1, 1, 0, 0, 1, -1, 2, -2], ctildes: [1.0, -1.0, 1, -1, 1]}
+    - {mu0: 0, rank: 2, ndensity: 1, num_ms_combs: 1, mus: [0, 2], ns: [2, 2], ls: [0, 0], ms_combs: [0, 0], ctildes: [1]}
+    - {mu0: 0, rank: 2, ndensity: 1, num_ms_combs: 3, mus: [0, 2], ns: [2, 2], ls: [1, 1], ms_combs: [-1, 1, 0, 0, 1, -1], ctildes: [-1.0, 1, -1]}
+    - {mu0: 0, rank: 2, ndensity: 1, num_ms_combs: 5, mus: [0, 2], ns: [2, 2], ls: [2, 2], ms_combs: [-2, 2, -1, 1, 0, 0, 1, -1, 2, -2], ctildes: [1.0, -1.0, 1, -1, 1]}
+    - {mu0: 0, rank: 2, ndensity: 1, num_ms_combs: 1, mus: [1, 1], ns: [1, 1], ls: [0, 0], ms_combs: [0, 0], ctildes: [1]}
+    - {mu0: 0, rank: 2, ndensity: 1, num_ms_combs: 3, mus: [1, 1], ns: [1, 1], ls: [1, 1], ms_combs: [-1, 1, 0, 0, 1, -1], ctildes: [-1.0, 1, -1]}
+    - {mu0: 0, rank: 2, ndensity: 1, num_ms_combs: 5, mus: [1, 1], ns: [1, 1], ls: [2, 2], ms_combs: [-2, 2, -1, 1, 0, 0, 1, -1, 2, -2], ctildes: [1.0, -1.0, 1, -1, 1]}
+    - {mu0: 0, rank: 2, ndensity: 1, num_ms_combs: 1, mus: [1, 1], ns: [2, 1], ls: [0, 0], ms_combs: [0, 0], ctildes: [1]}
+    - {mu0: 0, rank: 2, ndensity: 1, num_ms_combs: 3, mus: [1, 1], ns: [2, 1], ls: [1, 1], ms_combs: [-1, 1, 0, 0, 1, -1], ctildes: [-1.0, 1, -1]}
+    - {mu0: 0, rank: 2, ndensity: 1, num_ms_combs: 5, mus: [1, 1], ns: [2, 1], ls: [2, 2], ms_combs: [-2, 2, -1, 1, 0, 0, 1, -1, 2, -2], ctildes: [1.0, -1.0, 1, -1, 1]}
+    - {mu0: 0, rank: 2, ndensity: 1, num_ms_combs: 1, mus: [1, 1], ns: [2, 2], ls: [0, 0], ms_combs: [0, 0], ctildes: [1]}
+    - {mu0: 0, rank: 2, ndensity: 1, num_ms_combs: 3, mus: [1, 1], ns: [2, 2], ls: [1, 1], ms_combs: [-1, 1, 0, 0, 1, -1], ctildes: [-1.0, 1, -1]}
+    - {mu0: 0, rank: 2, ndensity: 1, num_ms_combs: 5, mus: [1, 1], ns: [2, 2], ls: [2, 2], ms_combs: [-2, 2, -1, 1, 0, 0, 1, -1, 2, -2], ctildes: [1.0, -1.0, 1, -1, 1]}
+    - {mu0: 0, rank: 2, ndensity: 1, num_ms_combs: 1, mus: [2, 1], ns: [1, 1], ls: [0, 0], ms_combs: [0, 0], ctildes: [1]}
+    - {mu0: 0, rank: 2, ndensity: 1, num_ms_combs: 3, mus: [2, 1], ns: [1, 1], ls: [1, 1], ms_combs: [-1, 1, 0, 0, 1, -1], ctildes: [-1.0, 1, -1]}
+    - {mu0: 0, rank: 2, ndensity: 1, num_ms_combs: 5, mus: [2, 1], ns: [1, 1], ls: [2, 2], ms_combs: [-2, 2, -1, 1, 0, 0, 1, -1, 2, -2], ctildes: [1.0, -1.0, 1, -1, 1]}
+    - {mu0: 0, rank: 2, ndensity: 1, num_ms_combs: 1, mus: [2, 1], ns: [2, 1], ls: [0, 0], ms_combs: [0, 0], ctildes: [1]}
+    - {mu0: 0, rank: 2, ndensity: 1, num_ms_combs: 3, mus: [2, 1], ns: [2, 1], ls: [1, 1], ms_combs: [-1, 1, 0, 0, 1, -1], ctildes: [-1.0, 1, -1]}
+    - {mu0: 0, rank: 2, ndensity: 1, num_ms_combs: 5, mus: [2, 1], ns: [2, 1], ls: [2, 2], ms_combs: [-2, 2, -1, 1, 0, 0, 1, -1, 2, -2], ctildes: [1.0, -1.0, 1, -1, 1]}
+    - {mu0: 0, rank: 2, ndensity: 1, num_ms_combs: 1, mus: [2, 1], ns: [2, 2], ls: [0, 0], ms_combs: [0, 0], ctildes: [1]}
+    - {mu0: 0, rank: 2, ndensity: 1, num_ms_combs: 3, mus: [2, 1], ns: [2, 2], ls: [1, 1], ms_combs: [-1, 1, 0, 0, 1, -1], ctildes: [-1.0, 1, -1]}
+    - {mu0: 0, rank: 2, ndensity: 1, num_ms_combs: 5, mus: [2, 1], ns: [2, 2], ls: [2, 2], ms_combs: [-2, 2, -1, 1, 0, 0, 1, -1, 2, -2], ctildes: [1.0, -1.0, 1, -1, 1]}
+    - {mu0: 0, rank: 2, ndensity: 1, num_ms_combs: 1, mus: [1, 2], ns: [1, 1], ls: [0, 0], ms_combs: [0, 0], ctildes: [1]}
+    - {mu0: 0, rank: 2, ndensity: 1, num_ms_combs: 3, mus: [1, 2], ns: [1, 1], ls: [1, 1], ms_combs: [-1, 1, 0, 0, 1, -1], ctildes: [-1.0, 1, -1]}
+    - {mu0: 0, rank: 2, ndensity: 1, num_ms_combs: 5, mus: [1, 2], ns: [1, 1], ls: [2, 2], ms_combs: [-2, 2, -1, 1, 0, 0, 1, -1, 2, -2], ctildes: [1.0, -1.0, 1, -1, 1]}
+    - {mu0: 0, rank: 2, ndensity: 1, num_ms_combs: 1, mus: [1, 2], ns: [2, 1], ls: [0, 0], ms_combs: [0, 0], ctildes: [1]}
+    - {mu0: 0, rank: 2, ndensity: 1, num_ms_combs: 3, mus: [1, 2], ns: [2, 1], ls: [1, 1], ms_combs: [-1, 1, 0, 0, 1, -1], ctildes: [-1.0, 1, -1]}
+    - {mu0: 0, rank: 2, ndensity: 1, num_ms_combs: 5, mus: [1, 2], ns: [2, 1], ls: [2, 2], ms_combs: [-2, 2, -1, 1, 0, 0, 1, -1, 2, -2], ctildes: [1.0, -1.0, 1, -1, 1]}
+    - {mu0: 0, rank: 2, ndensity: 1, num_ms_combs: 1, mus: [1, 2], ns: [2, 2], ls: [0, 0], ms_combs: [0, 0], ctildes: [1]}
+    - {mu0: 0, rank: 2, ndensity: 1, num_ms_combs: 3, mus: [1, 2], ns: [2, 2], ls: [1, 1], ms_combs: [-1, 1, 0, 0, 1, -1], ctildes: [-1.0, 1, -1]}
+    - {mu0: 0, rank: 2, ndensity: 1, num_ms_combs: 5, mus: [1, 2], ns: [2, 2], ls: [2, 2], ms_combs: [-2, 2, -1, 1, 0, 0, 1, -1, 2, -2], ctildes: [1.0, -1.0, 1, -1, 1]}
+    - {mu0: 0, rank: 2, ndensity: 1, num_ms_combs: 1, mus: [2, 2], ns: [1, 1], ls: [0, 0], ms_combs: [0, 0], ctildes: [1]}
+    - {mu0: 0, rank: 2, ndensity: 1, num_ms_combs: 3, mus: [2, 2], ns: [1, 1], ls: [1, 1], ms_combs: [-1, 1, 0, 0, 1, -1], ctildes: [-1.0, 1, -1]}
+    - {mu0: 0, rank: 2, ndensity: 1, num_ms_combs: 5, mus: [2, 2], ns: [1, 1], ls: [2, 2], ms_combs: [-2, 2, -1, 1, 0, 0, 1, -1, 2, -2], ctildes: [1.0, -1.0, 1, -1, 1]}
+    - {mu0: 0, rank: 2, ndensity: 1, num_ms_combs: 1, mus: [2, 2], ns: [2, 1], ls: [0, 0], ms_combs: [0, 0], ctildes: [1]}
+    - {mu0: 0, rank: 2, ndensity: 1, num_ms_combs: 3, mus: [2, 2], ns: [2, 1], ls: [1, 1], ms_combs: [-1, 1, 0, 0, 1, -1], ctildes: [-1.0, 1, -1]}
+    - {mu0: 0, rank: 2, ndensity: 1, num_ms_combs: 5, mus: [2, 2], ns: [2, 1], ls: [2, 2], ms_combs: [-2, 2, -1, 1, 0, 0, 1, -1, 2, -2], ctildes: [1.0, -1.0, 1, -1, 1]}
+    - {mu0: 0, rank: 2, ndensity: 1, num_ms_combs: 1, mus: [2, 2], ns: [2, 2], ls: [0, 0], ms_combs: [0, 0], ctildes: [1]}
+    - {mu0: 0, rank: 2, ndensity: 1, num_ms_combs: 3, mus: [2, 2], ns: [2, 2], ls: [1, 1], ms_combs: [-1, 1, 0, 0, 1, -1], ctildes: [-1.0, 1, -1]}
+    - {mu0: 0, rank: 2, ndensity: 1, num_ms_combs: 5, mus: [2, 2], ns: [2, 2], ls: [2, 2], ms_combs: [-2, 2, -1, 1, 0, 0, 1, -1, 2, -2], ctildes: [1.0, -1.0, 1, -1, 1]}
+    - {mu0: 0, rank: 1, ndensity: 1, num_ms_combs: 1, mus: [0], ns: [1], ls: [0], ms_combs: [0], ctildes: [1.0]}
+    - {mu0: 0, rank: 1, ndensity: 1, num_ms_combs: 1, mus: [1], ns: [1], ls: [0], ms_combs: [0], ctildes: [1.0]}
+    - {mu0: 0, rank: 1, ndensity: 1, num_ms_combs: 1, mus: [2], ns: [1], ls: [0], ms_combs: [0], ctildes: [1.0]}
+  1:
+    - {mu0: 1, rank: 1, ndensity: 1, num_ms_combs: 1, mus: [0], ns: [1], ls: [0], ms_combs: [0], ctildes: [1.0]}
+    - {mu0: 1, rank: 1, ndensity: 1, num_ms_combs: 1, mus: [1], ns: [1], ls: [0], ms_combs: [0], ctildes: [1.0]}
+    - {mu0: 1, rank: 1, ndensity: 1, num_ms_combs: 1, mus: [2], ns: [1], ls: [0], ms_combs: [0], ctildes: [1.0]}
+    - {mu0: 1, rank: 2, ndensity: 1, num_ms_combs: 1, mus: [0, 0], ns: [1, 1], ls: [0, 0], ms_combs: [0, 0], ctildes: [1]}
+    - {mu0: 1, rank: 2, ndensity: 1, num_ms_combs: 3, mus: [0, 0], ns: [1, 1], ls: [1, 1], ms_combs: [-1, 1, 0, 0, 1, -1], ctildes: [-1.0, 1, -1]}
+    - {mu0: 1, rank: 2, ndensity: 1, num_ms_combs: 5, mus: [0, 0], ns: [1, 1], ls: [2, 2], ms_combs: [-2, 2, -1, 1, 0, 0, 1, -1, 2, -2], ctildes: [1.0, -1.0, 1, -1, 1]}
+    - {mu0: 1, rank: 2, ndensity: 1, num_ms_combs: 1, mus: [0, 0], ns: [1, 2], ls: [0, 0], ms_combs: [0, 0], ctildes: [1]}
+    - {mu0: 1, rank: 2, ndensity: 1, num_ms_combs: 3, mus: [0, 0], ns: [1, 2], ls: [1, 1], ms_combs: [-1, 1, 0, 0, 1, -1], ctildes: [-1.0, 1, -1]}
+    - {mu0: 1, rank: 2, ndensity: 1, num_ms_combs: 5, mus: [0, 0], ns: [1, 2], ls: [2, 2], ms_combs: [-2, 2, -1, 1, 0, 0, 1, -1, 2, -2], ctildes: [1.0, -1.0, 1, -1, 1]}
+    - {mu0: 1, rank: 2, ndensity: 1, num_ms_combs: 1, mus: [0, 0], ns: [2, 2], ls: [0, 0], ms_combs: [0, 0], ctildes: [1]}
+    - {mu0: 1, rank: 2, ndensity: 1, num_ms_combs: 3, mus: [0, 0], ns: [2, 2], ls: [1, 1], ms_combs: [-1, 1, 0, 0, 1, -1], ctildes: [-1.0, 1, -1]}
+    - {mu0: 1, rank: 2, ndensity: 1, num_ms_combs: 5, mus: [0, 0], ns: [2, 2], ls: [2, 2], ms_combs: [-2, 2, -1, 1, 0, 0, 1, -1, 2, -2], ctildes: [1.0, -1.0, 1, -1, 1]}
+    - {mu0: 1, rank: 2, ndensity: 1, num_ms_combs: 1, mus: [0, 1], ns: [1, 1], ls: [0, 0], ms_combs: [0, 0], ctildes: [1]}
+    - {mu0: 1, rank: 2, ndensity: 1, num_ms_combs: 3, mus: [0, 1], ns: [1, 1], ls: [1, 1], ms_combs: [-1, 1, 0, 0, 1, -1], ctildes: [-1.0, 1, -1]}
+    - {mu0: 1, rank: 2, ndensity: 1, num_ms_combs: 5, mus: [0, 1], ns: [1, 1], ls: [2, 2], ms_combs: [-2, 2, -1, 1, 0, 0, 1, -1, 2, -2], ctildes: [1.0, -1.0, 1, -1, 1]}
+    - {mu0: 1, rank: 2, ndensity: 1, num_ms_combs: 1, mus: [0, 1], ns: [1, 2], ls: [0, 0], ms_combs: [0, 0], ctildes: [1]}
+    - {mu0: 1, rank: 2, ndensity: 1, num_ms_combs: 3, mus: [0, 1], ns: [1, 2], ls: [1, 1], ms_combs: [-1, 1, 0, 0, 1, -1], ctildes: [-1.0, 1, -1]}
+    - {mu0: 1, rank: 2, ndensity: 1, num_ms_combs: 5, mus: [0, 1], ns: [1, 2], ls: [2, 2], ms_combs: [-2, 2, -1, 1, 0, 0, 1, -1, 2, -2], ctildes: [1.0, -1.0, 1, -1, 1]}
+    - {mu0: 1, rank: 2, ndensity: 1, num_ms_combs: 1, mus: [0, 1], ns: [2, 2], ls: [0, 0], ms_combs: [0, 0], ctildes: [1]}
+    - {mu0: 1, rank: 2, ndensity: 1, num_ms_combs: 3, mus: [0, 1], ns: [2, 2], ls: [1, 1], ms_combs: [-1, 1, 0, 0, 1, -1], ctildes: [-1.0, 1, -1]}
+    - {mu0: 1, rank: 2, ndensity: 1, num_ms_combs: 5, mus: [0, 1], ns: [2, 2], ls: [2, 2], ms_combs: [-2, 2, -1, 1, 0, 0, 1, -1, 2, -2], ctildes: [1.0, -1.0, 1, -1, 1]}
+    - {mu0: 1, rank: 2, ndensity: 1, num_ms_combs: 1, mus: [1, 0], ns: [1, 1], ls: [0, 0], ms_combs: [0, 0], ctildes: [1]}
+    - {mu0: 1, rank: 2, ndensity: 1, num_ms_combs: 3, mus: [1, 0], ns: [1, 1], ls: [1, 1], ms_combs: [-1, 1, 0, 0, 1, -1], ctildes: [-1.0, 1, -1]}
+    - {mu0: 1, rank: 2, ndensity: 1, num_ms_combs: 5, mus: [1, 0], ns: [1, 1], ls: [2, 2], ms_combs: [-2, 2, -1, 1, 0, 0, 1, -1, 2, -2], ctildes: [1.0, -1.0, 1, -1, 1]}
+    - {mu0: 1, rank: 2, ndensity: 1, num_ms_combs: 1, mus: [1, 0], ns: [1, 2], ls: [0, 0], ms_combs: [0, 0], ctildes: [1]}
+    - {mu0: 1, rank: 2, ndensity: 1, num_ms_combs: 3, mus: [1, 0], ns: [1, 2], ls: [1, 1], ms_combs: [-1, 1, 0, 0, 1, -1], ctildes: [-1.0, 1, -1]}
+    - {mu0: 1, rank: 2, ndensity: 1, num_ms_combs: 5, mus: [1, 0], ns: [1, 2], ls: [2, 2], ms_combs: [-2, 2, -1, 1, 0, 0, 1, -1, 2, -2], ctildes: [1.0, -1.0, 1, -1, 1]}
+    - {mu0: 1, rank: 2, ndensity: 1, num_ms_combs: 1, mus: [1, 0], ns: [2, 2], ls: [0, 0], ms_combs: [0, 0], ctildes: [1]}
+    - {mu0: 1, rank: 2, ndensity: 1, num_ms_combs: 3, mus: [1, 0], ns: [2, 2], ls: [1, 1], ms_combs: [-1, 1, 0, 0, 1, -1], ctildes: [-1.0, 1, -1]}
+    - {mu0: 1, rank: 2, ndensity: 1, num_ms_combs: 5, mus: [1, 0], ns: [2, 2], ls: [2, 2], ms_combs: [-2, 2, -1, 1, 0, 0, 1, -1, 2, -2], ctildes: [1.0, -1.0, 1, -1, 1]}
+    - {mu0: 1, rank: 2, ndensity: 1, num_ms_combs: 1, mus: [0, 2], ns: [1, 1], ls: [0, 0], ms_combs: [0, 0], ctildes: [1]}
+    - {mu0: 1, rank: 2, ndensity: 1, num_ms_combs: 3, mus: [0, 2], ns: [1, 1], ls: [1, 1], ms_combs: [-1, 1, 0, 0, 1, -1], ctildes: [-1.0, 1, -1]}
+    - {mu0: 1, rank: 2, ndensity: 1, num_ms_combs: 5, mus: [0, 2], ns: [1, 1], ls: [2, 2], ms_combs: [-2, 2, -1, 1, 0, 0, 1, -1, 2, -2], ctildes: [1.0, -1.0, 1, -1, 1]}
+    - {mu0: 1, rank: 2, ndensity: 1, num_ms_combs: 1, mus: [0, 2], ns: [1, 2], ls: [0, 0], ms_combs: [0, 0], ctildes: [1]}
+    - {mu0: 1, rank: 2, ndensity: 1, num_ms_combs: 3, mus: [0, 2], ns: [1, 2], ls: [1, 1], ms_combs: [-1, 1, 0, 0, 1, -1], ctildes: [-1.0, 1, -1]}
+    - {mu0: 1, rank: 2, ndensity: 1, num_ms_combs: 5, mus: [0, 2], ns: [1, 2], ls: [2, 2], ms_combs: [-2, 2, -1, 1, 0, 0, 1, -1, 2, -2], ctildes: [1.0, -1.0, 1, -1, 1]}
+    - {mu0: 1, rank: 2, ndensity: 1, num_ms_combs: 1, mus: [0, 2], ns: [2, 2], ls: [0, 0], ms_combs: [0, 0], ctildes: [1]}
+    - {mu0: 1, rank: 2, ndensity: 1, num_ms_combs: 3, mus: [0, 2], ns: [2, 2], ls: [1, 1], ms_combs: [-1, 1, 0, 0, 1, -1], ctildes: [-1.0, 1, -1]}
+    - {mu0: 1, rank: 2, ndensity: 1, num_ms_combs: 5, mus: [0, 2], ns: [2, 2], ls: [2, 2], ms_combs: [-2, 2, -1, 1, 0, 0, 1, -1, 2, -2], ctildes: [1.0, -1.0, 1, -1, 1]}
+    - {mu0: 1, rank: 2, ndensity: 1, num_ms_combs: 1, mus: [2, 0], ns: [1, 1], ls: [0, 0], ms_combs: [0, 0], ctildes: [1]}
+    - {mu0: 1, rank: 2, ndensity: 1, num_ms_combs: 3, mus: [2, 0], ns: [1, 1], ls: [1, 1], ms_combs: [-1, 1, 0, 0, 1, -1], ctildes: [-1.0, 1, -1]}
+    - {mu0: 1, rank: 2, ndensity: 1, num_ms_combs: 5, mus: [2, 0], ns: [1, 1], ls: [2, 2], ms_combs: [-2, 2, -1, 1, 0, 0, 1, -1, 2, -2], ctildes: [1.0, -1.0, 1, -1, 1]}
+    - {mu0: 1, rank: 2, ndensity: 1, num_ms_combs: 1, mus: [2, 0], ns: [1, 2], ls: [0, 0], ms_combs: [0, 0], ctildes: [1]}
+    - {mu0: 1, rank: 2, ndensity: 1, num_ms_combs: 3, mus: [2, 0], ns: [1, 2], ls: [1, 1], ms_combs: [-1, 1, 0, 0, 1, -1], ctildes: [-1.0, 1, -1]}
+    - {mu0: 1, rank: 2, ndensity: 1, num_ms_combs: 5, mus: [2, 0], ns: [1, 2], ls: [2, 2], ms_combs: [-2, 2, -1, 1, 0, 0, 1, -1, 2, -2], ctildes: [1.0, -1.0, 1, -1, 1]}
+    - {mu0: 1, rank: 2, ndensity: 1, num_ms_combs: 1, mus: [2, 0], ns: [2, 2], ls: [0, 0], ms_combs: [0, 0], ctildes: [1]}
+    - {mu0: 1, rank: 2, ndensity: 1, num_ms_combs: 3, mus: [2, 0], ns: [2, 2], ls: [1, 1], ms_combs: [-1, 1, 0, 0, 1, -1], ctildes: [-1.0, 1, -1]}
+    - {mu0: 1, rank: 2, ndensity: 1, num_ms_combs: 5, mus: [2, 0], ns: [2, 2], ls: [2, 2], ms_combs: [-2, 2, -1, 1, 0, 0, 1, -1, 2, -2], ctildes: [1.0, -1.0, 1, -1, 1]}
+    - {mu0: 1, rank: 2, ndensity: 1, num_ms_combs: 1, mus: [1, 1], ns: [1, 1], ls: [0, 0], ms_combs: [0, 0], ctildes: [1]}
+    - {mu0: 1, rank: 2, ndensity: 1, num_ms_combs: 3, mus: [1, 1], ns: [1, 1], ls: [1, 1], ms_combs: [-1, 1, 0, 0, 1, -1], ctildes: [-1.0, 1, -1]}
+    - {mu0: 1, rank: 2, ndensity: 1, num_ms_combs: 5, mus: [1, 1], ns: [1, 1], ls: [2, 2], ms_combs: [-2, 2, -1, 1, 0, 0, 1, -1, 2, -2], ctildes: [1.0, -1.0, 1, -1, 1]}
+    - {mu0: 1, rank: 2, ndensity: 1, num_ms_combs: 1, mus: [1, 1], ns: [1, 2], ls: [0, 0], ms_combs: [0, 0], ctildes: [1]}
+    - {mu0: 1, rank: 2, ndensity: 1, num_ms_combs: 3, mus: [1, 1], ns: [1, 2], ls: [1, 1], ms_combs: [-1, 1, 0, 0, 1, -1], ctildes: [-1.0, 1, -1]}
+    - {mu0: 1, rank: 2, ndensity: 1, num_ms_combs: 5, mus: [1, 1], ns: [1, 2], ls: [2, 2], ms_combs: [-2, 2, -1, 1, 0, 0, 1, -1, 2, -2], ctildes: [1.0, -1.0, 1, -1, 1]}
+    - {mu0: 1, rank: 2, ndensity: 1, num_ms_combs: 1, mus: [1, 1], ns: [2, 2], ls: [0, 0], ms_combs: [0, 0], ctildes: [1]}
+    - {mu0: 1, rank: 2, ndensity: 1, num_ms_combs: 3, mus: [1, 1], ns: [2, 2], ls: [1, 1], ms_combs: [-1, 1, 0, 0, 1, -1], ctildes: [-1.0, 1, -1]}
+    - {mu0: 1, rank: 2, ndensity: 1, num_ms_combs: 5, mus: [1, 1], ns: [2, 2], ls: [2, 2], ms_combs: [-2, 2, -1, 1, 0, 0, 1, -1, 2, -2], ctildes: [1.0, -1.0, 1, -1, 1]}
+    - {mu0: 1, rank: 2, ndensity: 1, num_ms_combs: 1, mus: [1, 2], ns: [1, 1], ls: [0, 0], ms_combs: [0, 0], ctildes: [1]}
+    - {mu0: 1, rank: 2, ndensity: 1, num_ms_combs: 3, mus: [1, 2], ns: [1, 1], ls: [1, 1], ms_combs: [-1, 1, 0, 0, 1, -1], ctildes: [-1.0, 1, -1]}
+    - {mu0: 1, rank: 2, ndensity: 1, num_ms_combs: 5, mus: [1, 2], ns: [1, 1], ls: [2, 2], ms_combs: [-2, 2, -1, 1, 0, 0, 1, -1, 2, -2], ctildes: [1.0, -1.0, 1, -1, 1]}
+    - {mu0: 1, rank: 2, ndensity: 1, num_ms_combs: 1, mus: [1, 2], ns: [1, 2], ls: [0, 0], ms_combs: [0, 0], ctildes: [1]}
+    - {mu0: 1, rank: 2, ndensity: 1, num_ms_combs: 3, mus: [1, 2], ns: [1, 2], ls: [1, 1], ms_combs: [-1, 1, 0, 0, 1, -1], ctildes: [-1.0, 1, -1]}
+    - {mu0: 1, rank: 2, ndensity: 1, num_ms_combs: 5, mus: [1, 2], ns: [1, 2], ls: [2, 2], ms_combs: [-2, 2, -1, 1, 0, 0, 1, -1, 2, -2], ctildes: [1.0, -1.0, 1, -1, 1]}
+    - {mu0: 1, rank: 2, ndensity: 1, num_ms_combs: 1, mus: [1, 2], ns: [2, 2], ls: [0, 0], ms_combs: [0, 0], ctildes: [1]}
+    - {mu0: 1, rank: 2, ndensity: 1, num_ms_combs: 3, mus: [1, 2], ns: [2, 2], ls: [1, 1], ms_combs: [-1, 1, 0, 0, 1, -1], ctildes: [-1.0, 1, -1]}
+    - {mu0: 1, rank: 2, ndensity: 1, num_ms_combs: 5, mus: [1, 2], ns: [2, 2], ls: [2, 2], ms_combs: [-2, 2, -1, 1, 0, 0, 1, -1, 2, -2], ctildes: [1.0, -1.0, 1, -1, 1]}
+    - {mu0: 1, rank: 2, ndensity: 1, num_ms_combs: 1, mus: [2, 1], ns: [1, 1], ls: [0, 0], ms_combs: [0, 0], ctildes: [1]}
+    - {mu0: 1, rank: 2, ndensity: 1, num_ms_combs: 3, mus: [2, 1], ns: [1, 1], ls: [1, 1], ms_combs: [-1, 1, 0, 0, 1, -1], ctildes: [-1.0, 1, -1]}
+    - {mu0: 1, rank: 2, ndensity: 1, num_ms_combs: 5, mus: [2, 1], ns: [1, 1], ls: [2, 2], ms_combs: [-2, 2, -1, 1, 0, 0, 1, -1, 2, -2], ctildes: [1.0, -1.0, 1, -1, 1]}
+    - {mu0: 1, rank: 2, ndensity: 1, num_ms_combs: 1, mus: [2, 1], ns: [1, 2], ls: [0, 0], ms_combs: [0, 0], ctildes: [1]}
+    - {mu0: 1, rank: 2, ndensity: 1, num_ms_combs: 3, mus: [2, 1], ns: [1, 2], ls: [1, 1], ms_combs: [-1, 1, 0, 0, 1, -1], ctildes: [-1.0, 1, -1]}
+    - {mu0: 1, rank: 2, ndensity: 1, num_ms_combs: 5, mus: [2, 1], ns: [1, 2], ls: [2, 2], ms_combs: [-2, 2, -1, 1, 0, 0, 1, -1, 2, -2], ctildes: [1.0, -1.0, 1, -1, 1]}
+    - {mu0: 1, rank: 2, ndensity: 1, num_ms_combs: 1, mus: [2, 1], ns: [2, 2], ls: [0, 0], ms_combs: [0, 0], ctildes: [1]}
+    - {mu0: 1, rank: 2, ndensity: 1, num_ms_combs: 3, mus: [2, 1], ns: [2, 2], ls: [1, 1], ms_combs: [-1, 1, 0, 0, 1, -1], ctildes: [-1.0, 1, -1]}
+    - {mu0: 1, rank: 2, ndensity: 1, num_ms_combs: 5, mus: [2, 1], ns: [2, 2], ls: [2, 2], ms_combs: [-2, 2, -1, 1, 0, 0, 1, -1, 2, -2], ctildes: [1.0, -1.0, 1, -1, 1]}
+    - {mu0: 1, rank: 2, ndensity: 1, num_ms_combs: 1, mus: [2, 2], ns: [1, 1], ls: [0, 0], ms_combs: [0, 0], ctildes: [1]}
+    - {mu0: 1, rank: 2, ndensity: 1, num_ms_combs: 3, mus: [2, 2], ns: [1, 1], ls: [1, 1], ms_combs: [-1, 1, 0, 0, 1, -1], ctildes: [-1.0, 1, -1]}
+    - {mu0: 1, rank: 2, ndensity: 1, num_ms_combs: 5, mus: [2, 2], ns: [1, 1], ls: [2, 2], ms_combs: [-2, 2, -1, 1, 0, 0, 1, -1, 2, -2], ctildes: [1.0, -1.0, 1, -1, 1]}
+    - {mu0: 1, rank: 2, ndensity: 1, num_ms_combs: 1, mus: [2, 2], ns: [1, 2], ls: [0, 0], ms_combs: [0, 0], ctildes: [1]}
+    - {mu0: 1, rank: 2, ndensity: 1, num_ms_combs: 3, mus: [2, 2], ns: [1, 2], ls: [1, 1], ms_combs: [-1, 1, 0, 0, 1, -1], ctildes: [-1.0, 1, -1]}
+    - {mu0: 1, rank: 2, ndensity: 1, num_ms_combs: 5, mus: [2, 2], ns: [1, 2], ls: [2, 2], ms_combs: [-2, 2, -1, 1, 0, 0, 1, -1, 2, -2], ctildes: [1.0, -1.0, 1, -1, 1]}
+    - {mu0: 1, rank: 2, ndensity: 1, num_ms_combs: 1, mus: [2, 2], ns: [2, 2], ls: [0, 0], ms_combs: [0, 0], ctildes: [1]}
+    - {mu0: 1, rank: 2, ndensity: 1, num_ms_combs: 3, mus: [2, 2], ns: [2, 2], ls: [1, 1], ms_combs: [-1, 1, 0, 0, 1, -1], ctildes: [-1.0, 1, -1]}
+    - {mu0: 1, rank: 2, ndensity: 1, num_ms_combs: 5, mus: [2, 2], ns: [2, 2], ls: [2, 2], ms_combs: [-2, 2, -1, 1, 0, 0, 1, -1, 2, -2], ctildes: [1.0, -1.0, 1, -1, 1]}
+    - {mu0: 1, rank: 2, ndensity: 1, num_ms_combs: 1, mus: [0, 0], ns: [1, 1], ls: [0, 0], ms_combs: [0, 0], ctildes: [1]}
+    - {mu0: 1, rank: 2, ndensity: 1, num_ms_combs: 3, mus: [0, 0], ns: [1, 1], ls: [1, 1], ms_combs: [-1, 1, 0, 0, 1, -1], ctildes: [-1.0, 1, -1]}
+    - {mu0: 1, rank: 2, ndensity: 1, num_ms_combs: 5, mus: [0, 0], ns: [1, 1], ls: [2, 2], ms_combs: [-2, 2, -1, 1, 0, 0, 1, -1, 2, -2], ctildes: [1.0, -1.0, 1, -1, 1]}
+    - {mu0: 1, rank: 2, ndensity: 1, num_ms_combs: 1, mus: [0, 0], ns: [1, 2], ls: [0, 0], ms_combs: [0, 0], ctildes: [1]}
+    - {mu0: 1, rank: 2, ndensity: 1, num_ms_combs: 3, mus: [0, 0], ns: [1, 2], ls: [1, 1], ms_combs: [-1, 1, 0, 0, 1, -1], ctildes: [-1.0, 1, -1]}
+    - {mu0: 1, rank: 2, ndensity: 1, num_ms_combs: 5, mus: [0, 0], ns: [1, 2], ls: [2, 2], ms_combs: [-2, 2, -1, 1, 0, 0, 1, -1, 2, -2], ctildes: [1.0, -1.0, 1, -1, 1]}
+    - {mu0: 1, rank: 2, ndensity: 1, num_ms_combs: 1, mus: [0, 0], ns: [2, 2], ls: [0, 0], ms_combs: [0, 0], ctildes: [1]}
+    - {mu0: 1, rank: 2, ndensity: 1, num_ms_combs: 3, mus: [0, 0], ns: [2, 2], ls: [1, 1], ms_combs: [-1, 1, 0, 0, 1, -1], ctildes: [-1.0, 1, -1]}
+    - {mu0: 1, rank: 2, ndensity: 1, num_ms_combs: 5, mus: [0, 0], ns: [2, 2], ls: [2, 2], ms_combs: [-2, 2, -1, 1, 0, 0, 1, -1, 2, -2], ctildes: [1.0, -1.0, 1, -1, 1]}
+    - {mu0: 1, rank: 2, ndensity: 1, num_ms_combs: 1, mus: [0, 1], ns: [1, 1], ls: [0, 0], ms_combs: [0, 0], ctildes: [1]}
+    - {mu0: 1, rank: 2, ndensity: 1, num_ms_combs: 3, mus: [0, 1], ns: [1, 1], ls: [1, 1], ms_combs: [-1, 1, 0, 0, 1, -1], ctildes: [-1.0, 1, -1]}
+    - {mu0: 1, rank: 2, ndensity: 1, num_ms_combs: 5, mus: [0, 1], ns: [1, 1], ls: [2, 2], ms_combs: [-2, 2, -1, 1, 0, 0, 1, -1, 2, -2], ctildes: [1.0, -1.0, 1, -1, 1]}
+    - {mu0: 1, rank: 2, ndensity: 1, num_ms_combs: 1, mus: [0, 1], ns: [1, 2], ls: [0, 0], ms_combs: [0, 0], ctildes: [1]}
+    - {mu0: 1, rank: 2, ndensity: 1, num_ms_combs: 3, mus: [0, 1], ns: [1, 2], ls: [1, 1], ms_combs: [-1, 1, 0, 0, 1, -1], ctildes: [-1.0, 1, -1]}
+    - {mu0: 1, rank: 2, ndensity: 1, num_ms_combs: 5, mus: [0, 1], ns: [1, 2], ls: [2, 2], ms_combs: [-2, 2, -1, 1, 0, 0, 1, -1, 2, -2], ctildes: [1.0, -1.0, 1, -1, 1]}
+    - {mu0: 1, rank: 2, ndensity: 1, num_ms_combs: 1, mus: [0, 1], ns: [2, 2], ls: [0, 0], ms_combs: [0, 0], ctildes: [1]}
+    - {mu0: 1, rank: 2, ndensity: 1, num_ms_combs: 3, mus: [0, 1], ns: [2, 2], ls: [1, 1], ms_combs: [-1, 1, 0, 0, 1, -1], ctildes: [-1.0, 1, -1]}
+    - {mu0: 1, rank: 2, ndensity: 1, num_ms_combs: 5, mus: [0, 1], ns: [2, 2], ls: [2, 2], ms_combs: [-2, 2, -1, 1, 0, 0, 1, -1, 2, -2], ctildes: [1.0, -1.0, 1, -1, 1]}
+    - {mu0: 1, rank: 2, ndensity: 1, num_ms_combs: 1, mus: [1, 0], ns: [1, 1], ls: [0, 0], ms_combs: [0, 0], ctildes: [1]}
+    - {mu0: 1, rank: 2, ndensity: 1, num_ms_combs: 3, mus: [1, 0], ns: [1, 1], ls: [1, 1], ms_combs: [-1, 1, 0, 0, 1, -1], ctildes: [-1.0, 1, -1]}
+    - {mu0: 1, rank: 2, ndensity: 1, num_ms_combs: 5, mus: [1, 0], ns: [1, 1], ls: [2, 2], ms_combs: [-2, 2, -1, 1, 0, 0, 1, -1, 2, -2], ctildes: [1.0, -1.0, 1, -1, 1]}
+    - {mu0: 1, rank: 2, ndensity: 1, num_ms_combs: 1, mus: [1, 0], ns: [1, 2], ls: [0, 0], ms_combs: [0, 0], ctildes: [1]}
+    - {mu0: 1, rank: 2, ndensity: 1, num_ms_combs: 3, mus: [1, 0], ns: [1, 2], ls: [1, 1], ms_combs: [-1, 1, 0, 0, 1, -1], ctildes: [-1.0, 1, -1]}
+    - {mu0: 1, rank: 2, ndensity: 1, num_ms_combs: 5, mus: [1, 0], ns: [1, 2], ls: [2, 2], ms_combs: [-2, 2, -1, 1, 0, 0, 1, -1, 2, -2], ctildes: [1.0, -1.0, 1, -1, 1]}
+    - {mu0: 1, rank: 2, ndensity: 1, num_ms_combs: 1, mus: [1, 0], ns: [2, 2], ls: [0, 0], ms_combs: [0, 0], ctildes: [1]}
+    - {mu0: 1, rank: 2, ndensity: 1, num_ms_combs: 3, mus: [1, 0], ns: [2, 2], ls: [1, 1], ms_combs: [-1, 1, 0, 0, 1, -1], ctildes: [-1.0, 1, -1]}
+    - {mu0: 1, rank: 2, ndensity: 1, num_ms_combs: 5, mus: [1, 0], ns: [2, 2], ls: [2, 2], ms_combs: [-2, 2, -1, 1, 0, 0, 1, -1, 2, -2], ctildes: [1.0, -1.0, 1, -1, 1]}
+    - {mu0: 1, rank: 2, ndensity: 1, num_ms_combs: 1, mus: [0, 2], ns: [1, 1], ls: [0, 0], ms_combs: [0, 0], ctildes: [1]}
+    - {mu0: 1, rank: 2, ndensity: 1, num_ms_combs: 3, mus: [0, 2], ns: [1, 1], ls: [1, 1], ms_combs: [-1, 1, 0, 0, 1, -1], ctildes: [-1.0, 1, -1]}
+    - {mu0: 1, rank: 2, ndensity: 1, num_ms_combs: 5, mus: [0, 2], ns: [1, 1], ls: [2, 2], ms_combs: [-2, 2, -1, 1, 0, 0, 1, -1, 2, -2], ctildes: [1.0, -1.0, 1, -1, 1]}
+    - {mu0: 1, rank: 2, ndensity: 1, num_ms_combs: 1, mus: [0, 2], ns: [1, 2], ls: [0, 0], ms_combs: [0, 0], ctildes: [1]}
+    - {mu0: 1, rank: 2, ndensity: 1, num_ms_combs: 3, mus: [0, 2], ns: [1, 2], ls: [1, 1], ms_combs: [-1, 1, 0, 0, 1, -1], ctildes: [-1.0, 1, -1]}
+    - {mu0: 1, rank: 2, ndensity: 1, num_ms_combs: 5, mus: [0, 2], ns: [1, 2], ls: [2, 2], ms_combs: [-2, 2, -1, 1, 0, 0, 1, -1, 2, -2], ctildes: [1.0, -1.0, 1, -1, 1]}
+    - {mu0: 1, rank: 2, ndensity: 1, num_ms_combs: 1, mus: [0, 2], ns: [2, 2], ls: [0, 0], ms_combs: [0, 0], ctildes: [1]}
+    - {mu0: 1, rank: 2, ndensity: 1, num_ms_combs: 3, mus: [0, 2], ns: [2, 2], ls: [1, 1], ms_combs: [-1, 1, 0, 0, 1, -1], ctildes: [-1.0, 1, -1]}
+    - {mu0: 1, rank: 2, ndensity: 1, num_ms_combs: 5, mus: [0, 2], ns: [2, 2], ls: [2, 2], ms_combs: [-2, 2, -1, 1, 0, 0, 1, -1, 2, -2], ctildes: [1.0, -1.0, 1, -1, 1]}
+    - {mu0: 1, rank: 2, ndensity: 1, num_ms_combs: 1, mus: [2, 0], ns: [1, 1], ls: [0, 0], ms_combs: [0, 0], ctildes: [1]}
+    - {mu0: 1, rank: 2, ndensity: 1, num_ms_combs: 3, mus: [2, 0], ns: [1, 1], ls: [1, 1], ms_combs: [-1, 1, 0, 0, 1, -1], ctildes: [-1.0, 1, -1]}
+    - {mu0: 1, rank: 2, ndensity: 1, num_ms_combs: 5, mus: [2, 0], ns: [1, 1], ls: [2, 2], ms_combs: [-2, 2, -1, 1, 0, 0, 1, -1, 2, -2], ctildes: [1.0, -1.0, 1, -1, 1]}
+    - {mu0: 1, rank: 2, ndensity: 1, num_ms_combs: 1, mus: [2, 0], ns: [1, 2], ls: [0, 0], ms_combs: [0, 0], ctildes: [1]}
+    - {mu0: 1, rank: 2, ndensity: 1, num_ms_combs: 3, mus: [2, 0], ns: [1, 2], ls: [1, 1], ms_combs: [-1, 1, 0, 0, 1, -1], ctildes: [-1.0, 1, -1]}
+    - {mu0: 1, rank: 2, ndensity: 1, num_ms_combs: 5, mus: [2, 0], ns: [1, 2], ls: [2, 2], ms_combs: [-2, 2, -1, 1, 0, 0, 1, -1, 2, -2], ctildes: [1.0, -1.0, 1, -1, 1]}
+    - {mu0: 1, rank: 2, ndensity: 1, num_ms_combs: 1, mus: [2, 0], ns: [2, 2], ls: [0, 0], ms_combs: [0, 0], ctildes: [1]}
+    - {mu0: 1, rank: 2, ndensity: 1, num_ms_combs: 3, mus: [2, 0], ns: [2, 2], ls: [1, 1], ms_combs: [-1, 1, 0, 0, 1, -1], ctildes: [-1.0, 1, -1]}
+    - {mu0: 1, rank: 2, ndensity: 1, num_ms_combs: 5, mus: [2, 0], ns: [2, 2], ls: [2, 2], ms_combs: [-2, 2, -1, 1, 0, 0, 1, -1, 2, -2], ctildes: [1.0, -1.0, 1, -1, 1]}
+    - {mu0: 1, rank: 2, ndensity: 1, num_ms_combs: 1, mus: [1, 1], ns: [1, 1], ls: [0, 0], ms_combs: [0, 0], ctildes: [1]}
+    - {mu0: 1, rank: 2, ndensity: 1, num_ms_combs: 3, mus: [1, 1], ns: [1, 1], ls: [1, 1], ms_combs: [-1, 1, 0, 0, 1, -1], ctildes: [-1.0, 1, -1]}
+    - {mu0: 1, rank: 2, ndensity: 1, num_ms_combs: 5, mus: [1, 1], ns: [1, 1], ls: [2, 2], ms_combs: [-2, 2, -1, 1, 0, 0, 1, -1, 2, -2], ctildes: [1.0, -1.0, 1, -1, 1]}
+    - {mu0: 1, rank: 2, ndensity: 1, num_ms_combs: 1, mus: [1, 1], ns: [1, 2], ls: [0, 0], ms_combs: [0, 0], ctildes: [1]}
+    - {mu0: 1, rank: 2, ndensity: 1, num_ms_combs: 3, mus: [1, 1], ns: [1, 2], ls: [1, 1], ms_combs: [-1, 1, 0, 0, 1, -1], ctildes: [-1.0, 1, -1]}
+    - {mu0: 1, rank: 2, ndensity: 1, num_ms_combs: 5, mus: [1, 1], ns: [1, 2], ls: [2, 2], ms_combs: [-2, 2, -1, 1, 0, 0, 1, -1, 2, -2], ctildes: [1.0, -1.0, 1, -1, 1]}
+    - {mu0: 1, rank: 2, ndensity: 1, num_ms_combs: 1, mus: [1, 1], ns: [2, 2], ls: [0, 0], ms_combs: [0, 0], ctildes: [1]}
+    - {mu0: 1, rank: 2, ndensity: 1, num_ms_combs: 3, mus: [1, 1], ns: [2, 2], ls: [1, 1], ms_combs: [-1, 1, 0, 0, 1, -1], ctildes: [-1.0, 1, -1]}
+    - {mu0: 1, rank: 2, ndensity: 1, num_ms_combs: 5, mus: [1, 1], ns: [2, 2], ls: [2, 2], ms_combs: [-2, 2, -1, 1, 0, 0, 1, -1, 2, -2], ctildes: [1.0, -1.0, 1, -1, 1]}
+    - {mu0: 1, rank: 2, ndensity: 1, num_ms_combs: 1, mus: [1, 2], ns: [1, 1], ls: [0, 0], ms_combs: [0, 0], ctildes: [1]}
+    - {mu0: 1, rank: 2, ndensity: 1, num_ms_combs: 3, mus: [1, 2], ns: [1, 1], ls: [1, 1], ms_combs: [-1, 1, 0, 0, 1, -1], ctildes: [-1.0, 1, -1]}
+    - {mu0: 1, rank: 2, ndensity: 1, num_ms_combs: 5, mus: [1, 2], ns: [1, 1], ls: [2, 2], ms_combs: [-2, 2, -1, 1, 0, 0, 1, -1, 2, -2], ctildes: [1.0, -1.0, 1, -1, 1]}
+    - {mu0: 1, rank: 2, ndensity: 1, num_ms_combs: 1, mus: [1, 2], ns: [1, 2], ls: [0, 0], ms_combs: [0, 0], ctildes: [1]}
+    - {mu0: 1, rank: 2, ndensity: 1, num_ms_combs: 3, mus: [1, 2], ns: [1, 2], ls: [1, 1], ms_combs: [-1, 1, 0, 0, 1, -1], ctildes: [-1.0, 1, -1]}
+    - {mu0: 1, rank: 2, ndensity: 1, num_ms_combs: 5, mus: [1, 2], ns: [1, 2], ls: [2, 2], ms_combs: [-2, 2, -1, 1, 0, 0, 1, -1, 2, -2], ctildes: [1.0, -1.0, 1, -1, 1]}
+    - {mu0: 1, rank: 2, ndensity: 1, num_ms_combs: 1, mus: [1, 2], ns: [2, 2], ls: [0, 0], ms_combs: [0, 0], ctildes: [1]}
+    - {mu0: 1, rank: 2, ndensity: 1, num_ms_combs: 3, mus: [1, 2], ns: [2, 2], ls: [1, 1], ms_combs: [-1, 1, 0, 0, 1, -1], ctildes: [-1.0, 1, -1]}
+    - {mu0: 1, rank: 2, ndensity: 1, num_ms_combs: 5, mus: [1, 2], ns: [2, 2], ls: [2, 2], ms_combs: [-2, 2, -1, 1, 0, 0, 1, -1, 2, -2], ctildes: [1.0, -1.0, 1, -1, 1]}
+    - {mu0: 1, rank: 2, ndensity: 1, num_ms_combs: 1, mus: [2, 1], ns: [1, 1], ls: [0, 0], ms_combs: [0, 0], ctildes: [1]}
+    - {mu0: 1, rank: 2, ndensity: 1, num_ms_combs: 3, mus: [2, 1], ns: [1, 1], ls: [1, 1], ms_combs: [-1, 1, 0, 0, 1, -1], ctildes: [-1.0, 1, -1]}
+    - {mu0: 1, rank: 2, ndensity: 1, num_ms_combs: 5, mus: [2, 1], ns: [1, 1], ls: [2, 2], ms_combs: [-2, 2, -1, 1, 0, 0, 1, -1, 2, -2], ctildes: [1.0, -1.0, 1, -1, 1]}
+    - {mu0: 1, rank: 2, ndensity: 1, num_ms_combs: 1, mus: [2, 1], ns: [1, 2], ls: [0, 0], ms_combs: [0, 0], ctildes: [1]}
+    - {mu0: 1, rank: 2, ndensity: 1, num_ms_combs: 3, mus: [2, 1], ns: [1, 2], ls: [1, 1], ms_combs: [-1, 1, 0, 0, 1, -1], ctildes: [-1.0, 1, -1]}
+    - {mu0: 1, rank: 2, ndensity: 1, num_ms_combs: 5, mus: [2, 1], ns: [1, 2], ls: [2, 2], ms_combs: [-2, 2, -1, 1, 0, 0, 1, -1, 2, -2], ctildes: [1.0, -1.0, 1, -1, 1]}
+    - {mu0: 1, rank: 2, ndensity: 1, num_ms_combs: 1, mus: [2, 1], ns: [2, 2], ls: [0, 0], ms_combs: [0, 0], ctildes: [1]}
+    - {mu0: 1, rank: 2, ndensity: 1, num_ms_combs: 3, mus: [2, 1], ns: [2, 2], ls: [1, 1], ms_combs: [-1, 1, 0, 0, 1, -1], ctildes: [-1.0, 1, -1]}
+    - {mu0: 1, rank: 2, ndensity: 1, num_ms_combs: 5, mus: [2, 1], ns: [2, 2], ls: [2, 2], ms_combs: [-2, 2, -1, 1, 0, 0, 1, -1, 2, -2], ctildes: [1.0, -1.0, 1, -1, 1]}
+    - {mu0: 1, rank: 2, ndensity: 1, num_ms_combs: 1, mus: [2, 2], ns: [1, 1], ls: [0, 0], ms_combs: [0, 0], ctildes: [1]}
+    - {mu0: 1, rank: 2, ndensity: 1, num_ms_combs: 3, mus: [2, 2], ns: [1, 1], ls: [1, 1], ms_combs: [-1, 1, 0, 0, 1, -1], ctildes: [-1.0, 1, -1]}
+    - {mu0: 1, rank: 2, ndensity: 1, num_ms_combs: 5, mus: [2, 2], ns: [1, 1], ls: [2, 2], ms_combs: [-2, 2, -1, 1, 0, 0, 1, -1, 2, -2], ctildes: [1.0, -1.0, 1, -1, 1]}
+    - {mu0: 1, rank: 2, ndensity: 1, num_ms_combs: 1, mus: [2, 2], ns: [1, 2], ls: [0, 0], ms_combs: [0, 0], ctildes: [1]}
+    - {mu0: 1, rank: 2, ndensity: 1, num_ms_combs: 3, mus: [2, 2], ns: [1, 2], ls: [1, 1], ms_combs: [-1, 1, 0, 0, 1, -1], ctildes: [-1.0, 1, -1]}
+    - {mu0: 1, rank: 2, ndensity: 1, num_ms_combs: 5, mus: [2, 2], ns: [1, 2], ls: [2, 2], ms_combs: [-2, 2, -1, 1, 0, 0, 1, -1, 2, -2], ctildes: [1.0, -1.0, 1, -1, 1]}
+    - {mu0: 1, rank: 2, ndensity: 1, num_ms_combs: 1, mus: [2, 2], ns: [2, 2], ls: [0, 0], ms_combs: [0, 0], ctildes: [1]}
+    - {mu0: 1, rank: 2, ndensity: 1, num_ms_combs: 3, mus: [2, 2], ns: [2, 2], ls: [1, 1], ms_combs: [-1, 1, 0, 0, 1, -1], ctildes: [-1.0, 1, -1]}
+    - {mu0: 1, rank: 2, ndensity: 1, num_ms_combs: 5, mus: [2, 2], ns: [2, 2], ls: [2, 2], ms_combs: [-2, 2, -1, 1, 0, 0, 1, -1, 2, -2], ctildes: [1.0, -1.0, 1, -1, 1]}
+    - {mu0: 1, rank: 1, ndensity: 1, num_ms_combs: 1, mus: [0], ns: [1], ls: [0], ms_combs: [0], ctildes: [1.0]}
+    - {mu0: 1, rank: 1, ndensity: 1, num_ms_combs: 1, mus: [1], ns: [1], ls: [0], ms_combs: [0], ctildes: [1.0]}
+    - {mu0: 1, rank: 1, ndensity: 1, num_ms_combs: 1, mus: [2], ns: [1], ls: [0], ms_combs: [0], ctildes: [1.0]}
+  2:
+    - {mu0: 2, rank: 1, ndensity: 1, num_ms_combs: 1, mus: [0], ns: [1], ls: [0], ms_combs: [0], ctildes: [1.0]}
+    - {mu0: 2, rank: 1, ndensity: 1, num_ms_combs: 1, mus: [1], ns: [1], ls: [0], ms_combs: [0], ctildes: [1.0]}
+    - {mu0: 2, rank: 1, ndensity: 1, num_ms_combs: 1, mus: [2], ns: [1], ls: [0], ms_combs: [0], ctildes: [1.0]}
+    - {mu0: 2, rank: 2, ndensity: 1, num_ms_combs: 1, mus: [0, 0], ns: [1, 1], ls: [0, 0], ms_combs: [0, 0], ctildes: [1]}
+    - {mu0: 2, rank: 2, ndensity: 1, num_ms_combs: 3, mus: [0, 0], ns: [1, 1], ls: [1, 1], ms_combs: [-1, 1, 0, 0, 1, -1], ctildes: [-1.0, 1, -1]}
+    - {mu0: 2, rank: 2, ndensity: 1, num_ms_combs: 5, mus: [0, 0], ns: [1, 1], ls: [2, 2], ms_combs: [-2, 2, -1, 1, 0, 0, 1, -1, 2, -2], ctildes: [1.0, -1.0, 1, -1, 1]}
+    - {mu0: 2, rank: 2, ndensity: 1, num_ms_combs: 1, mus: [0, 0], ns: [2, 1], ls: [0, 0], ms_combs: [0, 0], ctildes: [1]}
+    - {mu0: 2, rank: 2, ndensity: 1, num_ms_combs: 3, mus: [0, 0], ns: [2, 1], ls: [1, 1], ms_combs: [-1, 1, 0, 0, 1, -1], ctildes: [-1.0, 1, -1]}
+    - {mu0: 2, rank: 2, ndensity: 1, num_ms_combs: 5, mus: [0, 0], ns: [2, 1], ls: [2, 2], ms_combs: [-2, 2, -1, 1, 0, 0, 1, -1, 2, -2], ctildes: [1.0, -1.0, 1, -1, 1]}
+    - {mu0: 2, rank: 2, ndensity: 1, num_ms_combs: 1, mus: [0, 0], ns: [2, 2], ls: [0, 0], ms_combs: [0, 0], ctildes: [1]}
+    - {mu0: 2, rank: 2, ndensity: 1, num_ms_combs: 3, mus: [0, 0], ns: [2, 2], ls: [1, 1], ms_combs: [-1, 1, 0, 0, 1, -1], ctildes: [-1.0, 1, -1]}
+    - {mu0: 2, rank: 2, ndensity: 1, num_ms_combs: 5, mus: [0, 0], ns: [2, 2], ls: [2, 2], ms_combs: [-2, 2, -1, 1, 0, 0, 1, -1, 2, -2], ctildes: [1.0, -1.0, 1, -1, 1]}
+    - {mu0: 2, rank: 2, ndensity: 1, num_ms_combs: 1, mus: [1, 0], ns: [1, 1], ls: [0, 0], ms_combs: [0, 0], ctildes: [1]}
+    - {mu0: 2, rank: 2, ndensity: 1, num_ms_combs: 3, mus: [1, 0], ns: [1, 1], ls: [1, 1], ms_combs: [-1, 1, 0, 0, 1, -1], ctildes: [-1.0, 1, -1]}
+    - {mu0: 2, rank: 2, ndensity: 1, num_ms_combs: 5, mus: [1, 0], ns: [1, 1], ls: [2, 2], ms_combs: [-2, 2, -1, 1, 0, 0, 1, -1, 2, -2], ctildes: [1.0, -1.0, 1, -1, 1]}
+    - {mu0: 2, rank: 2, ndensity: 1, num_ms_combs: 1, mus: [1, 0], ns: [2, 1], ls: [0, 0], ms_combs: [0, 0], ctildes: [1]}
+    - {mu0: 2, rank: 2, ndensity: 1, num_ms_combs: 3, mus: [1, 0], ns: [2, 1], ls: [1, 1], ms_combs: [-1, 1, 0, 0, 1, -1], ctildes: [-1.0, 1, -1]}
+    - {mu0: 2, rank: 2, ndensity: 1, num_ms_combs: 5, mus: [1, 0], ns: [2, 1], ls: [2, 2], ms_combs: [-2, 2, -1, 1, 0, 0, 1, -1, 2, -2], ctildes: [1.0, -1.0, 1, -1, 1]}
+    - {mu0: 2, rank: 2, ndensity: 1, num_ms_combs: 1, mus: [1, 0], ns: [2, 2], ls: [0, 0], ms_combs: [0, 0], ctildes: [1]}
+    - {mu0: 2, rank: 2, ndensity: 1, num_ms_combs: 3, mus: [1, 0], ns: [2, 2], ls: [1, 1], ms_combs: [-1, 1, 0, 0, 1, -1], ctildes: [-1.0, 1, -1]}
+    - {mu0: 2, rank: 2, ndensity: 1, num_ms_combs: 5, mus: [1, 0], ns: [2, 2], ls: [2, 2], ms_combs: [-2, 2, -1, 1, 0, 0, 1, -1, 2, -2], ctildes: [1.0, -1.0, 1, -1, 1]}
+    - {mu0: 2, rank: 2, ndensity: 1, num_ms_combs: 1, mus: [0, 1], ns: [1, 1], ls: [0, 0], ms_combs: [0, 0], ctildes: [1]}
+    - {mu0: 2, rank: 2, ndensity: 1, num_ms_combs: 3, mus: [0, 1], ns: [1, 1], ls: [1, 1], ms_combs: [-1, 1, 0, 0, 1, -1], ctildes: [-1.0, 1, -1]}
+    - {mu0: 2, rank: 2, ndensity: 1, num_ms_combs: 5, mus: [0, 1], ns: [1, 1], ls: [2, 2], ms_combs: [-2, 2, -1, 1, 0, 0, 1, -1, 2, -2], ctildes: [1.0, -1.0, 1, -1, 1]}
+    - {mu0: 2, rank: 2, ndensity: 1, num_ms_combs: 1, mus: [0, 1], ns: [2, 1], ls: [0, 0], ms_combs: [0, 0], ctildes: [1]}
+    - {mu0: 2, rank: 2, ndensity: 1, num_ms_combs: 3, mus: [0, 1], ns: [2, 1], ls: [1, 1], ms_combs: [-1, 1, 0, 0, 1, -1], ctildes: [-1.0, 1, -1]}
+    - {mu0: 2, rank: 2, ndensity: 1, num_ms_combs: 5, mus: [0, 1], ns: [2, 1], ls: [2, 2], ms_combs: [-2, 2, -1, 1, 0, 0, 1, -1, 2, -2], ctildes: [1.0, -1.0, 1, -1, 1]}
+    - {mu0: 2, rank: 2, ndensity: 1, num_ms_combs: 1, mus: [0, 1], ns: [2, 2], ls: [0, 0], ms_combs: [0, 0], ctildes: [1]}
+    - {mu0: 2, rank: 2, ndensity: 1, num_ms_combs: 3, mus: [0, 1], ns: [2, 2], ls: [1, 1], ms_combs: [-1, 1, 0, 0, 1, -1], ctildes: [-1.0, 1, -1]}
+    - {mu0: 2, rank: 2, ndensity: 1, num_ms_combs: 5, mus: [0, 1], ns: [2, 2], ls: [2, 2], ms_combs: [-2, 2, -1, 1, 0, 0, 1, -1, 2, -2], ctildes: [1.0, -1.0, 1, -1, 1]}
+    - {mu0: 2, rank: 2, ndensity: 1, num_ms_combs: 1, mus: [2, 0], ns: [1, 1], ls: [0, 0], ms_combs: [0, 0], ctildes: [1]}
+    - {mu0: 2, rank: 2, ndensity: 1, num_ms_combs: 3, mus: [2, 0], ns: [1, 1], ls: [1, 1], ms_combs: [-1, 1, 0, 0, 1, -1], ctildes: [-1.0, 1, -1]}
+    - {mu0: 2, rank: 2, ndensity: 1, num_ms_combs: 5, mus: [2, 0], ns: [1, 1], ls: [2, 2], ms_combs: [-2, 2, -1, 1, 0, 0, 1, -1, 2, -2], ctildes: [1.0, -1.0, 1, -1, 1]}
+    - {mu0: 2, rank: 2, ndensity: 1, num_ms_combs: 1, mus: [2, 0], ns: [2, 1], ls: [0, 0], ms_combs: [0, 0], ctildes: [1]}
+    - {mu0: 2, rank: 2, ndensity: 1, num_ms_combs: 3, mus: [2, 0], ns: [2, 1], ls: [1, 1], ms_combs: [-1, 1, 0, 0, 1, -1], ctildes: [-1.0, 1, -1]}
+    - {mu0: 2, rank: 2, ndensity: 1, num_ms_combs: 5, mus: [2, 0], ns: [2, 1], ls: [2, 2], ms_combs: [-2, 2, -1, 1, 0, 0, 1, -1, 2, -2], ctildes: [1.0, -1.0, 1, -1, 1]}
+    - {mu0: 2, rank: 2, ndensity: 1, num_ms_combs: 1, mus: [2, 0], ns: [2, 2], ls: [0, 0], ms_combs: [0, 0], ctildes: [1]}
+    - {mu0: 2, rank: 2, ndensity: 1, num_ms_combs: 3, mus: [2, 0], ns: [2, 2], ls: [1, 1], ms_combs: [-1, 1, 0, 0, 1, -1], ctildes: [-1.0, 1, -1]}
+    - {mu0: 2, rank: 2, ndensity: 1, num_ms_combs: 5, mus: [2, 0], ns: [2, 2], ls: [2, 2], ms_combs: [-2, 2, -1, 1, 0, 0, 1, -1, 2, -2], ctildes: [1.0, -1.0, 1, -1, 1]}
+    - {mu0: 2, rank: 2, ndensity: 1, num_ms_combs: 1, mus: [0, 2], ns: [1, 1], ls: [0, 0], ms_combs: [0, 0], ctildes: [1]}
+    - {mu0: 2, rank: 2, ndensity: 1, num_ms_combs: 3, mus: [0, 2], ns: [1, 1], ls: [1, 1], ms_combs: [-1, 1, 0, 0, 1, -1], ctildes: [-1.0, 1, -1]}
+    - {mu0: 2, rank: 2, ndensity: 1, num_ms_combs: 5, mus: [0, 2], ns: [1, 1], ls: [2, 2], ms_combs: [-2, 2, -1, 1, 0, 0, 1, -1, 2, -2], ctildes: [1.0, -1.0, 1, -1, 1]}
+    - {mu0: 2, rank: 2, ndensity: 1, num_ms_combs: 1, mus: [0, 2], ns: [2, 1], ls: [0, 0], ms_combs: [0, 0], ctildes: [1]}
+    - {mu0: 2, rank: 2, ndensity: 1, num_ms_combs: 3, mus: [0, 2], ns: [2, 1], ls: [1, 1], ms_combs: [-1, 1, 0, 0, 1, -1], ctildes: [-1.0, 1, -1]}
+    - {mu0: 2, rank: 2, ndensity: 1, num_ms_combs: 5, mus: [0, 2], ns: [2, 1], ls: [2, 2], ms_combs: [-2, 2, -1, 1, 0, 0, 1, -1, 2, -2], ctildes: [1.0, -1.0, 1, -1, 1]}
+    - {mu0: 2, rank: 2, ndensity: 1, num_ms_combs: 1, mus: [0, 2], ns: [2, 2], ls: [0, 0], ms_combs: [0, 0], ctildes: [1]}
+    - {mu0: 2, rank: 2, ndensity: 1, num_ms_combs: 3, mus: [0, 2], ns: [2, 2], ls: [1, 1], ms_combs: [-1, 1, 0, 0, 1, -1], ctildes: [-1.0, 1, -1]}
+    - {mu0: 2, rank: 2, ndensity: 1, num_ms_combs: 5, mus: [0, 2], ns: [2, 2], ls: [2, 2], ms_combs: [-2, 2, -1, 1, 0, 0, 1, -1, 2, -2], ctildes: [1.0, -1.0, 1, -1, 1]}
+    - {mu0: 2, rank: 2, ndensity: 1, num_ms_combs: 1, mus: [1, 1], ns: [1, 1], ls: [0, 0], ms_combs: [0, 0], ctildes: [1]}
+    - {mu0: 2, rank: 2, ndensity: 1, num_ms_combs: 3, mus: [1, 1], ns: [1, 1], ls: [1, 1], ms_combs: [-1, 1, 0, 0, 1, -1], ctildes: [-1.0, 1, -1]}
+    - {mu0: 2, rank: 2, ndensity: 1, num_ms_combs: 5, mus: [1, 1], ns: [1, 1], ls: [2, 2], ms_combs: [-2, 2, -1, 1, 0, 0, 1, -1, 2, -2], ctildes: [1.0, -1.0, 1, -1, 1]}
+    - {mu0: 2, rank: 2, ndensity: 1, num_ms_combs: 1, mus: [1, 1], ns: [2, 1], ls: [0, 0], ms_combs: [0, 0], ctildes: [1]}
+    - {mu0: 2, rank: 2, ndensity: 1, num_ms_combs: 3, mus: [1, 1], ns: [2, 1], ls: [1, 1], ms_combs: [-1, 1, 0, 0, 1, -1], ctildes: [-1.0, 1, -1]}
+    - {mu0: 2, rank: 2, ndensity: 1, num_ms_combs: 5, mus: [1, 1], ns: [2, 1], ls: [2, 2], ms_combs: [-2, 2, -1, 1, 0, 0, 1, -1, 2, -2], ctildes: [1.0, -1.0, 1, -1, 1]}
+    - {mu0: 2, rank: 2, ndensity: 1, num_ms_combs: 1, mus: [1, 1], ns: [2, 2], ls: [0, 0], ms_combs: [0, 0], ctildes: [1]}
+    - {mu0: 2, rank: 2, ndensity: 1, num_ms_combs: 3, mus: [1, 1], ns: [2, 2], ls: [1, 1], ms_combs: [-1, 1, 0, 0, 1, -1], ctildes: [-1.0, 1, -1]}
+    - {mu0: 2, rank: 2, ndensity: 1, num_ms_combs: 5, mus: [1, 1], ns: [2, 2], ls: [2, 2], ms_combs: [-2, 2, -1, 1, 0, 0, 1, -1, 2, -2], ctildes: [1.0, -1.0, 1, -1, 1]}
+    - {mu0: 2, rank: 2, ndensity: 1, num_ms_combs: 1, mus: [2, 1], ns: [1, 1], ls: [0, 0], ms_combs: [0, 0], ctildes: [1]}
+    - {mu0: 2, rank: 2, ndensity: 1, num_ms_combs: 3, mus: [2, 1], ns: [1, 1], ls: [1, 1], ms_combs: [-1, 1, 0, 0, 1, -1], ctildes: [-1.0, 1, -1]}
+    - {mu0: 2, rank: 2, ndensity: 1, num_ms_combs: 5, mus: [2, 1], ns: [1, 1], ls: [2, 2], ms_combs: [-2, 2, -1, 1, 0, 0, 1, -1, 2, -2], ctildes: [1.0, -1.0, 1, -1, 1]}
+    - {mu0: 2, rank: 2, ndensity: 1, num_ms_combs: 1, mus: [2, 1], ns: [2, 1], ls: [0, 0], ms_combs: [0, 0], ctildes: [1]}
+    - {mu0: 2, rank: 2, ndensity: 1, num_ms_combs: 3, mus: [2, 1], ns: [2, 1], ls: [1, 1], ms_combs: [-1, 1, 0, 0, 1, -1], ctildes: [-1.0, 1, -1]}
+    - {mu0: 2, rank: 2, ndensity: 1, num_ms_combs: 5, mus: [2, 1], ns: [2, 1], ls: [2, 2], ms_combs: [-2, 2, -1, 1, 0, 0, 1, -1, 2, -2], ctildes: [1.0, -1.0, 1, -1, 1]}
+    - {mu0: 2, rank: 2, ndensity: 1, num_ms_combs: 1, mus: [2, 1], ns: [2, 2], ls: [0, 0], ms_combs: [0, 0], ctildes: [1]}
+    - {mu0: 2, rank: 2, ndensity: 1, num_ms_combs: 3, mus: [2, 1], ns: [2, 2], ls: [1, 1], ms_combs: [-1, 1, 0, 0, 1, -1], ctildes: [-1.0, 1, -1]}
+    - {mu0: 2, rank: 2, ndensity: 1, num_ms_combs: 5, mus: [2, 1], ns: [2, 2], ls: [2, 2], ms_combs: [-2, 2, -1, 1, 0, 0, 1, -1, 2, -2], ctildes: [1.0, -1.0, 1, -1, 1]}
+    - {mu0: 2, rank: 2, ndensity: 1, num_ms_combs: 1, mus: [1, 2], ns: [1, 1], ls: [0, 0], ms_combs: [0, 0], ctildes: [1]}
+    - {mu0: 2, rank: 2, ndensity: 1, num_ms_combs: 3, mus: [1, 2], ns: [1, 1], ls: [1, 1], ms_combs: [-1, 1, 0, 0, 1, -1], ctildes: [-1.0, 1, -1]}
+    - {mu0: 2, rank: 2, ndensity: 1, num_ms_combs: 5, mus: [1, 2], ns: [1, 1], ls: [2, 2], ms_combs: [-2, 2, -1, 1, 0, 0, 1, -1, 2, -2], ctildes: [1.0, -1.0, 1, -1, 1]}
+    - {mu0: 2, rank: 2, ndensity: 1, num_ms_combs: 1, mus: [1, 2], ns: [2, 1], ls: [0, 0], ms_combs: [0, 0], ctildes: [1]}
+    - {mu0: 2, rank: 2, ndensity: 1, num_ms_combs: 3, mus: [1, 2], ns: [2, 1], ls: [1, 1], ms_combs: [-1, 1, 0, 0, 1, -1], ctildes: [-1.0, 1, -1]}
+    - {mu0: 2, rank: 2, ndensity: 1, num_ms_combs: 5, mus: [1, 2], ns: [2, 1], ls: [2, 2], ms_combs: [-2, 2, -1, 1, 0, 0, 1, -1, 2, -2], ctildes: [1.0, -1.0, 1, -1, 1]}
+    - {mu0: 2, rank: 2, ndensity: 1, num_ms_combs: 1, mus: [1, 2], ns: [2, 2], ls: [0, 0], ms_combs: [0, 0], ctildes: [1]}
+    - {mu0: 2, rank: 2, ndensity: 1, num_ms_combs: 3, mus: [1, 2], ns: [2, 2], ls: [1, 1], ms_combs: [-1, 1, 0, 0, 1, -1], ctildes: [-1.0, 1, -1]}
+    - {mu0: 2, rank: 2, ndensity: 1, num_ms_combs: 5, mus: [1, 2], ns: [2, 2], ls: [2, 2], ms_combs: [-2, 2, -1, 1, 0, 0, 1, -1, 2, -2], ctildes: [1.0, -1.0, 1, -1, 1]}
+    - {mu0: 2, rank: 2, ndensity: 1, num_ms_combs: 1, mus: [2, 2], ns: [1, 1], ls: [0, 0], ms_combs: [0, 0], ctildes: [1]}
+    - {mu0: 2, rank: 2, ndensity: 1, num_ms_combs: 3, mus: [2, 2], ns: [1, 1], ls: [1, 1], ms_combs: [-1, 1, 0, 0, 1, -1], ctildes: [-1.0, 1, -1]}
+    - {mu0: 2, rank: 2, ndensity: 1, num_ms_combs: 5, mus: [2, 2], ns: [1, 1], ls: [2, 2], ms_combs: [-2, 2, -1, 1, 0, 0, 1, -1, 2, -2], ctildes: [1.0, -1.0, 1, -1, 1]}
+    - {mu0: 2, rank: 2, ndensity: 1, num_ms_combs: 1, mus: [2, 2], ns: [2, 1], ls: [0, 0], ms_combs: [0, 0], ctildes: [1]}
+    - {mu0: 2, rank: 2, ndensity: 1, num_ms_combs: 3, mus: [2, 2], ns: [2, 1], ls: [1, 1], ms_combs: [-1, 1, 0, 0, 1, -1], ctildes: [-1.0, 1, -1]}
+    - {mu0: 2, rank: 2, ndensity: 1, num_ms_combs: 5, mus: [2, 2], ns: [2, 1], ls: [2, 2], ms_combs: [-2, 2, -1, 1, 0, 0, 1, -1, 2, -2], ctildes: [1.0, -1.0, 1, -1, 1]}
+    - {mu0: 2, rank: 2, ndensity: 1, num_ms_combs: 1, mus: [2, 2], ns: [2, 2], ls: [0, 0], ms_combs: [0, 0], ctildes: [1]}
+    - {mu0: 2, rank: 2, ndensity: 1, num_ms_combs: 3, mus: [2, 2], ns: [2, 2], ls: [1, 1], ms_combs: [-1, 1, 0, 0, 1, -1], ctildes: [-1.0, 1, -1]}
+    - {mu0: 2, rank: 2, ndensity: 1, num_ms_combs: 5, mus: [2, 2], ns: [2, 2], ls: [2, 2], ms_combs: [-2, 2, -1, 1, 0, 0, 1, -1, 2, -2], ctildes: [1.0, -1.0, 1, -1, 1]}
+    - {mu0: 2, rank: 2, ndensity: 1, num_ms_combs: 1, mus: [0, 0], ns: [1, 1], ls: [0, 0], ms_combs: [0, 0], ctildes: [1]}
+    - {mu0: 2, rank: 2, ndensity: 1, num_ms_combs: 3, mus: [0, 0], ns: [1, 1], ls: [1, 1], ms_combs: [-1, 1, 0, 0, 1, -1], ctildes: [-1.0, 1, -1]}
+    - {mu0: 2, rank: 2, ndensity: 1, num_ms_combs: 5, mus: [0, 0], ns: [1, 1], ls: [2, 2], ms_combs: [-2, 2, -1, 1, 0, 0, 1, -1, 2, -2], ctildes: [1.0, -1.0, 1, -1, 1]}
+    - {mu0: 2, rank: 2, ndensity: 1, num_ms_combs: 1, mus: [0, 0], ns: [2, 1], ls: [0, 0], ms_combs: [0, 0], ctildes: [1]}
+    - {mu0: 2, rank: 2, ndensity: 1, num_ms_combs: 3, mus: [0, 0], ns: [2, 1], ls: [1, 1], ms_combs: [-1, 1, 0, 0, 1, -1], ctildes: [-1.0, 1, -1]}
+    - {mu0: 2, rank: 2, ndensity: 1, num_ms_combs: 5, mus: [0, 0], ns: [2, 1], ls: [2, 2], ms_combs: [-2, 2, -1, 1, 0, 0, 1, -1, 2, -2], ctildes: [1.0, -1.0, 1, -1, 1]}
+    - {mu0: 2, rank: 2, ndensity: 1, num_ms_combs: 1, mus: [0, 0], ns: [2, 2], ls: [0, 0], ms_combs: [0, 0], ctildes: [1]}
+    - {mu0: 2, rank: 2, ndensity: 1, num_ms_combs: 3, mus: [0, 0], ns: [2, 2], ls: [1, 1], ms_combs: [-1, 1, 0, 0, 1, -1], ctildes: [-1.0, 1, -1]}
+    - {mu0: 2, rank: 2, ndensity: 1, num_ms_combs: 5, mus: [0, 0], ns: [2, 2], ls: [2, 2], ms_combs: [-2, 2, -1, 1, 0, 0, 1, -1, 2, -2], ctildes: [1.0, -1.0, 1, -1, 1]}
+    - {mu0: 2, rank: 2, ndensity: 1, num_ms_combs: 1, mus: [1, 0], ns: [1, 1], ls: [0, 0], ms_combs: [0, 0], ctildes: [1]}
+    - {mu0: 2, rank: 2, ndensity: 1, num_ms_combs: 3, mus: [1, 0], ns: [1, 1], ls: [1, 1], ms_combs: [-1, 1, 0, 0, 1, -1], ctildes: [-1.0, 1, -1]}
+    - {mu0: 2, rank: 2, ndensity: 1, num_ms_combs: 5, mus: [1, 0], ns: [1, 1], ls: [2, 2], ms_combs: [-2, 2, -1, 1, 0, 0, 1, -1, 2, -2], ctildes: [1.0, -1.0, 1, -1, 1]}
+    - {mu0: 2, rank: 2, ndensity: 1, num_ms_combs: 1, mus: [1, 0], ns: [2, 1], ls: [0, 0], ms_combs: [0, 0], ctildes: [1]}
+    - {mu0: 2, rank: 2, ndensity: 1, num_ms_combs: 3, mus: [1, 0], ns: [2, 1], ls: [1, 1], ms_combs: [-1, 1, 0, 0, 1, -1], ctildes: [-1.0, 1, -1]}
+    - {mu0: 2, rank: 2, ndensity: 1, num_ms_combs: 5, mus: [1, 0], ns: [2, 1], ls: [2, 2], ms_combs: [-2, 2, -1, 1, 0, 0, 1, -1, 2, -2], ctildes: [1.0, -1.0, 1, -1, 1]}
+    - {mu0: 2, rank: 2, ndensity: 1, num_ms_combs: 1, mus: [1, 0], ns: [2, 2], ls: [0, 0], ms_combs: [0, 0], ctildes: [1]}
+    - {mu0: 2, rank: 2, ndensity: 1, num_ms_combs: 3, mus: [1, 0], ns: [2, 2], ls: [1, 1], ms_combs: [-1, 1, 0, 0, 1, -1], ctildes: [-1.0, 1, -1]}
+    - {mu0: 2, rank: 2, ndensity: 1, num_ms_combs: 5, mus: [1, 0], ns: [2, 2], ls: [2, 2], ms_combs: [-2, 2, -1, 1, 0, 0, 1, -1, 2, -2], ctildes: [1.0, -1.0, 1, -1, 1]}
+    - {mu0: 2, rank: 2, ndensity: 1, num_ms_combs: 1, mus: [0, 1], ns: [1, 1], ls: [0, 0], ms_combs: [0, 0], ctildes: [1]}
+    - {mu0: 2, rank: 2, ndensity: 1, num_ms_combs: 3, mus: [0, 1], ns: [1, 1], ls: [1, 1], ms_combs: [-1, 1, 0, 0, 1, -1], ctildes: [-1.0, 1, -1]}
+    - {mu0: 2, rank: 2, ndensity: 1, num_ms_combs: 5, mus: [0, 1], ns: [1, 1], ls: [2, 2], ms_combs: [-2, 2, -1, 1, 0, 0, 1, -1, 2, -2], ctildes: [1.0, -1.0, 1, -1, 1]}
+    - {mu0: 2, rank: 2, ndensity: 1, num_ms_combs: 1, mus: [0, 1], ns: [2, 1], ls: [0, 0], ms_combs: [0, 0], ctildes: [1]}
+    - {mu0: 2, rank: 2, ndensity: 1, num_ms_combs: 3, mus: [0, 1], ns: [2, 1], ls: [1, 1], ms_combs: [-1, 1, 0, 0, 1, -1], ctildes: [-1.0, 1, -1]}
+    - {mu0: 2, rank: 2, ndensity: 1, num_ms_combs: 5, mus: [0, 1], ns: [2, 1], ls: [2, 2], ms_combs: [-2, 2, -1, 1, 0, 0, 1, -1, 2, -2], ctildes: [1.0, -1.0, 1, -1, 1]}
+    - {mu0: 2, rank: 2, ndensity: 1, num_ms_combs: 1, mus: [0, 1], ns: [2, 2], ls: [0, 0], ms_combs: [0, 0], ctildes: [1]}
+    - {mu0: 2, rank: 2, ndensity: 1, num_ms_combs: 3, mus: [0, 1], ns: [2, 2], ls: [1, 1], ms_combs: [-1, 1, 0, 0, 1, -1], ctildes: [-1.0, 1, -1]}
+    - {mu0: 2, rank: 2, ndensity: 1, num_ms_combs: 5, mus: [0, 1], ns: [2, 2], ls: [2, 2], ms_combs: [-2, 2, -1, 1, 0, 0, 1, -1, 2, -2], ctildes: [1.0, -1.0, 1, -1, 1]}
+    - {mu0: 2, rank: 2, ndensity: 1, num_ms_combs: 1, mus: [2, 0], ns: [1, 1], ls: [0, 0], ms_combs: [0, 0], ctildes: [1]}
+    - {mu0: 2, rank: 2, ndensity: 1, num_ms_combs: 3, mus: [2, 0], ns: [1, 1], ls: [1, 1], ms_combs: [-1, 1, 0, 0, 1, -1], ctildes: [-1.0, 1, -1]}
+    - {mu0: 2, rank: 2, ndensity: 1, num_ms_combs: 5, mus: [2, 0], ns: [1, 1], ls: [2, 2], ms_combs: [-2, 2, -1, 1, 0, 0, 1, -1, 2, -2], ctildes: [1.0, -1.0, 1, -1, 1]}
+    - {mu0: 2, rank: 2, ndensity: 1, num_ms_combs: 1, mus: [2, 0], ns: [2, 1], ls: [0, 0], ms_combs: [0, 0], ctildes: [1]}
+    - {mu0: 2, rank: 2, ndensity: 1, num_ms_combs: 3, mus: [2, 0], ns: [2, 1], ls: [1, 1], ms_combs: [-1, 1, 0, 0, 1, -1], ctildes: [-1.0, 1, -1]}
+    - {mu0: 2, rank: 2, ndensity: 1, num_ms_combs: 5, mus: [2, 0], ns: [2, 1], ls: [2, 2], ms_combs: [-2, 2, -1, 1, 0, 0, 1, -1, 2, -2], ctildes: [1.0, -1.0, 1, -1, 1]}
+    - {mu0: 2, rank: 2, ndensity: 1, num_ms_combs: 1, mus: [2, 0], ns: [2, 2], ls: [0, 0], ms_combs: [0, 0], ctildes: [1]}
+    - {mu0: 2, rank: 2, ndensity: 1, num_ms_combs: 3, mus: [2, 0], ns: [2, 2], ls: [1, 1], ms_combs: [-1, 1, 0, 0, 1, -1], ctildes: [-1.0, 1, -1]}
+    - {mu0: 2, rank: 2, ndensity: 1, num_ms_combs: 5, mus: [2, 0], ns: [2, 2], ls: [2, 2], ms_combs: [-2, 2, -1, 1, 0, 0, 1, -1, 2, -2], ctildes: [1.0, -1.0, 1, -1, 1]}
+    - {mu0: 2, rank: 2, ndensity: 1, num_ms_combs: 1, mus: [0, 2], ns: [1, 1], ls: [0, 0], ms_combs: [0, 0], ctildes: [1]}
+    - {mu0: 2, rank: 2, ndensity: 1, num_ms_combs: 3, mus: [0, 2], ns: [1, 1], ls: [1, 1], ms_combs: [-1, 1, 0, 0, 1, -1], ctildes: [-1.0, 1, -1]}
+    - {mu0: 2, rank: 2, ndensity: 1, num_ms_combs: 5, mus: [0, 2], ns: [1, 1], ls: [2, 2], ms_combs: [-2, 2, -1, 1, 0, 0, 1, -1, 2, -2], ctildes: [1.0, -1.0, 1, -1, 1]}
+    - {mu0: 2, rank: 2, ndensity: 1, num_ms_combs: 1, mus: [0, 2], ns: [2, 1], ls: [0, 0], ms_combs: [0, 0], ctildes: [1]}
+    - {mu0: 2, rank: 2, ndensity: 1, num_ms_combs: 3, mus: [0, 2], ns: [2, 1], ls: [1, 1], ms_combs: [-1, 1, 0, 0, 1, -1], ctildes: [-1.0, 1, -1]}
+    - {mu0: 2, rank: 2, ndensity: 1, num_ms_combs: 5, mus: [0, 2], ns: [2, 1], ls: [2, 2], ms_combs: [-2, 2, -1, 1, 0, 0, 1, -1, 2, -2], ctildes: [1.0, -1.0, 1, -1, 1]}
+    - {mu0: 2, rank: 2, ndensity: 1, num_ms_combs: 1, mus: [0, 2], ns: [2, 2], ls: [0, 0], ms_combs: [0, 0], ctildes: [1]}
+    - {mu0: 2, rank: 2, ndensity: 1, num_ms_combs: 3, mus: [0, 2], ns: [2, 2], ls: [1, 1], ms_combs: [-1, 1, 0, 0, 1, -1], ctildes: [-1.0, 1, -1]}
+    - {mu0: 2, rank: 2, ndensity: 1, num_ms_combs: 5, mus: [0, 2], ns: [2, 2], ls: [2, 2], ms_combs: [-2, 2, -1, 1, 0, 0, 1, -1, 2, -2], ctildes: [1.0, -1.0, 1, -1, 1]}
+    - {mu0: 2, rank: 2, ndensity: 1, num_ms_combs: 1, mus: [1, 1], ns: [1, 1], ls: [0, 0], ms_combs: [0, 0], ctildes: [1]}
+    - {mu0: 2, rank: 2, ndensity: 1, num_ms_combs: 3, mus: [1, 1], ns: [1, 1], ls: [1, 1], ms_combs: [-1, 1, 0, 0, 1, -1], ctildes: [-1.0, 1, -1]}
+    - {mu0: 2, rank: 2, ndensity: 1, num_ms_combs: 5, mus: [1, 1], ns: [1, 1], ls: [2, 2], ms_combs: [-2, 2, -1, 1, 0, 0, 1, -1, 2, -2], ctildes: [1.0, -1.0, 1, -1, 1]}
+    - {mu0: 2, rank: 2, ndensity: 1, num_ms_combs: 1, mus: [1, 1], ns: [2, 1], ls: [0, 0], ms_combs: [0, 0], ctildes: [1]}
+    - {mu0: 2, rank: 2, ndensity: 1, num_ms_combs: 3, mus: [1, 1], ns: [2, 1], ls: [1, 1], ms_combs: [-1, 1, 0, 0, 1, -1], ctildes: [-1.0, 1, -1]}
+    - {mu0: 2, rank: 2, ndensity: 1, num_ms_combs: 5, mus: [1, 1], ns: [2, 1], ls: [2, 2], ms_combs: [-2, 2, -1, 1, 0, 0, 1, -1, 2, -2], ctildes: [1.0, -1.0, 1, -1, 1]}
+    - {mu0: 2, rank: 2, ndensity: 1, num_ms_combs: 1, mus: [1, 1], ns: [2, 2], ls: [0, 0], ms_combs: [0, 0], ctildes: [1]}
+    - {mu0: 2, rank: 2, ndensity: 1, num_ms_combs: 3, mus: [1, 1], ns: [2, 2], ls: [1, 1], ms_combs: [-1, 1, 0, 0, 1, -1], ctildes: [-1.0, 1, -1]}
+    - {mu0: 2, rank: 2, ndensity: 1, num_ms_combs: 5, mus: [1, 1], ns: [2, 2], ls: [2, 2], ms_combs: [-2, 2, -1, 1, 0, 0, 1, -1, 2, -2], ctildes: [1.0, -1.0, 1, -1, 1]}
+    - {mu0: 2, rank: 2, ndensity: 1, num_ms_combs: 1, mus: [2, 1], ns: [1, 1], ls: [0, 0], ms_combs: [0, 0], ctildes: [1]}
+    - {mu0: 2, rank: 2, ndensity: 1, num_ms_combs: 3, mus: [2, 1], ns: [1, 1], ls: [1, 1], ms_combs: [-1, 1, 0, 0, 1, -1], ctildes: [-1.0, 1, -1]}
+    - {mu0: 2, rank: 2, ndensity: 1, num_ms_combs: 5, mus: [2, 1], ns: [1, 1], ls: [2, 2], ms_combs: [-2, 2, -1, 1, 0, 0, 1, -1, 2, -2], ctildes: [1.0, -1.0, 1, -1, 1]}
+    - {mu0: 2, rank: 2, ndensity: 1, num_ms_combs: 1, mus: [2, 1], ns: [2, 1], ls: [0, 0], ms_combs: [0, 0], ctildes: [1]}
+    - {mu0: 2, rank: 2, ndensity: 1, num_ms_combs: 3, mus: [2, 1], ns: [2, 1], ls: [1, 1], ms_combs: [-1, 1, 0, 0, 1, -1], ctildes: [-1.0, 1, -1]}
+    - {mu0: 2, rank: 2, ndensity: 1, num_ms_combs: 5, mus: [2, 1], ns: [2, 1], ls: [2, 2], ms_combs: [-2, 2, -1, 1, 0, 0, 1, -1, 2, -2], ctildes: [1.0, -1.0, 1, -1, 1]}
+    - {mu0: 2, rank: 2, ndensity: 1, num_ms_combs: 1, mus: [2, 1], ns: [2, 2], ls: [0, 0], ms_combs: [0, 0], ctildes: [1]}
+    - {mu0: 2, rank: 2, ndensity: 1, num_ms_combs: 3, mus: [2, 1], ns: [2, 2], ls: [1, 1], ms_combs: [-1, 1, 0, 0, 1, -1], ctildes: [-1.0, 1, -1]}
+    - {mu0: 2, rank: 2, ndensity: 1, num_ms_combs: 5, mus: [2, 1], ns: [2, 2], ls: [2, 2], ms_combs: [-2, 2, -1, 1, 0, 0, 1, -1, 2, -2], ctildes: [1.0, -1.0, 1, -1, 1]}
+    - {mu0: 2, rank: 2, ndensity: 1, num_ms_combs: 1, mus: [1, 2], ns: [1, 1], ls: [0, 0], ms_combs: [0, 0], ctildes: [1]}
+    - {mu0: 2, rank: 2, ndensity: 1, num_ms_combs: 3, mus: [1, 2], ns: [1, 1], ls: [1, 1], ms_combs: [-1, 1, 0, 0, 1, -1], ctildes: [-1.0, 1, -1]}
+    - {mu0: 2, rank: 2, ndensity: 1, num_ms_combs: 5, mus: [1, 2], ns: [1, 1], ls: [2, 2], ms_combs: [-2, 2, -1, 1, 0, 0, 1, -1, 2, -2], ctildes: [1.0, -1.0, 1, -1, 1]}
+    - {mu0: 2, rank: 2, ndensity: 1, num_ms_combs: 1, mus: [1, 2], ns: [2, 1], ls: [0, 0], ms_combs: [0, 0], ctildes: [1]}
+    - {mu0: 2, rank: 2, ndensity: 1, num_ms_combs: 3, mus: [1, 2], ns: [2, 1], ls: [1, 1], ms_combs: [-1, 1, 0, 0, 1, -1], ctildes: [-1.0, 1, -1]}
+    - {mu0: 2, rank: 2, ndensity: 1, num_ms_combs: 5, mus: [1, 2], ns: [2, 1], ls: [2, 2], ms_combs: [-2, 2, -1, 1, 0, 0, 1, -1, 2, -2], ctildes: [1.0, -1.0, 1, -1, 1]}
+    - {mu0: 2, rank: 2, ndensity: 1, num_ms_combs: 1, mus: [1, 2], ns: [2, 2], ls: [0, 0], ms_combs: [0, 0], ctildes: [1]}
+    - {mu0: 2, rank: 2, ndensity: 1, num_ms_combs: 3, mus: [1, 2], ns: [2, 2], ls: [1, 1], ms_combs: [-1, 1, 0, 0, 1, -1], ctildes: [-1.0, 1, -1]}
+    - {mu0: 2, rank: 2, ndensity: 1, num_ms_combs: 5, mus: [1, 2], ns: [2, 2], ls: [2, 2], ms_combs: [-2, 2, -1, 1, 0, 0, 1, -1, 2, -2], ctildes: [1.0, -1.0, 1, -1, 1]}
+    - {mu0: 2, rank: 2, ndensity: 1, num_ms_combs: 1, mus: [2, 2], ns: [1, 1], ls: [0, 0], ms_combs: [0, 0], ctildes: [1]}
+    - {mu0: 2, rank: 2, ndensity: 1, num_ms_combs: 3, mus: [2, 2], ns: [1, 1], ls: [1, 1], ms_combs: [-1, 1, 0, 0, 1, -1], ctildes: [-1.0, 1, -1]}
+    - {mu0: 2, rank: 2, ndensity: 1, num_ms_combs: 5, mus: [2, 2], ns: [1, 1], ls: [2, 2], ms_combs: [-2, 2, -1, 1, 0, 0, 1, -1, 2, -2], ctildes: [1.0, -1.0, 1, -1, 1]}
+    - {mu0: 2, rank: 2, ndensity: 1, num_ms_combs: 1, mus: [2, 2], ns: [2, 1], ls: [0, 0], ms_combs: [0, 0], ctildes: [1]}
+    - {mu0: 2, rank: 2, ndensity: 1, num_ms_combs: 3, mus: [2, 2], ns: [2, 1], ls: [1, 1], ms_combs: [-1, 1, 0, 0, 1, -1], ctildes: [-1.0, 1, -1]}
+    - {mu0: 2, rank: 2, ndensity: 1, num_ms_combs: 5, mus: [2, 2], ns: [2, 1], ls: [2, 2], ms_combs: [-2, 2, -1, 1, 0, 0, 1, -1, 2, -2], ctildes: [1.0, -1.0, 1, -1, 1]}
+    - {mu0: 2, rank: 2, ndensity: 1, num_ms_combs: 1, mus: [2, 2], ns: [2, 2], ls: [0, 0], ms_combs: [0, 0], ctildes: [1]}
+    - {mu0: 2, rank: 2, ndensity: 1, num_ms_combs: 3, mus: [2, 2], ns: [2, 2], ls: [1, 1], ms_combs: [-1, 1, 0, 0, 1, -1], ctildes: [-1.0, 1, -1]}
+    - {mu0: 2, rank: 2, ndensity: 1, num_ms_combs: 5, mus: [2, 2], ns: [2, 2], ls: [2, 2], ms_combs: [-2, 2, -1, 1, 0, 0, 1, -1, 2, -2], ctildes: [1.0, -1.0, 1, -1, 1]}
+    - {mu0: 2, rank: 1, ndensity: 1, num_ms_combs: 1, mus: [0], ns: [1], ls: [0], ms_combs: [0], ctildes: [1.0]}
+    - {mu0: 2, rank: 1, ndensity: 1, num_ms_combs: 1, mus: [1], ns: [1], ls: [0], ms_combs: [0], ctildes: [1.0]}
+    - {mu0: 2, rank: 1, ndensity: 1, num_ms_combs: 1, mus: [2], ns: [1], ls: [0], ms_combs: [0], ctildes: [1.0]}

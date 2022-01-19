@@ -1,13 +1,3 @@
-/* -*- c++ -*- ----------------------------------------------------------
-   LAMMPS - Large-scale Atomic/Molecular Massively Parallel Simulator
-   https://www.lammps.org/, Sandia National Laboratories
-   Steve Plimpton, sjplimp@sandia.gov
-
-   This software is distributed under the GNU General Public License.
-
-   See the README file in the top-level LAMMPS directory.
-------------------------------------------------------------------------- */
-
 /*
 Copyright 2021 Yury Lysogorskiy^1, Cas van der Oord^2, Anton Bochkarev^1,
  Sarath Menon^1, Matteo Rinaldi^1, Thomas Hammerschmidt^1, Matous Mrovec^1,
@@ -17,47 +7,91 @@ Copyright 2021 Yury Lysogorskiy^1, Cas van der Oord^2, Anton Bochkarev^1,
 ^2: University of Cambridge, Cambridge, United Kingdom
 ^3: Sandia National Laboratories, Albuquerque, New Mexico, USA
 ^4: University of British Columbia, Vancouver, BC, Canada
-*/
+
+
+    This FILENAME is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
 
 //
 // Created by Lysogorskiy Yury on 27.02.20.
 //
 
+
 #ifdef PAIR_CLASS
-// clang-format off
-PairStyle(pace,PairPACE);
-// clang-format on
+
+PairStyle(pace,PairPACE)
+
 #else
 
 #ifndef LMP_PAIR_PACE_H
 #define LMP_PAIR_PACE_H
 
 #include "pair.h"
+#include "ace_evaluator.h"
+#include "ace_recursive.h"
+#include "ace_c_basis.h"
 
 namespace LAMMPS_NS {
 
-class PairPACE : public Pair {
- public:
-  PairPACE(class LAMMPS *);
-  virtual ~PairPACE();
+    class PairPACE : public Pair {
+    public:
+        PairPACE(class LAMMPS *);
 
-  virtual void compute(int, int);
-  void settings(int, char **);
-  void coeff(int, char **);
-  virtual void init_style();
-  double init_one(int, int);
+        virtual ~PairPACE();
 
-  void *extract(const char *, int &);
+        virtual void compute(int, int);
 
- protected:
-  struct ACEImpl *aceimpl;
+        void settings(int, char **);
 
-  virtual void allocate();
+        void coeff(int, char **);
 
-  double **scale;
-  bool recursive;    // "recursive" option for ACERecursiveEvaluator
-};
-}    // namespace LAMMPS_NS
+        virtual void init_style();
+
+        double init_one(int, int);
+
+        void *extract(const char *, int &);
+
+        // virtual double memory_usage();
+
+    protected:
+        ACECTildeBasisSet *basis_set = nullptr;
+
+        ACERecursiveEvaluator* ace = nullptr;
+
+        char *potential_file_name;
+
+        virtual void allocate();
+
+        void read_files(char *, char *);
+
+        inline int equal(double *x, double *y);
+
+
+        double rcutmax;               // max cutoff for all elements
+        int nelements;                // # of unique elements
+        char **elements;              // names of unique elements
+
+        int *map;                     // mapping from atom types to elements
+        int *jlist_local;
+        int *type_local;
+        double **scale;
+
+        bool recursive = false;       // "recursive" option for ACERecursiveEvaluator
+    };
+
+}
 
 #endif
 #endif

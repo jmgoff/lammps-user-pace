@@ -1,0 +1,453 @@
+LAMMPS (7 Jan 2022)
+OMP_NUM_THREADS environment is not set. Defaulting to 1 thread. (src/comm.cpp:98)
+  using 1 OpenMP thread(s) per MPI task
+Lattice spacing in x,y,z = 3.597 3.597 3.597
+Created orthogonal box = (0 0 0) to (3.597 3.597 3.597)
+  1 by 1 by 1 MPI processor grid
+Created 4 atoms
+  using lattice units in orthogonal box = (0 0 0) to (3.597 3.597 3.597)
+  create_atoms CPU = 0.000 seconds
+4 atoms in group Al
+n_r1, n_rp: 15 66
+nperdim,sizearraycols, 81 82 
+  generated 0 of 0 mixed pair_coeff terms from geometric mixing rule
+Neighbor list info ...
+  update every 2 steps, delay 10 steps, check yes
+  max neighbors/atom: 2000, page size: 100000
+  master list distance cutoff = 7.802
+  ghost atom cutoff = 7.802
+  binsize = 3.901, bins = 1 1 1
+  2 neighbor lists, perpetual/occasional/extra = 1 1 0
+  (1) pair zero, perpetual
+      attributes: half, newton on
+      pair build: half/bin/atomonly/newton
+      stencil: half/bin/3d
+      bin: standard
+  (2) compute pace, occasional
+      attributes: full, newton on
+      pair build: full/bin/atomonly
+      stencil: full/bin/3d
+      bin: standard
+Setting up Verlet run ...
+  Unit style    : metal
+  Current step  : 0
+  Time step     : 0.0005
+Per MPI rank memory allocation (min/avg/max) = 4.821 | 4.821 | 4.821 Mbytes
+Step Temp c_desc[2][1] c_desc[2][2] c_desc[2][3] c_desc[2][4] c_desc[2][5] c_desc[2][6] c_desc[2][7] c_desc[2][8] c_desc[2][9] c_desc[2][10] c_desc[2][11] c_desc[2][12] c_desc[2][13] c_desc[2][14] c_desc[2][15] c_desc[2][16] c_desc[2][17] c_desc[2][18] c_desc[2][19] c_desc[2][20] c_desc[2][21] c_desc[2][22] c_desc[2][23] c_desc[2][24] c_desc[2][25] c_desc[2][26] c_desc[2][27] c_desc[2][28] c_desc[2][29] c_desc[2][30] c_desc[2][31] c_desc[2][32] c_desc[2][33] c_desc[2][34] c_desc[2][35] c_desc[2][36] c_desc[2][37] c_desc[2][38] c_desc[2][39] c_desc[2][40] c_desc[2][41] c_desc[2][42] c_desc[2][43] c_desc[2][44] c_desc[2][45] c_desc[2][46] c_desc[2][47] c_desc[2][48] c_desc[2][49] c_desc[2][50] c_desc[2][51] c_desc[2][52] c_desc[2][53] c_desc[2][54] c_desc[2][55] c_desc[2][56] c_desc[2][57] c_desc[2][58] c_desc[2][59] c_desc[2][60] c_desc[2][61] c_desc[2][62] c_desc[2][63] c_desc[2][64] c_desc[2][65] c_desc[2][66] c_desc[2][67] c_desc[2][68] c_desc[2][69] c_desc[2][70] c_desc[2][71] c_desc[2][72] c_desc[2][73] c_desc[2][74] c_desc[2][75] c_desc[2][76] c_desc[2][77] c_desc[2][78] c_desc[2][79] c_desc[2][80] c_desc[2][81] 
+beginning of en basis loop
+function index: 0 
+function index: 1 
+function index: 2 
+function index: 3 
+function index: 4 
+function index: 5 
+function index: 6 
+function index: 7 
+function index: 8 
+function index: 9 
+function index: 10 
+function index: 11 
+function index: 12 
+function index: 13 
+function index: 14 
+atom, coeffidx, coeff: 0, 0, 2.124342 
+atom, coeffidx, coeff: 0, 1, 0.305787 
+atom, coeffidx, coeff: 0, 2, 1.047083 
+atom, coeffidx, coeff: 0, 3, 1.797066 
+atom, coeffidx, coeff: 0, 4, 2.123913 
+atom, coeffidx, coeff: 0, 5, 1.839432 
+atom, coeffidx, coeff: 0, 6, 1.107422 
+atom, coeffidx, coeff: 0, 7, 0.349357 
+atom, coeffidx, coeff: 0, 8, 0.001714 
+atom, coeffidx, coeff: 0, 9, 0.264659 
+atom, coeffidx, coeff: 0, 10, 0.986794 
+atom, coeffidx, coeff: 0, 11, 1.752329 
+atom, coeffidx, coeff: 0, 12, 2.120486 
+atom, coeffidx, coeff: 0, 13, 1.879289 
+atom, coeffidx, coeff: 0, 14, 1.167614 
+atom, coeffidx, coeff: 0, 15, 4.512828 
+atom, coeffidx, coeff: 0, 16, 9.025656 
+atom, coeffidx, coeff: 0, 17, 5.641035 
+atom, coeffidx, coeff: 0, 18, 0.649596 
+atom, coeffidx, coeff: 0, 19, 1.299193 
+atom, coeffidx, coeff: 0, 20, 0.811996 
+atom, coeffidx, coeff: 0, 21, 2.224363 
+atom, coeffidx, coeff: 0, 22, 4.448725 
+atom, coeffidx, coeff: 0, 23, 2.780453 
+atom, coeffidx, coeff: 0, 24, 0.093506 
+atom, coeffidx, coeff: 0, 25, 0.187012 
+atom, coeffidx, coeff: 0, 26, 0.116882 
+atom, coeffidx, coeff: 0, 27, 0.320185 
+atom, coeffidx, coeff: 0, 28, 0.640369 
+atom, coeffidx, coeff: 0, 29, 0.400231 
+atom, coeffidx, coeff: 0, 30, 1.096383 
+atom, coeffidx, coeff: 0, 31, 2.192767 
+atom, coeffidx, coeff: 0, 32, 1.370479 
+atom, coeffidx, coeff: 0, 33, 9.586789 
+atom, coeffidx, coeff: 0, 34, -11.069870 
+atom, coeffidx, coeff: 0, 35, 5.359178 
+atom, coeffidx, coeff: 0, 36, 7.827580 
+atom, coeffidx, coeff: 0, 37, -3.202721 
+atom, coeffidx, coeff: 0, 38, 1.379965 
+atom, coeffidx, coeff: 0, 39, -1.593446 
+atom, coeffidx, coeff: 0, 40, 0.771424 
+atom, coeffidx, coeff: 0, 41, 1.126737 
+atom, coeffidx, coeff: 0, 42, -0.461014 
+atom, coeffidx, coeff: 0, 43, 1.126737 
+atom, coeffidx, coeff: 0, 44, -1.593446 
+atom, coeffidx, coeff: 0, 45, 0.771424 
+atom, coeffidx, coeff: 0, 46, 0.198638 
+atom, coeffidx, coeff: 0, 47, -0.229368 
+atom, coeffidx, coeff: 0, 48, 0.111042 
+atom, coeffidx, coeff: 0, 49, 0.162187 
+atom, coeffidx, coeff: 0, 50, -0.066360 
+atom, coeffidx, coeff: 0, 51, -0.229368 
+atom, coeffidx, coeff: 0, 52, 0.111042 
+atom, coeffidx, coeff: 0, 53, 0.162187 
+atom, coeffidx, coeff: 0, 54, 0.028593 
+atom, coeffidx, coeff: 0, 55, -0.033016 
+atom, coeffidx, coeff: 0, 56, 0.015984 
+atom, coeffidx, coeff: 0, 57, 0.023346 
+atom, coeffidx, coeff: 0, 58, -0.009552 
+atom, coeffidx, coeff: 0, 59, 20.365616 
+atom, coeffidx, coeff: 0, 60, -23.516188 
+atom, coeffidx, coeff: 0, 61, 38.015816 
+atom, coeffidx, coeff: 0, 62, 2.931517 
+atom, coeffidx, coeff: 0, 63, -3.385024 
+atom, coeffidx, coeff: 0, 64, 5.472165 
+atom, coeffidx, coeff: 0, 65, -3.385024 
+atom, coeffidx, coeff: 0, 66, 0.421976 
+atom, coeffidx, coeff: 0, 67, -0.487255 
+atom, coeffidx, coeff: 0, 68, 0.787688 
+atom, coeffidx, coeff: 0, 69, -0.487255 
+atom, coeffidx, coeff: 0, 70, -0.487255 
+atom, coeffidx, coeff: 0, 71, 0.060741 
+atom, coeffidx, coeff: 0, 72, -0.070138 
+atom, coeffidx, coeff: 0, 73, 0.113383 
+atom, coeffidx, coeff: 0, 74, -0.070138 
+atom, coeffidx, coeff: 0, 75, 0.008743 
+atom, coeffidx, coeff: 0, 76, -0.010096 
+atom, coeffidx, coeff: 0, 77, 0.016321 
+atom, coeffidx, coeff: 0, 78, 43.263528 
+atom, coeffidx, coeff: 0, 79, -49.956419 
+atom, coeffidx, coeff: 0, 80, -46.625991 
+beginning of en basis loop
+function index: 0 
+function index: 1 
+function index: 2 
+function index: 3 
+function index: 4 
+function index: 5 
+function index: 6 
+function index: 7 
+function index: 8 
+function index: 9 
+function index: 10 
+function index: 11 
+function index: 12 
+function index: 13 
+function index: 14 
+atom, coeffidx, coeff: 1, 0, 2.124342 
+atom, coeffidx, coeff: 1, 1, 0.305787 
+atom, coeffidx, coeff: 1, 2, 1.047083 
+atom, coeffidx, coeff: 1, 3, 1.797066 
+atom, coeffidx, coeff: 1, 4, 2.123913 
+atom, coeffidx, coeff: 1, 5, 1.839432 
+atom, coeffidx, coeff: 1, 6, 1.107422 
+atom, coeffidx, coeff: 1, 7, 0.349357 
+atom, coeffidx, coeff: 1, 8, 0.001714 
+atom, coeffidx, coeff: 1, 9, 0.264659 
+atom, coeffidx, coeff: 1, 10, 0.986794 
+atom, coeffidx, coeff: 1, 11, 1.752329 
+atom, coeffidx, coeff: 1, 12, 2.120486 
+atom, coeffidx, coeff: 1, 13, 1.879289 
+atom, coeffidx, coeff: 1, 14, 1.167614 
+atom, coeffidx, coeff: 1, 15, 4.512828 
+atom, coeffidx, coeff: 1, 16, 9.025656 
+atom, coeffidx, coeff: 1, 17, 5.641035 
+atom, coeffidx, coeff: 1, 18, 0.649596 
+atom, coeffidx, coeff: 1, 19, 1.299193 
+atom, coeffidx, coeff: 1, 20, 0.811996 
+atom, coeffidx, coeff: 1, 21, 2.224363 
+atom, coeffidx, coeff: 1, 22, 4.448725 
+atom, coeffidx, coeff: 1, 23, 2.780453 
+atom, coeffidx, coeff: 1, 24, 0.093506 
+atom, coeffidx, coeff: 1, 25, 0.187012 
+atom, coeffidx, coeff: 1, 26, 0.116882 
+atom, coeffidx, coeff: 1, 27, 0.320185 
+atom, coeffidx, coeff: 1, 28, 0.640369 
+atom, coeffidx, coeff: 1, 29, 0.400231 
+atom, coeffidx, coeff: 1, 30, 1.096383 
+atom, coeffidx, coeff: 1, 31, 2.192767 
+atom, coeffidx, coeff: 1, 32, 1.370479 
+atom, coeffidx, coeff: 1, 33, 9.586789 
+atom, coeffidx, coeff: 1, 34, -11.069870 
+atom, coeffidx, coeff: 1, 35, 5.359178 
+atom, coeffidx, coeff: 1, 36, 7.827580 
+atom, coeffidx, coeff: 1, 37, -3.202721 
+atom, coeffidx, coeff: 1, 38, 1.379965 
+atom, coeffidx, coeff: 1, 39, -1.593446 
+atom, coeffidx, coeff: 1, 40, 0.771424 
+atom, coeffidx, coeff: 1, 41, 1.126737 
+atom, coeffidx, coeff: 1, 42, -0.461014 
+atom, coeffidx, coeff: 1, 43, 1.126737 
+atom, coeffidx, coeff: 1, 44, -1.593446 
+atom, coeffidx, coeff: 1, 45, 0.771424 
+atom, coeffidx, coeff: 1, 46, 0.198638 
+atom, coeffidx, coeff: 1, 47, -0.229368 
+atom, coeffidx, coeff: 1, 48, 0.111042 
+atom, coeffidx, coeff: 1, 49, 0.162187 
+atom, coeffidx, coeff: 1, 50, -0.066360 
+atom, coeffidx, coeff: 1, 51, -0.229368 
+atom, coeffidx, coeff: 1, 52, 0.111042 
+atom, coeffidx, coeff: 1, 53, 0.162187 
+atom, coeffidx, coeff: 1, 54, 0.028593 
+atom, coeffidx, coeff: 1, 55, -0.033016 
+atom, coeffidx, coeff: 1, 56, 0.015984 
+atom, coeffidx, coeff: 1, 57, 0.023346 
+atom, coeffidx, coeff: 1, 58, -0.009552 
+atom, coeffidx, coeff: 1, 59, 20.365616 
+atom, coeffidx, coeff: 1, 60, -23.516188 
+atom, coeffidx, coeff: 1, 61, 38.015816 
+atom, coeffidx, coeff: 1, 62, 2.931517 
+atom, coeffidx, coeff: 1, 63, -3.385024 
+atom, coeffidx, coeff: 1, 64, 5.472165 
+atom, coeffidx, coeff: 1, 65, -3.385024 
+atom, coeffidx, coeff: 1, 66, 0.421976 
+atom, coeffidx, coeff: 1, 67, -0.487255 
+atom, coeffidx, coeff: 1, 68, 0.787688 
+atom, coeffidx, coeff: 1, 69, -0.487255 
+atom, coeffidx, coeff: 1, 70, -0.487255 
+atom, coeffidx, coeff: 1, 71, 0.060741 
+atom, coeffidx, coeff: 1, 72, -0.070138 
+atom, coeffidx, coeff: 1, 73, 0.113383 
+atom, coeffidx, coeff: 1, 74, -0.070138 
+atom, coeffidx, coeff: 1, 75, 0.008743 
+atom, coeffidx, coeff: 1, 76, -0.010096 
+atom, coeffidx, coeff: 1, 77, 0.016321 
+atom, coeffidx, coeff: 1, 78, 43.263528 
+atom, coeffidx, coeff: 1, 79, -49.956419 
+atom, coeffidx, coeff: 1, 80, -46.625991 
+beginning of en basis loop
+function index: 0 
+function index: 1 
+function index: 2 
+function index: 3 
+function index: 4 
+function index: 5 
+function index: 6 
+function index: 7 
+function index: 8 
+function index: 9 
+function index: 10 
+function index: 11 
+function index: 12 
+function index: 13 
+function index: 14 
+atom, coeffidx, coeff: 2, 0, 2.124342 
+atom, coeffidx, coeff: 2, 1, 0.305787 
+atom, coeffidx, coeff: 2, 2, 1.047083 
+atom, coeffidx, coeff: 2, 3, 1.797066 
+atom, coeffidx, coeff: 2, 4, 2.123913 
+atom, coeffidx, coeff: 2, 5, 1.839432 
+atom, coeffidx, coeff: 2, 6, 1.107422 
+atom, coeffidx, coeff: 2, 7, 0.349357 
+atom, coeffidx, coeff: 2, 8, 0.001714 
+atom, coeffidx, coeff: 2, 9, 0.264659 
+atom, coeffidx, coeff: 2, 10, 0.986794 
+atom, coeffidx, coeff: 2, 11, 1.752329 
+atom, coeffidx, coeff: 2, 12, 2.120486 
+atom, coeffidx, coeff: 2, 13, 1.879289 
+atom, coeffidx, coeff: 2, 14, 1.167614 
+atom, coeffidx, coeff: 2, 15, 4.512828 
+atom, coeffidx, coeff: 2, 16, 9.025656 
+atom, coeffidx, coeff: 2, 17, 5.641035 
+atom, coeffidx, coeff: 2, 18, 0.649596 
+atom, coeffidx, coeff: 2, 19, 1.299193 
+atom, coeffidx, coeff: 2, 20, 0.811996 
+atom, coeffidx, coeff: 2, 21, 2.224363 
+atom, coeffidx, coeff: 2, 22, 4.448725 
+atom, coeffidx, coeff: 2, 23, 2.780453 
+atom, coeffidx, coeff: 2, 24, 0.093506 
+atom, coeffidx, coeff: 2, 25, 0.187012 
+atom, coeffidx, coeff: 2, 26, 0.116882 
+atom, coeffidx, coeff: 2, 27, 0.320185 
+atom, coeffidx, coeff: 2, 28, 0.640369 
+atom, coeffidx, coeff: 2, 29, 0.400231 
+atom, coeffidx, coeff: 2, 30, 1.096383 
+atom, coeffidx, coeff: 2, 31, 2.192767 
+atom, coeffidx, coeff: 2, 32, 1.370479 
+atom, coeffidx, coeff: 2, 33, 9.586789 
+atom, coeffidx, coeff: 2, 34, -11.069870 
+atom, coeffidx, coeff: 2, 35, 5.359178 
+atom, coeffidx, coeff: 2, 36, 7.827580 
+atom, coeffidx, coeff: 2, 37, -3.202721 
+atom, coeffidx, coeff: 2, 38, 1.379965 
+atom, coeffidx, coeff: 2, 39, -1.593446 
+atom, coeffidx, coeff: 2, 40, 0.771424 
+atom, coeffidx, coeff: 2, 41, 1.126737 
+atom, coeffidx, coeff: 2, 42, -0.461014 
+atom, coeffidx, coeff: 2, 43, 1.126737 
+atom, coeffidx, coeff: 2, 44, -1.593446 
+atom, coeffidx, coeff: 2, 45, 0.771424 
+atom, coeffidx, coeff: 2, 46, 0.198638 
+atom, coeffidx, coeff: 2, 47, -0.229368 
+atom, coeffidx, coeff: 2, 48, 0.111042 
+atom, coeffidx, coeff: 2, 49, 0.162187 
+atom, coeffidx, coeff: 2, 50, -0.066360 
+atom, coeffidx, coeff: 2, 51, -0.229368 
+atom, coeffidx, coeff: 2, 52, 0.111042 
+atom, coeffidx, coeff: 2, 53, 0.162187 
+atom, coeffidx, coeff: 2, 54, 0.028593 
+atom, coeffidx, coeff: 2, 55, -0.033016 
+atom, coeffidx, coeff: 2, 56, 0.015984 
+atom, coeffidx, coeff: 2, 57, 0.023346 
+atom, coeffidx, coeff: 2, 58, -0.009552 
+atom, coeffidx, coeff: 2, 59, 20.365616 
+atom, coeffidx, coeff: 2, 60, -23.516188 
+atom, coeffidx, coeff: 2, 61, 38.015816 
+atom, coeffidx, coeff: 2, 62, 2.931517 
+atom, coeffidx, coeff: 2, 63, -3.385024 
+atom, coeffidx, coeff: 2, 64, 5.472165 
+atom, coeffidx, coeff: 2, 65, -3.385024 
+atom, coeffidx, coeff: 2, 66, 0.421976 
+atom, coeffidx, coeff: 2, 67, -0.487255 
+atom, coeffidx, coeff: 2, 68, 0.787688 
+atom, coeffidx, coeff: 2, 69, -0.487255 
+atom, coeffidx, coeff: 2, 70, -0.487255 
+atom, coeffidx, coeff: 2, 71, 0.060741 
+atom, coeffidx, coeff: 2, 72, -0.070138 
+atom, coeffidx, coeff: 2, 73, 0.113383 
+atom, coeffidx, coeff: 2, 74, -0.070138 
+atom, coeffidx, coeff: 2, 75, 0.008743 
+atom, coeffidx, coeff: 2, 76, -0.010096 
+atom, coeffidx, coeff: 2, 77, 0.016321 
+atom, coeffidx, coeff: 2, 78, 43.263528 
+atom, coeffidx, coeff: 2, 79, -49.956419 
+atom, coeffidx, coeff: 2, 80, -46.625991 
+beginning of en basis loop
+function index: 0 
+function index: 1 
+function index: 2 
+function index: 3 
+function index: 4 
+function index: 5 
+function index: 6 
+function index: 7 
+function index: 8 
+function index: 9 
+function index: 10 
+function index: 11 
+function index: 12 
+function index: 13 
+function index: 14 
+atom, coeffidx, coeff: 3, 0, 2.124342 
+atom, coeffidx, coeff: 3, 1, 0.305787 
+atom, coeffidx, coeff: 3, 2, 1.047083 
+atom, coeffidx, coeff: 3, 3, 1.797066 
+atom, coeffidx, coeff: 3, 4, 2.123913 
+atom, coeffidx, coeff: 3, 5, 1.839432 
+atom, coeffidx, coeff: 3, 6, 1.107422 
+atom, coeffidx, coeff: 3, 7, 0.349357 
+atom, coeffidx, coeff: 3, 8, 0.001714 
+atom, coeffidx, coeff: 3, 9, 0.264659 
+atom, coeffidx, coeff: 3, 10, 0.986794 
+atom, coeffidx, coeff: 3, 11, 1.752329 
+atom, coeffidx, coeff: 3, 12, 2.120486 
+atom, coeffidx, coeff: 3, 13, 1.879289 
+atom, coeffidx, coeff: 3, 14, 1.167614 
+atom, coeffidx, coeff: 3, 15, 4.512828 
+atom, coeffidx, coeff: 3, 16, 9.025656 
+atom, coeffidx, coeff: 3, 17, 5.641035 
+atom, coeffidx, coeff: 3, 18, 0.649596 
+atom, coeffidx, coeff: 3, 19, 1.299193 
+atom, coeffidx, coeff: 3, 20, 0.811996 
+atom, coeffidx, coeff: 3, 21, 2.224363 
+atom, coeffidx, coeff: 3, 22, 4.448725 
+atom, coeffidx, coeff: 3, 23, 2.780453 
+atom, coeffidx, coeff: 3, 24, 0.093506 
+atom, coeffidx, coeff: 3, 25, 0.187012 
+atom, coeffidx, coeff: 3, 26, 0.116882 
+atom, coeffidx, coeff: 3, 27, 0.320185 
+atom, coeffidx, coeff: 3, 28, 0.640369 
+atom, coeffidx, coeff: 3, 29, 0.400231 
+atom, coeffidx, coeff: 3, 30, 1.096383 
+atom, coeffidx, coeff: 3, 31, 2.192767 
+atom, coeffidx, coeff: 3, 32, 1.370479 
+atom, coeffidx, coeff: 3, 33, 9.586789 
+atom, coeffidx, coeff: 3, 34, -11.069870 
+atom, coeffidx, coeff: 3, 35, 5.359178 
+atom, coeffidx, coeff: 3, 36, 7.827580 
+atom, coeffidx, coeff: 3, 37, -3.202721 
+atom, coeffidx, coeff: 3, 38, 1.379965 
+atom, coeffidx, coeff: 3, 39, -1.593446 
+atom, coeffidx, coeff: 3, 40, 0.771424 
+atom, coeffidx, coeff: 3, 41, 1.126737 
+atom, coeffidx, coeff: 3, 42, -0.461014 
+atom, coeffidx, coeff: 3, 43, 1.126737 
+atom, coeffidx, coeff: 3, 44, -1.593446 
+atom, coeffidx, coeff: 3, 45, 0.771424 
+atom, coeffidx, coeff: 3, 46, 0.198638 
+atom, coeffidx, coeff: 3, 47, -0.229368 
+atom, coeffidx, coeff: 3, 48, 0.111042 
+atom, coeffidx, coeff: 3, 49, 0.162187 
+atom, coeffidx, coeff: 3, 50, -0.066360 
+atom, coeffidx, coeff: 3, 51, -0.229368 
+atom, coeffidx, coeff: 3, 52, 0.111042 
+atom, coeffidx, coeff: 3, 53, 0.162187 
+atom, coeffidx, coeff: 3, 54, 0.028593 
+atom, coeffidx, coeff: 3, 55, -0.033016 
+atom, coeffidx, coeff: 3, 56, 0.015984 
+atom, coeffidx, coeff: 3, 57, 0.023346 
+atom, coeffidx, coeff: 3, 58, -0.009552 
+atom, coeffidx, coeff: 3, 59, 20.365616 
+atom, coeffidx, coeff: 3, 60, -23.516188 
+atom, coeffidx, coeff: 3, 61, 38.015816 
+atom, coeffidx, coeff: 3, 62, 2.931517 
+atom, coeffidx, coeff: 3, 63, -3.385024 
+atom, coeffidx, coeff: 3, 64, 5.472165 
+atom, coeffidx, coeff: 3, 65, -3.385024 
+atom, coeffidx, coeff: 3, 66, 0.421976 
+atom, coeffidx, coeff: 3, 67, -0.487255 
+atom, coeffidx, coeff: 3, 68, 0.787688 
+atom, coeffidx, coeff: 3, 69, -0.487255 
+atom, coeffidx, coeff: 3, 70, -0.487255 
+atom, coeffidx, coeff: 3, 71, 0.060741 
+atom, coeffidx, coeff: 3, 72, -0.070138 
+atom, coeffidx, coeff: 3, 73, 0.113383 
+atom, coeffidx, coeff: 3, 74, -0.070138 
+atom, coeffidx, coeff: 3, 75, 0.008743 
+atom, coeffidx, coeff: 3, 76, -0.010096 
+atom, coeffidx, coeff: 3, 77, 0.016321 
+atom, coeffidx, coeff: 3, 78, 43.263528 
+atom, coeffidx, coeff: 3, 79, -49.956419 
+atom, coeffidx, coeff: 3, 80, -46.625991 
+       0            0  -0.57710533  -0.30721936  -0.92292779    -1.179745  -0.61326572   0.58829169    1.6130301    1.5619779   0.14458313   -1.9697746   -3.4527175   -3.1456181   -0.9021982    2.1412144    4.1304917   -2.4519379   -4.9038758   -3.0649224  -0.82911033   -1.6582207   -1.0363879   -2.5648914   -5.1297827   -3.2061142  -0.18788748  -0.37577497  -0.23485935  -0.60390373   -1.2078075  -0.75487967   -1.9327645    -3.865529   -2.4159556   -7.8131311    9.0218267   -4.3676731   -6.3793948    2.6101839   -2.1361993    2.4666705   -1.1941717   -1.7441994   0.71365409   -1.7441994    2.4666705   -1.1941717  -0.45309992   0.52319472  -0.25329056  -0.36995454   0.15137006   0.52319472  -0.25329056  -0.36995454 -0.086180375  0.099512525 -0.048176294 -0.070365981  0.028790843   -22.130348    25.553924   -41.309982   -5.3344024    6.1596374   -9.9575512    6.1596374   -1.0771743    1.2438137   -2.0107253    1.2438137    1.2438137  -0.19957767   0.23045244  -0.37254498   0.23045244 -0.035137138  0.040572873 -0.065589325   -58.765527    67.856586    63.332813 
+Loop time of 1.251e-06 on 1 procs for 0 steps with 4 atoms
+
+0.0% CPU use with 1 MPI tasks x 1 OpenMP threads
+
+MPI task timing breakdown:
+Section |  min time  |  avg time  |  max time  |%varavg| %total
+---------------------------------------------------------------
+Pair    | 0          | 0          | 0          |   0.0 |  0.00
+Neigh   | 0          | 0          | 0          |   0.0 |  0.00
+Comm    | 0          | 0          | 0          |   0.0 |  0.00
+Output  | 0          | 0          | 0          |   0.0 |  0.00
+Modify  | 0          | 0          | 0          |   0.0 |  0.00
+Other   |            | 1.251e-06  |            |       |100.00
+
+Nlocal:              4 ave           4 max           4 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Nghost:              0 ave           0 max           0 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Neighs:              6 ave           6 max           6 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+FullNghs:           12 ave          12 max          12 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+
+Total # of neighbors = 12
+Ave neighs/atom = 3
+Neighbor list builds = 0
+Dangerous builds = 0
+Total wall time: 0:00:00

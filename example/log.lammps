@@ -1,0 +1,95 @@
+LAMMPS (7 Jan 2022)
+OMP_NUM_THREADS environment is not set. Defaulting to 1 thread. (src/comm.cpp:98)
+  using 1 OpenMP thread(s) per MPI task
+# simple test of fcc Cu with ACE product
+
+units		metal
+atom_style	atomic
+
+neighbor	0.3 bin
+neigh_modify	 every 2 delay 10 check yes
+
+boundary    f f f
+variable	a equal 3.597
+lattice		fcc $a
+lattice		fcc 3.597
+Lattice spacing in x,y,z = 3.597 3.597 3.597
+region		box block 0 1 0 1 0 1
+create_box	1 box
+Created orthogonal box = (0 0 0) to (3.597 3.597 3.597)
+  1 by 1 by 1 MPI processor grid
+create_atoms	1 box
+Created 4 atoms
+  using lattice units in orthogonal box = (0 0 0) to (3.597 3.597 3.597)
+  create_atoms CPU = 0.000 seconds
+
+mass		1 63.546
+
+group		Al type 1
+4 atoms in group Al
+
+pair_style      zero 7.502
+pair_coeff      * *
+
+#velocity        all create 300 8728 loop geom
+timestep        0.0005
+fix		1 all nve
+
+compute         desc all pace coupling_coefficients.yace
+
+thermo 		1
+#print energy entries in A matrix for index 1-17
+thermo_style    custom step temp c_desc[2][1] c_desc[2][2] c_desc[2][3] c_desc[2][4] c_desc[2][5] c_desc[2][6] c_desc[2][7] c_desc[2][8] c_desc[2][9] c_desc[2][10] c_desc[2][11] c_desc[2][12] c_desc[2][13] c_desc[2][14] c_desc[2][15] c_desc[2][16] c_desc[2][17] c_desc[2][18] c_desc[2][19] c_desc[2][20] c_desc[2][21] c_desc[2][22] c_desc[2][23] c_desc[2][24] c_desc[2][25] c_desc[2][26] c_desc[2][27] c_desc[2][28] c_desc[2][29] c_desc[2][30] c_desc[2][31] c_desc[2][32] c_desc[2][33] c_desc[2][34] c_desc[2][35] c_desc[2][36] c_desc[2][37] c_desc[2][38] c_desc[2][39] c_desc[2][40] c_desc[2][41] c_desc[2][42] c_desc[2][43] c_desc[2][44] c_desc[2][45] c_desc[2][46] c_desc[2][47] c_desc[2][48] c_desc[2][49] c_desc[2][50] c_desc[2][51] c_desc[2][52] c_desc[2][53] c_desc[2][54] c_desc[2][55] c_desc[2][56] c_desc[2][57] c_desc[2][58] c_desc[2][59] c_desc[2][60] c_desc[2][61] c_desc[2][62] c_desc[2][63] c_desc[2][64] c_desc[2][65] c_desc[2][66] c_desc[2][67] c_desc[2][68] c_desc[2][69] c_desc[2][70] c_desc[2][71] c_desc[2][72] c_desc[2][73] c_desc[2][74] c_desc[2][75] c_desc[2][76] c_desc[2][77] c_desc[2][78] c_desc[2][79] c_desc[2][80] c_desc[2][81]
+
+
+dump            0 all cfg 1 ats.*.cfg mass type xs ys zs
+run		0
+  generated 0 of 0 mixed pair_coeff terms from geometric mixing rule
+Neighbor list info ...
+  update every 2 steps, delay 10 steps, check yes
+  max neighbors/atom: 2000, page size: 100000
+  master list distance cutoff = 7.802
+  ghost atom cutoff = 7.802
+  binsize = 3.901, bins = 1 1 1
+  2 neighbor lists, perpetual/occasional/extra = 1 1 0
+  (1) pair zero, perpetual
+      attributes: half, newton on
+      pair build: half/bin/atomonly/newton
+      stencil: half/bin/3d
+      bin: standard
+  (2) compute pace, occasional
+      attributes: full, newton on
+      pair build: full/bin/atomonly
+      stencil: full/bin/3d
+      bin: standard
+Per MPI rank memory allocation (min/avg/max) = 4.821 | 4.821 | 4.821 Mbytes
+Step Temp c_desc[2][1] c_desc[2][2] c_desc[2][3] c_desc[2][4] c_desc[2][5] c_desc[2][6] c_desc[2][7] c_desc[2][8] c_desc[2][9] c_desc[2][10] c_desc[2][11] c_desc[2][12] c_desc[2][13] c_desc[2][14] c_desc[2][15] c_desc[2][16] c_desc[2][17] c_desc[2][18] c_desc[2][19] c_desc[2][20] c_desc[2][21] c_desc[2][22] c_desc[2][23] c_desc[2][24] c_desc[2][25] c_desc[2][26] c_desc[2][27] c_desc[2][28] c_desc[2][29] c_desc[2][30] c_desc[2][31] c_desc[2][32] c_desc[2][33] c_desc[2][34] c_desc[2][35] c_desc[2][36] c_desc[2][37] c_desc[2][38] c_desc[2][39] c_desc[2][40] c_desc[2][41] c_desc[2][42] c_desc[2][43] c_desc[2][44] c_desc[2][45] c_desc[2][46] c_desc[2][47] c_desc[2][48] c_desc[2][49] c_desc[2][50] c_desc[2][51] c_desc[2][52] c_desc[2][53] c_desc[2][54] c_desc[2][55] c_desc[2][56] c_desc[2][57] c_desc[2][58] c_desc[2][59] c_desc[2][60] c_desc[2][61] c_desc[2][62] c_desc[2][63] c_desc[2][64] c_desc[2][65] c_desc[2][66] c_desc[2][67] c_desc[2][68] c_desc[2][69] c_desc[2][70] c_desc[2][71] c_desc[2][72] c_desc[2][73] c_desc[2][74] c_desc[2][75] c_desc[2][76] c_desc[2][77] c_desc[2][78] c_desc[2][79] c_desc[2][80] c_desc[2][81] 
+       0            0  -0.57710533  -0.30721936  -0.92292779    -1.179745  -0.61326572   0.58829169    1.6130301    1.5619779   0.14458313   -1.9697746   -3.4527175   -3.1456181   -0.9021982    2.1412144    4.1304917   -2.4519379   -4.9038758   -3.0649224  -0.82911033   -1.6582207   -1.0363879   -2.5648914   -5.1297827   -3.2061142  -0.18788748  -0.37577497  -0.23485935  -0.60390373   -1.2078075  -0.75487967   -1.9327645    -3.865529   -2.4159556   -7.8131311    9.0218267   -4.3676731   -6.3793948    2.6101839   -2.1361993    2.4666705   -1.1941717   -1.7441994   0.71365409   -1.7441994    2.4666705   -1.1941717  -0.45309992   0.52319472  -0.25329056  -0.36995454   0.15137006   0.52319472  -0.25329056  -0.36995454 -0.086180375  0.099512525 -0.048176294 -0.070365981  0.028790843   -22.130348    25.553924   -41.309982   -5.3344024    6.1596374   -9.9575512    6.1596374   -1.0771743    1.2438137   -2.0107253    1.2438137    1.2438137  -0.19957767   0.23045244  -0.37254498   0.23045244 -0.035137138  0.040572873 -0.065589325   -58.765527    67.856586    63.332813 
+Loop time of 1.251e-06 on 1 procs for 0 steps with 4 atoms
+
+0.0% CPU use with 1 MPI tasks x 1 OpenMP threads
+
+MPI task timing breakdown:
+Section |  min time  |  avg time  |  max time  |%varavg| %total
+---------------------------------------------------------------
+Pair    | 0          | 0          | 0          |   0.0 |  0.00
+Neigh   | 0          | 0          | 0          |   0.0 |  0.00
+Comm    | 0          | 0          | 0          |   0.0 |  0.00
+Output  | 0          | 0          | 0          |   0.0 |  0.00
+Modify  | 0          | 0          | 0          |   0.0 |  0.00
+Other   |            | 1.251e-06  |            |       |100.00
+
+Nlocal:              4 ave           4 max           4 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Nghost:              0 ave           0 max           0 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Neighs:              6 ave           6 max           6 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+FullNghs:           12 ave          12 max          12 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+
+Total # of neighbors = 12
+Ave neighs/atom = 3
+Neighbor list builds = 0
+Dangerous builds = 0
+Total wall time: 0:00:00

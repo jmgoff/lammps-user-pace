@@ -1,0 +1,45 @@
+--------------------------------------------------------------------------
+MPI_ABORT was invoked on rank 0 in communicator MPI_COMM_WORLD 
+with errorcode 1.
+
+NOTE: invoking MPI_ABORT causes Open MPI to kill all MPI processes.
+You may or may not see output from other processes, depending on
+exactly when Open MPI kills them.
+--------------------------------------------------------------------------
+LAMMPS (7 Jan 2022)
+OMP_NUM_THREADS environment is not set. Defaulting to 1 thread. (src/comm.cpp:98)
+  using 1 OpenMP thread(s) per MPI task
+Lattice spacing in x,y,z = 3.597 3.597 3.597
+Created orthogonal box = (0 0 0) to (3.597 3.597 3.597)
+  1 by 1 by 1 MPI processor grid
+Created 4 atoms
+  using lattice units in orthogonal box = (0 0 0) to (3.597 3.597 3.597)
+  create_atoms CPU = 0.031 seconds
+4 atoms in group Al
+$! number of coefficients: 4894861
+  generated 0 of 0 mixed pair_coeff terms from geometric mixing rule
+Neighbor list info ...
+  update every 2 steps, delay 10 steps, check yes
+  max neighbors/atom: 2000, page size: 100000
+  master list distance cutoff = 7.802
+  ghost atom cutoff = 7.802
+  binsize = 3.901, bins = 1 1 1
+  2 neighbor lists, perpetual/occasional/extra = 1 1 0
+  (1) pair zero, perpetual
+      attributes: half, newton on
+      pair build: half/bin/atomonly/newton
+      stencil: half/bin/3d
+      bin: standard
+  (2) compute pace, occasional
+      attributes: full, newton on
+      pair build: full/bin/atomonly
+      stencil: full/bin/3d
+      bin: standard
+Setting up Verlet run ...
+  Unit style    : metal
+  Current step  : 0
+  Time step     : 0.0005
+Per MPI rank memory allocation (min/avg/max) = 1424 | 1424 | 1424 Mbytes
+Step Temp c_desc[1][1] c_desc[1][2] c_desc[1][3] c_desc[1][4] c_desc[1][5] c_desc[1][6] c_desc[1][7] c_desc[1][8] c_desc[1][9] c_desc[1][10] c_desc[1][11] c_desc[1][12] c_desc[1][13] c_desc[1][14] c_desc[1][15] c_desc[1][16] 
+ERROR on proc 0: Failed to allocate 1924737662976 bytes for array pace:pace_peratom (src/memory.cpp:66)
+Last command: run		0
