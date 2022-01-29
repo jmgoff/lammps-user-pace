@@ -294,13 +294,17 @@ void ComputePACE::compute_array()
 
       int k = typeoffset_global;
       ace = new ACECTildeEvaluator(*basis_set);
+      //ace->element_type_mapping.init(ntypes+1);
       ace->element_type_mapping.init(ntypes+1);
       for (int ik = 1; ik <= ntypes; ik++) {
         //TODO implement variable mu for multicomponent ace models
         for(int mu = 0; mu < basis_set->nelements; mu++){
           if (mu != -1) {
-            map[ik] = mu;
-            ace->element_type_mapping(ik) = mu; // set up LAMMPS atom type to ACE species  mapping for ace evaluator
+            if (mu == ik - 1) {
+              //printf("ik, mu: %d, %d \n" , ik,mu);
+              map[ik] = mu;
+              ace->element_type_mapping(ik) = mu; // set up LAMMPS atom type to ACE species  mapping for ace evaluator
+            }
           } 
         }
       }
@@ -326,6 +330,7 @@ void ComputePACE::compute_array()
         // dimension: (n_descriptors,max_jnum,3)
         //example to access entries for neighbour jj after running compute_atom for atom i:
         for (int func_ind =0; func_ind < n_r1 + n_rp; func_ind++){
+        //for (int func_ind =typeoffset_local; func_ind < typeoffset_local+ n_r1 + n_rp; func_ind++){
           DOUBLE_TYPE fx_dB = fs(func_ind,jj,0);
           DOUBLE_TYPE fy_dB = fs(func_ind,jj,1);
           DOUBLE_TYPE fz_dB = fs(func_ind,jj,2);
@@ -337,8 +342,11 @@ void ComputePACE::compute_array()
           pacedj[func_ind+zoffset] -= fz_dB;
           }
         }
+      //printf("basis size compute %d \n", n_r1 + n_rp);
       for (int icoeff = 0; icoeff < n_r1 + n_rp; icoeff++){
+      //for (int icoeff = typeoffset_local; icoeff < typeoffset_local + n_r1 + n_rp; icoeff++){
 	    pace[0][k++] += Bs(icoeff);
+	    //pace[0][icoeff] += Bs(icoeff);
         //printf("atom, coeffidx, coeff: %d, %d, %f \n", i, icoeff, Bs(icoeff));
       }
       delete ace;

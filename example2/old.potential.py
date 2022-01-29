@@ -2,10 +2,16 @@ import yaml
 import itertools
 from wigner_couple import *
 from gen_labels import *
+from collections import OrderedDict
 import json
 
+#def represent_dictionary_order(self, dict_data):
+#    return self.represent_mapping('tag:yaml.org,2002:map', dict_data.items())
 
-class AcePot():
+#yaml.add_representer(OrderedDict, represent_dictionary_order)
+
+
+class acepot():#elements,reference_ens,nmax,lmax,nradbase,rcut,lmbda):
 	def __init__(self,
 				elements,
 				reference_ens,
@@ -14,10 +20,7 @@ class AcePot():
 				lmax,
 				nradbase,
 				rcut,
-				lmbda,
-				**kwargs):
-		if kwargs != None:
-			self.__dict__.update(kwargs)
+				lmbda):
 		self.E0 = reference_ens
 		self.ranks =ranks
 		self.elements = elements
@@ -32,12 +35,8 @@ class AcePot():
 		self.global_lmax=lmax
 		assert len(nmax) == len(lmax),'nmax and lmax arrays must be same size'
 		self.global_nradbase=nradbase
-		if type(rcut) != dict:
-			self.global_rcut=rcut
-			self.global_lmbda =lmbda
-		elif type(rcut) == dict:
-			self.rcut = rcut
-			self.lmbda = lmbda
+		self.global_rcut=rcut
+		self.global_lmbda =lmbda
 
 		self.set_embeddings()
 		self.set_bonds()
@@ -47,13 +46,10 @@ class AcePot():
 		nradmax_dict = {rank:nv for rank,nv in zip(self.ranks,self.global_nmax)}
 		mumax_dict={rank:len(self.elements) for rank in self.ranks}
 		nulst_1 = [generate_nl(rank,nradmax_dict[rank],lmax_dict[rank],mumax_dict[rank]) for rank in self.ranks]
-		print ('descriptors per rank', [len(b) for b in nulst_1])
 		nus = [item for sublist in nulst_1 for item in sublist]
-		try:
-			betas = self.__dict__['betas']
-			self.set_funcs(nus,**{'betas':betas})
-		except KeyError:
-			self.set_funcs(nus)
+		print ("# of EME descriptors", len(nus))
+		print (sorted(nus))
+		self.set_funcs(nus)
 
 		return None
 
@@ -62,6 +58,11 @@ class AcePot():
 		embeddings ={ind:None for ind in range(len(self.elements))}
 		for elemind in range(len(self.elements)):
 			embeddings[elemind] = {'ndensity':self.global_ndensity, 'FS_parameters':FSparams,'npoti':npoti, 'rho_core_cutoff':self.global_rhocut, 'drho_core_cutoff':self.global_drhocut}
+			#embeddings[elemind] = dict()#OrderedDict()
+			#embeddings[elemind]['ndensity'] =self.global_ndensity
+			#embeddings[elemind]['FS_parameters']=FSparams
+			#embeddings[elemind]['rho_core_cutoff']=self.global_rhocut
+			#embeddings[elemind]['drho_core_cutoff']=self.global_drhocut
 		self.embeddings = embeddings
 
 	def set_bonds(self):
@@ -71,15 +72,13 @@ class AcePot():
 
 	def set_bond_base(self):
 		bondstrs = ['[%d, %d]' %(b[0],b[1]) for b in self.bondlsts]
+		#bondstrs = [(b[0],b[1]) for b in self.bondlsts]
 		bonds = {bondstr:None for bondstr in bondstrs}
 
 		#radial basis function expansion coefficients
 		#saved in n,l,k shape
-		# defaults to orthogonal delta function [g(n,k)] basis of drautz 2019	
-		try:
-			nradmax = max(self.global_nmax[1:])
-		except ValueError:
-			nradmax = max(self.global_nmax)
+		# defaults to orthogonal delta function [g(n,k)] basis of drautz 2019
+		nradmax = max(self.global_nmax[1:])
 		lmax= max(self.global_lmax)
 		nradbase = self.global_nradbase
 		crad = np.zeros((nradmax,lmax+1,nradbase),dtype=int)
@@ -96,20 +95,11 @@ class AcePot():
 		for bondlst in self.bondlsts:
 			bstr = '[%d, %d]' %(bondlst[0],bondlst[1])
 			#bstr = (bondlst[0],bondlst[1])
-			try:
-				bonds[bstr] = {'nradmax':nradmax, 'lmax':max(self.global_lmax), 'nradbasemax':self.global_nradbase,'radbasename':self.radbasetype,'radparameters':[self.global_lmbda], 'radcoefficients':crad.tolist(), 'prehc':0, 'lambdahc':self.global_lmbda,'rcut':self.global_rcut, 'dcut':0.01, 'rcut_in':0, 'dcut_in':0, 'inner_cutoff_type':'distance'}
-			except AttributeError:
-				bonds[bstr] = {'nradmax':nradmax, 'lmax':max(self.global_lmax), 'nradbasemax':self.global_nradbase,'radbasename':self.radbasetype,'radparameters':[self.lmbda[bstr]], 'radcoefficients':crad.tolist(), 'prehc':0, 'lambdahc':self.lmbda[bstr],'rcut':self.rcut[bstr], 'dcut':0.01, 'rcut_in':0, 'dcut_in':0, 'inner_cutoff_type':'distance'}
-				
+			bonds[bstr] = {'nradmax':nradmax, 'lmax':max(self.global_lmax), 'nradbasemax':self.global_nradbase,'radbasename':self.radbasetype,'radparameters':[self.global_lmbda], 'radcoefficients':crad.tolist(), 'prehc':0, 'lambdahc':self.global_lmbda,'rcut':self.global_rcut, 'dcut':0.01, 'rcut_in':0, 'dcut_in':0, 'inner_cutoff_type':'distance'}
 		self.bonds = bonds
 
-	def set_funcs(self,nulst,**kwargs):
+	def set_funcs(self,nulst):
 		permu0 = {b:[] for b in range(len(self.elements))}
-		permunu = {b:[] for b in range(len(self.elements))}
-		try:
-			betas = kwargs['betas']
-		except KeyError:
-			betas = {nu:1.0 for nu in nulst}
 		for nu in nulst:
 			mu0,mu,n,l = get_mu_n_l(nu)
 			rank = get_mu_nu_rank(nu)
@@ -119,29 +109,25 @@ class AcePot():
 			ms = list(ccs.keys())
 			mslsts = [[int(k) for k in m.split(',')] for m in ms]
 			msflat= [item for sublist in mslsts for item in sublist]
-			if betas[nu] != 0.:
-				ccoeffs =  list ( np.array(list(ccs.values())) * betas[nu] )
-				permu0[mu0].append({'mu0':mu0,'rank':rank,'ndensity':self.global_ndensity,'num_ms_combs':len(ms),'mus':mu, 'ns':n,'ls':l,'ms_combs':msflat, 'ctildes':ccoeffs})
-				permunu[mu0].append(nu)
-			elif betas[nu] == 0.:
-				print ('Not printing descriptor: %s, coefficient is 0' % nu)
-				
-		for b in range(len(self.elements)):
-			for i in permunu[b]:
-				print (b,i)
-		for b in range(len(self.elements)):
-			print (b,len(permu0[b]))
+			ccoeffs = list(ccs.values())
+			permu0[mu0].append({'mu0':mu0,'rank':rank,'ndensity':self.global_ndensity,'num_ms_combs':len(ms),'mus':mu, 'ns':n,'ls':l,'ms_combs':msflat, 'ctildes':ccoeffs})
 		self.funcs = permu0
+		print ([len(permu0[b]) for b in range(len(self.elements))])
+		#print (self.funcs)
 
 	def write_pot(self,name):
+		#d1 = {'elements':self.elements,
+		d1 = {'E0':self.E0,
+		'deltaSplineBins':self.deltaSplineBins}
+		
+		#'embeddings':self.embeddings,
+		#'bonds':self.bonds,
+		#'functions':self.funcs}
 		with open('%s.yace'%name,'w') as writeout:
-			e0lst = ['%f']*len(self.elements)
-			e0str = ', '.join(b for b in e0lst) % tuple(self.E0)
 			elemlst =['%s']*len(self.elements)
 			elemstr = ', '.join(b for b in elemlst) % tuple(self.elements)
 			writeout.write('elements: [%s] \n' % elemstr)
-			writeout.write('E0: [%s] \n' % e0str)
-			writeout.write('deltaSplineBins: %f \n' % self.deltaSplineBins)
+			yaml.safe_dump(d1,writeout,default_flow_style=None)
 			writeout.write('embeddings:\n')
 			for mu0, embed in self.embeddings.items():
 				writeout.write('  %d: ' % mu0)
@@ -157,7 +143,7 @@ class AcePot():
 				writeout.write(bstr)
 			writeout.write('functions:\n')
 			for mu0 in range(len(self.elements)):
-				writeout.write('  %d:\n'%(mu0))
+				writeout.write('  %d:\n'%mu0)
 				mufuncs = self.funcs[mu0]
 				for mufunc in mufuncs:
 					mufuncstr = '    - ' +json.dumps(mufunc) + '\n'
@@ -178,5 +164,5 @@ nradbase=max(nmax)
 rcut=7.
 lmbda=5.25
 
-Apot = AcePot(elements,reference_ens,ranks,nmax,lmax,nradbase,rcut,lmbda)
+Apot = acepot(elements,reference_ens,ranks,nmax,lmax,nradbase,rcut,lmbda)
 Apot.write_pot('coupling_coefficients')
