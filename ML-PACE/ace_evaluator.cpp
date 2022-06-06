@@ -660,6 +660,7 @@ ACECTildeEvaluator::compute_atom(int i, DOUBLE_TYPE **x, const SPECIES_TYPE *typ
             }
         }
 
+    //!! add logical here to turn off force loop if compute is present
     //for rank > 1 dB A matrix contributions
         for (func_ind = 0;func_ind < total_basis_size; func_ind ++){//total basis size needs to include chemical index offset
             for (n = 0; n < nradiali; n++) {
