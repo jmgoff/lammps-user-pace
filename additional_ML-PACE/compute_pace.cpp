@@ -85,7 +85,6 @@ ComputePACE::ComputePACE(LAMMPS *lmp, int narg, char **arg) :
   //printf("basis set rank 1 mu 0 %d \n" , basis_set->total_basis_size_rank1[0]);
   //printf("basis set rank 1 mu 1 %d \n" , basis_set->total_basis_size_rank1[1]); //!$ not initialized!
   //TODO verify that checks for elements inside cutoff is correct inside the ace_evaluator code itself
-  /*
   double cuti;
   double radelemall = 0.5;
   memory->create(cutsq,ntypes+1,ntypes+1,"pace:cutsq");
@@ -98,8 +97,6 @@ ComputePACE::ComputePACE(LAMMPS *lmp, int narg, char **arg) :
       cutsq[i][j] = cutsq[j][i] = cuti*cuti;
     }
   }
-  printf("cutmax after loop, %f\n", cutmax);
-  */
 
   //# of rank 1, rank > 1 functions
   int n_r1, n_rp = 0;
@@ -144,7 +141,7 @@ ComputePACE::~ComputePACE()
 {
   memory->destroy(pace);
   memory->destroy(paceall);
-  //memory->destroy(cutsq);
+  memory->destroy(cutsq);
   memory->destroy(pace_peratom);
   memory->destroy(map);
 }
