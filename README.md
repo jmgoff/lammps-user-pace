@@ -33,7 +33,7 @@ cp ../lammps-user-pace/additional_ML-PACE/* ../src/ML-PACE
 3. Configure the lammps build, adding:
 
 ```
-cmake -DCMAKE_BUILD_TYPE=Release -DPKG_USER-PACE=ON ../cmake 
+cmake -DCMAKE_BUILD_TYPE=Release -DPKG_ML-PACE=ON ../cmake 
 ```
 
 to your dflags or 
