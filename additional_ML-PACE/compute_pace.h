@@ -38,17 +38,16 @@ class ComputePACE : public Compute {
 
  private:
   int natoms, nmax, size_peratom, lastcol;
-  int ncoeff, nperdim, yoffset, zoffset;
+  int ncoeff, nvalues, nperdim, yoffset, zoffset;
   int ndims_peratom, ndims_force, ndims_virial;
   double **cutsq;
   class NeighList *list;
   double **pace, **paceall;
   double **pace_peratom;
   double rcutfac;
-  double *radelem;
-  double *wjelem;
   int *map;    // map types to [0,nelements)
   int nelements, chemflag;
+  int bikflag, bik_rows, dgradflag, dgrad_rows;
   double *cg;
   class ACECTildeEvaluator *ace;
   class ACECTildeBasisSet *basis_set;

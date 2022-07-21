@@ -24,7 +24,8 @@ pair_coeff      * *
 timestep        0.0005
 fix		1 all nve
 
-compute         desc all pace coupling_coefficients.yace
+#               compute_name group compute_style potential_file bikflag dgradflag
+compute         desc all pace coupling_coefficients.yace 0 0 
 
 thermo 		1
 #print energy entries in A matrix for index 1-17
