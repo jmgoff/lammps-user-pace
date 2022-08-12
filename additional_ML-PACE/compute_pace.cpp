@@ -51,7 +51,8 @@ ComputePACE::ComputePACE(LAMMPS *lmp, int narg, char **arg) :
 
   bikflag = utils::inumeric(FLERR, arg[4], false, lmp);
   dgradflag = utils::inumeric(FLERR, arg[5], false, lmp);
-
+  printf("bikflag %d \n", bikflag);
+  printf("dgradflag %d \n", dgradflag);
   if (dgradflag && !bikflag)
     error->all(FLERR,"Illegal compute pace command: dgradflag=1 requires bikflag=1");
 
@@ -61,9 +62,10 @@ ComputePACE::ComputePACE(LAMMPS *lmp, int narg, char **arg) :
   //read in file with CG coefficients or c_tilde coefficients
   basis_set = new ACECTildeBasisSet(arg[3]);
   double cut = basis_set->cutoffmax;
-  cutmax = basis_set->cutoffmax;
+  double cutmax = basis_set->cutoffmax;
   double cuti;
   double radelemall = 0.5;
+  /*
   memory->create(cutsq,ntypes+1,ntypes+1,"pace:cutsq");
   for (int i = 1; i <= ntypes; i++) {
     cuti = basis_set->radial_functions->cut(map[i], map[i]);
@@ -74,6 +76,7 @@ ComputePACE::ComputePACE(LAMMPS *lmp, int narg, char **arg) :
       cutsq[i][j] = cutsq[j][i] = cuti*cuti;
     }
   }
+  */
   //# of rank 1, rank > 1 functions
   int n_r1, n_rp = 0;
   n_r1 = basis_set->total_basis_size_rank1[0];
@@ -113,7 +116,7 @@ ComputePACE::~ComputePACE()
 {
   memory->destroy(pace);
   memory->destroy(paceall);
-  memory->destroy(cutsq);
+  //memory->destroy(cutsq);
   memory->destroy(pace_peratom);
   memory->destroy(map);
 }
@@ -254,6 +257,11 @@ void ComputePACE::compute_array()
       const int typeoffset_global = nperdim*(itype-1);
 
       ace = new ACECTildeEvaluator(*basis_set);
+      int n_r1, n_rp = 0;
+      n_r1 = basis_set->total_basis_size_rank1[0];
+      n_rp = basis_set->total_basis_size[0];
+
+      int ncoeff = n_r1 + n_rp;
       ace->element_type_mapping.init(ntypes+1);
       for (int ik = 1; ik <= ntypes; ik++) {
         for(int mu = 0; mu < basis_set->nelements; mu++){
@@ -324,24 +332,24 @@ void ComputePACE::compute_array()
             pacedj[func_ind+zoffset] -= fz_dB;
             }
          } else {
-
+            //printf("inside dBi/dRj logical : ncoeff = %d \n", ncoeff);
             Array3D<DOUBLE_TYPE> fs = ace->neighbours_dB;
-            for (int icoeff = 0; icoeff < ncoeff; icoeff++) {
+            for (int iicoeff = 0; iicoeff < ncoeff; iicoeff++) {
 
-              // add to snap array for this proc
-
+              // add to pace array for this proc
+              //printf("inside dBi/dRj loop\n");
               // dBi/dRj
-              DOUBLE_TYPE fx_dB = fs(icoeff,jj,0);
-              DOUBLE_TYPE fy_dB = fs(icoeff,jj,1);
-              DOUBLE_TYPE fz_dB = fs(icoeff,jj,2);
-              pace[bik_rows + ((atom->tag[j]-1)*3*natoms) + 3*(atom->tag[i]-1) + 0][icoeff+3] -= fx_dB;
-              pace[bik_rows + ((atom->tag[j]-1)*3*natoms) + 3*(atom->tag[i]-1) + 1][icoeff+3] -= fy_dB;
-              pace[bik_rows + ((atom->tag[j]-1)*3*natoms) + 3*(atom->tag[i]-1) + 2][icoeff+3] -= fz_dB;
+              DOUBLE_TYPE fx_dB = fs(iicoeff,jj,0);
+              DOUBLE_TYPE fy_dB = fs(iicoeff,jj,1);
+              DOUBLE_TYPE fz_dB = fs(iicoeff,jj,2);
+              pace[bik_rows + ((atom->tag[j]-1)*3*natoms) + 3*(atom->tag[i]-1) + 0][iicoeff+3] -= fx_dB;
+              pace[bik_rows + ((atom->tag[j]-1)*3*natoms) + 3*(atom->tag[i]-1) + 1][iicoeff+3] -= fy_dB;
+              pace[bik_rows + ((atom->tag[j]-1)*3*natoms) + 3*(atom->tag[i]-1) + 2][iicoeff+3] -= fz_dB;
 
               // dBi/dRi
-              pace[bik_rows + ((atom->tag[i]-1)*3*natoms) + 3*(atom->tag[i]-1) + 0][icoeff+3] += fx_dB;
-              pace[bik_rows + ((atom->tag[i]-1)*3*natoms) + 3*(atom->tag[i]-1) + 1][icoeff+3] += fy_dB;
-              pace[bik_rows + ((atom->tag[i]-1)*3*natoms) + 3*(atom->tag[i]-1) + 2][icoeff+3] += fz_dB;
+              pace[bik_rows + ((atom->tag[i]-1)*3*natoms) + 3*(atom->tag[i]-1) + 0][iicoeff+3] += fx_dB;
+              pace[bik_rows + ((atom->tag[i]-1)*3*natoms) + 3*(atom->tag[i]-1) + 1][iicoeff+3] += fy_dB;
+              pace[bik_rows + ((atom->tag[i]-1)*3*natoms) + 3*(atom->tag[i]-1) + 2][iicoeff+3] += fz_dB;
             }
           }
         } // loop over jj inside
@@ -352,14 +360,15 @@ void ComputePACE::compute_array()
         for (int icoeff = 0; icoeff < ncoeff; icoeff++){
           pace[0][k++] += Bs(icoeff);
         }
-        delete ace;
+        //delete ace;
       } else {
         int k = 3;
         for (int icoeff = 0; icoeff < ncoeff; icoeff++){
           pace[irow][k++] += Bs(icoeff);
         }
-        delete ace;
+        //delete ace;
       }
+    delete ace;
     } //group bit
   } // for ii loop
   delete basis_set;
