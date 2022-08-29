@@ -1,0 +1,73 @@
+LAMMPS (3 Aug 2022)
+units  metal
+atom_style  atomic
+atom_modify  map array
+neighbor  2.3 bin
+boundary  p p p
+read_data  ats.0.data
+Reading data file ...
+  orthogonal box = (0 0 0) to (3.597 3.597 3.597)
+  1 by 1 by 1 MPI processor grid
+  reading atoms ...
+  4 atoms
+  read_data CPU = 0.004 seconds
+displace_atoms all random 0.01 0.01 0.01 42353
+Displacing atoms ...
+mass  1 183.84
+pair_style      zero 7.502
+pair_coeff  * *
+compute         desc all pace coupling_coefficients.ace 0 0 
+timestep        0.0005
+thermo          1
+thermo_style    custom step temp c_desc[1][1]  c_desc[1][2]  c_desc[1][3]  c_desc[1][4]  c_desc[1][5]  c_desc[1][6]  c_desc[1][7]  c_desc[1][8]  c_desc[1][9]  c_desc[1][10]  c_desc[1][11]  c_desc[1][12]  c_desc[1][13]  c_desc[1][14]  c_desc[1][15]  c_desc[1][16]  c_desc[1][17]  c_desc[1][18]  c_desc[1][19]  c_desc[1][20]  c_desc[1][21]  c_desc[1][22]  c_desc[1][23]  c_desc[1][24]  c_desc[1][25]  c_desc[1][26]  c_desc[1][27]  c_desc[1][28]  c_desc[1][29]  c_desc[1][30]  c_desc[1][31]  c_desc[1][32]  c_desc[1][33]  c_desc[1][34]  c_desc[1][35]  c_desc[1][36]  c_desc[1][37]  c_desc[1][38]  c_desc[1][39]  c_desc[1][40]  c_desc[1][41]  c_desc[1][42]  c_desc[1][43]  c_desc[1][44]  c_desc[1][45]  c_desc[1][46]  c_desc[1][47]  c_desc[1][48]  c_desc[1][49]  c_desc[1][50]  c_desc[1][51]  c_desc[1][52]  c_desc[1][53]  c_desc[1][54]  c_desc[1][55]  c_desc[1][56]  c_desc[1][57]  c_desc[1][58]  c_desc[1][59]  c_desc[1][60]  c_desc[1][61]  c_desc[1][62]  c_desc[1][63]  c_desc[1][64]  c_desc[1][65]  c_desc[1][66]  c_desc[1][67]  c_desc[1][68]  c_desc[1][69]  c_desc[1][70]  c_desc[1][71]  c_desc[1][72]  c_desc[1][73]  c_desc[1][74]  c_desc[1][75]  c_desc[1][76]  c_desc[1][77]  c_desc[1][78]  c_desc[1][79]  c_desc[1][80]  c_desc[1][81]  c_desc[1][82]  c_desc[1][83]  c_desc[1][84]  c_desc[1][85]  c_desc[1][86]  c_desc[1][87]  c_desc[1][88]  c_desc[1][89]  c_desc[1][90]  c_desc[1][91]  c_desc[1][92]  c_desc[1][93]  c_desc[1][94]  c_desc[1][95]  c_desc[1][96]  c_desc[1][97]  c_desc[1][98]  c_desc[1][99]  c_desc[1][100]  c_desc[1][101]  c_desc[1][102]  c_desc[1][103]  c_desc[1][104]  c_desc[1][105]  c_desc[1][106]  c_desc[1][107]  c_desc[1][108]  c_desc[1][109]  c_desc[1][110]  c_desc[1][111]  c_desc[1][112]  c_desc[1][113]  c_desc[1][114]  c_desc[1][115]  c_desc[1][116]  c_desc[1][117]  c_desc[1][118]  c_desc[1][119]  c_desc[1][120]  c_desc[1][121]  c_desc[1][122]  c_desc[1][123]  c_desc[1][124]  c_desc[1][125]  c_desc[1][126]  c_desc[1][127]  c_desc[1][128]  c_desc[1][129]  c_desc[1][130]  c_desc[1][131]  c_desc[1][132]  c_desc[1][133]  c_desc[1][134]  c_desc[1][135]  c_desc[1][136]  c_desc[1][137]  c_desc[1][138]  c_desc[1][139]  c_desc[1][140]  c_desc[1][141]  c_desc[1][142]  c_desc[1][143]  c_desc[1][144]  c_desc[1][145]  c_desc[1][146]  c_desc[1][147]  c_desc[1][148]  c_desc[1][149]  c_desc[1][150]  c_desc[1][151]  c_desc[1][152]  c_desc[1][153]  c_desc[1][154]  c_desc[1][155]  c_desc[1][156]  c_desc[1][157]  c_desc[1][158]  c_desc[1][159]  c_desc[1][160]  c_desc[1][161]  c_desc[1][162]  c_desc[1][163]  c_desc[1][164]  c_desc[1][165]  c_desc[1][166]  c_desc[1][167]  c_desc[1][168]  c_desc[1][169]  c_desc[1][170]  c_desc[1][171]  c_desc[1][172]  c_desc[1][173]  c_desc[1][174]  c_desc[1][175]  c_desc[1][176]  c_desc[1][177]  c_desc[1][178]  c_desc[1][179]  c_desc[1][180]  c_desc[1][181]  c_desc[1][182]  c_desc[1][183]  c_desc[1][184]  c_desc[1][185]  c_desc[1][186]  c_desc[1][187]  c_desc[1][188]  c_desc[1][189]  c_desc[1][190]  c_desc[1][191]  c_desc[1][192]  c_desc[1][193]  c_desc[1][194]  c_desc[1][195]  c_desc[1][196]  c_desc[1][197]  c_desc[1][198]  c_desc[1][199]  c_desc[1][200]  c_desc[1][201]  c_desc[1][202]  c_desc[1][203]  c_desc[1][204]  c_desc[1][205]  c_desc[1][206]  c_desc[1][207]  c_desc[1][208]  c_desc[1][209]  c_desc[1][210]  c_desc[1][211]  c_desc[1][212]  c_desc[1][213]  c_desc[1][214]  c_desc[1][215]  c_desc[1][216]  c_desc[1][217]  c_desc[1][218]  c_desc[1][219]  c_desc[1][220]  c_desc[1][221]  c_desc[1][222]  c_desc[1][223]  c_desc[1][224]  c_desc[1][225]  c_desc[1][226]  c_desc[1][227]  c_desc[1][228]  c_desc[1][229]  c_desc[1][230]  c_desc[1][231]  c_desc[1][232] 
+run 0
+WARNING: No fixes with time integration, atoms won't move (src/verlet.cpp:60)
+Generated 0 of 0 mixed pair_coeff terms from geometric mixing rule
+Neighbor list info ...
+  update every 1 steps, delay 10 steps, check yes
+  max neighbors/atom: 2000, page size: 100000
+  master list distance cutoff = 9.802
+  ghost atom cutoff = 9.802
+  binsize = 4.901, bins = 1 1 1
+  2 neighbor lists, perpetual/occasional/extra = 1 1 0
+  (1) pair zero, perpetual
+      attributes: half, newton on
+      pair build: half/bin/atomonly/newton
+      stencil: half/bin/3d
+      bin: standard
+  (2) compute pace, occasional
+      attributes: full, newton on
+      pair build: full/bin/atomonly
+      stencil: full/bin/3d
+      bin: standard
+Per MPI rank memory allocation (min/avg/max) = 3.701 | 3.701 | 3.701 Mbytes
+   Step          Temp       c_desc[1][1]   c_desc[1][2]   c_desc[1][3]   c_desc[1][4]   c_desc[1][5]   c_desc[1][6]   c_desc[1][7]   c_desc[1][8]   c_desc[1][9]  c_desc[1][10]  c_desc[1][11]  c_desc[1][12]  c_desc[1][13]  c_desc[1][14]  c_desc[1][15]  c_desc[1][16]  c_desc[1][17]  c_desc[1][18]  c_desc[1][19]  c_desc[1][20]  c_desc[1][21]  c_desc[1][22]  c_desc[1][23]  c_desc[1][24]  c_desc[1][25]  c_desc[1][26]  c_desc[1][27]  c_desc[1][28]  c_desc[1][29]  c_desc[1][30]  c_desc[1][31]  c_desc[1][32]  c_desc[1][33]  c_desc[1][34]  c_desc[1][35]  c_desc[1][36]  c_desc[1][37]  c_desc[1][38]  c_desc[1][39]  c_desc[1][40]  c_desc[1][41]  c_desc[1][42]  c_desc[1][43]  c_desc[1][44]  c_desc[1][45]  c_desc[1][46]  c_desc[1][47]  c_desc[1][48]  c_desc[1][49]  c_desc[1][50]  c_desc[1][51]  c_desc[1][52]  c_desc[1][53]  c_desc[1][54]  c_desc[1][55]  c_desc[1][56]  c_desc[1][57]  c_desc[1][58]  c_desc[1][59]  c_desc[1][60]  c_desc[1][61]  c_desc[1][62]  c_desc[1][63]  c_desc[1][64]  c_desc[1][65]  c_desc[1][66]  c_desc[1][67]  c_desc[1][68]  c_desc[1][69]  c_desc[1][70]  c_desc[1][71]  c_desc[1][72]  c_desc[1][73]  c_desc[1][74]  c_desc[1][75]  c_desc[1][76]  c_desc[1][77]  c_desc[1][78]  c_desc[1][79]  c_desc[1][80]  c_desc[1][81]  c_desc[1][82]  c_desc[1][83]  c_desc[1][84]  c_desc[1][85]  c_desc[1][86]  c_desc[1][87]  c_desc[1][88]  c_desc[1][89]  c_desc[1][90]  c_desc[1][91]  c_desc[1][92]  c_desc[1][93]  c_desc[1][94]  c_desc[1][95]  c_desc[1][96]  c_desc[1][97]  c_desc[1][98]  c_desc[1][99]  c_desc[1][100] c_desc[1][101] c_desc[1][102] c_desc[1][103] c_desc[1][104] c_desc[1][105] c_desc[1][106] c_desc[1][107] c_desc[1][108] c_desc[1][109] c_desc[1][110] c_desc[1][111] c_desc[1][112] c_desc[1][113] c_desc[1][114] c_desc[1][115] c_desc[1][116] c_desc[1][117] c_desc[1][118] c_desc[1][119] c_desc[1][120] c_desc[1][121] c_desc[1][122] c_desc[1][123] c_desc[1][124] c_desc[1][125] c_desc[1][126] c_desc[1][127] c_desc[1][128] c_desc[1][129] c_desc[1][130] c_desc[1][131] c_desc[1][132] c_desc[1][133] c_desc[1][134] c_desc[1][135] c_desc[1][136] c_desc[1][137] c_desc[1][138] c_desc[1][139] c_desc[1][140] c_desc[1][141] c_desc[1][142] c_desc[1][143] c_desc[1][144] c_desc[1][145] c_desc[1][146] c_desc[1][147] c_desc[1][148] c_desc[1][149] c_desc[1][150] c_desc[1][151] c_desc[1][152] c_desc[1][153] c_desc[1][154] c_desc[1][155] c_desc[1][156] c_desc[1][157] c_desc[1][158] c_desc[1][159] c_desc[1][160] c_desc[1][161] c_desc[1][162] c_desc[1][163] c_desc[1][164] c_desc[1][165] c_desc[1][166] c_desc[1][167] c_desc[1][168] c_desc[1][169] c_desc[1][170] c_desc[1][171] c_desc[1][172] c_desc[1][173] c_desc[1][174] c_desc[1][175] c_desc[1][176] c_desc[1][177] c_desc[1][178] c_desc[1][179] c_desc[1][180] c_desc[1][181] c_desc[1][182] c_desc[1][183] c_desc[1][184] c_desc[1][185] c_desc[1][186] c_desc[1][187] c_desc[1][188] c_desc[1][189] c_desc[1][190] c_desc[1][191] c_desc[1][192] c_desc[1][193] c_desc[1][194] c_desc[1][195] c_desc[1][196] c_desc[1][197] c_desc[1][198] c_desc[1][199] c_desc[1][200] c_desc[1][201] c_desc[1][202] c_desc[1][203] c_desc[1][204] c_desc[1][205] c_desc[1][206] c_desc[1][207] c_desc[1][208] c_desc[1][209] c_desc[1][210] c_desc[1][211] c_desc[1][212] c_desc[1][213] c_desc[1][214] c_desc[1][215] c_desc[1][216] c_desc[1][217] c_desc[1][218] c_desc[1][219] c_desc[1][220] c_desc[1][221] c_desc[1][222] c_desc[1][223] c_desc[1][224] c_desc[1][225] c_desc[1][226] c_desc[1][227] c_desc[1][228] c_desc[1][229] c_desc[1][230] c_desc[1][231] c_desc[1][232]
+         0   0              115.07781      9.608526       33.204225      58.494396      73.975053      75.862977      69.466932      64.315618      66.7298        75.220064      81.941474      79.011545      64.977239      46.616465      34.64139       36.301967      3310.7258      0.00060438467  4.8155726e-07  276.43204      0.00032135929  2.3612013e-07  23.080943      0.00017331817  1.2162828e-07  95247.773     -0.010038861    6.1957598e-06  1.8575625e-08  1.6895697e-11  7952.7988     -0.0053377947   3.0379433e-06  1.4655037e-08  6.1149793e-12  9.8489951e-09  664.02612     -0.002878824    1.5648806e-06  8.016827e-09   1.8230656e-12 -0.00083820503  5.1732148e-07 -0.00044568488  2.5365634e-07  5.2105258e-09  55.44346      -0.00024037059  1.3066143e-07  4.372072e-09   2.4122032e-13  2740226.4     -0.28881256     0.00017824864  6.7898918e-08 -1.8519577e-11  3.608789e-14   228797.68     -0.15356545     8.7399975e-05  3.6690841e-08 -9.8733097e-12  1.791636e-14   19103.669     -0.082822198    4.5020764e-05  1.9925799e-08 -5.5778671e-12  8.9265311e-15 -0.024114702    1.4883057e-05 -1.0205076e-11 -0.012822111    7.297555e-06  -5.4635154e-12  1595.0781     -0.006915331    3.7590584e-06  1.0943248e-08 -3.0973791e-12  4.6780913e-15 -0.0020134818   1.2426765e-06 -5.6479143e-12 -0.0010705959   6.0931722e-07 -3.0331446e-12  133.18248     -0.0005774032   3.1386673e-07  6.0314029e-09 -1.7241532e-12  2.4624746e-15  78834816      -8.3089798      0.0051281163   4.1234469e-12  3.2268736e-15  3.6799828e-18  6582384.1     -4.4179942      0.0025144497   3.3518608e-12  2.1781805e-15  1.6342316e-18  2.286188e-12   549602.11     -2.3827495      0.0012952229   1.8527153e-12  1.3787896e-15  7.1139188e-19 -0.69376681     0.00042817746 -0.36888515     0.00020994669  1.2371489e-12  45889.524     -0.1989503      0.00010814607  1.0251581e-12  7.5685022e-16  3.1580036e-19  1.7449218e-15  1.1933758e-15  7.6105884e-16 -0.057926773    3.5751127e-05 -0.03080046     1.7529725e-05  6.6853636e-13  3831.5873     -0.016611576    9.0297752e-06  5.6597265e-13  4.1770986e-16  1.0432121e-19  9.4428696e-16  6.5357752e-16  4.196102e-16  -0.0048366555   2.985078e-06  -0.0025717174   1.4636632e-06  3.6104994e-13  319.92184     -0.0013870019   7.5395105e-07  3.119397e-13   2.3029236e-16  2.1466358e-20  2.2680346e+09 -239.04482      0.14753311    -3.8227171e-12 -7.4016226e-17 -4.4734846e-19  1.7501538e-21  1.8937159e+08 -127.10328      0.072339351   -2.0953529e-12  9.4711858e-17 -2.4972634e-19  8.6685902e-22  15811752      -68.550406      0.037262859   -1.1500801e-12  1.4522056e-16 -1.4235885e-19  4.2867026e-22 -19.959293      0.012318432   -5.8184395e-17 -10.612625      0.006040052    4.4209847e-17  1320216.5     -5.7236919      0.0031113035  -6.3227571e-13  7.6824234e-17 -9.2169501e-20  2.1506924e-22 -1.6665217      0.0010285405  -4.1496291e-17 -0.88611245     0.00050432065  2.0847419e-17  110232.67     -0.47790598     0.00025978172 -3.541816e-13   4.1456349e-17 -6.2983893e-20  1.1184991e-22 -2.5786966e-19 -1.4366802e-19 -8.1769621e-20 -5.2566215e-20 -0.13914794     8.5879069e-05 -2.9279002e-17 -0.073986907    4.2108795e-05  8.85465e-18    9203.9765     -0.039903288    2.1690762e-05 -1.98334e-13    2.1957101e-17 -3.5774249e-20  5.9908953e-23 -1.4565063e-19 -8.1117232e-20 -4.6170343e-20 -2.9564118e-20 -0.0116183      7.1705631e-06 -2.0258571e-17 -0.0061776159   3.5159192e-06  3.0821734e-18  768.49433     -0.0033317692   1.8110941e-06 -1.1105903e-13  1.1405739e-17 -2.0096329e-20  3.1900898e-23
+Loop time of 1.245e-06 on 1 procs for 0 steps with 4 atoms
+
+160.6% CPU use with 1 MPI tasks x no OpenMP threads
+
+MPI task timing breakdown:
+Section |  min time  |  avg time  |  max time  |%varavg| %total
+---------------------------------------------------------------
+Pair    | 0          | 0          | 0          |   0.0 |  0.00
+Neigh   | 0          | 0          | 0          |   0.0 |  0.00
+Comm    | 0          | 0          | 0          |   0.0 |  0.00
+Output  | 0          | 0          | 0          |   0.0 |  0.00
+Modify  | 0          | 0          | 0          |   0.0 |  0.00
+Other   |            | 1.245e-06  |            |       |100.00
+
+Nlocal:              4 ave           4 max           4 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Nghost:           1094 ave        1094 max        1094 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Neighs:            640 ave         640 max         640 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+FullNghs:         1280 ave        1280 max        1280 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+
+Total # of neighbors = 1280
+Ave neighs/atom = 320
+Neighbor list builds = 0
+Dangerous builds = 0
+Total wall time: 0:00:00

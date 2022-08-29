@@ -1,0 +1,12 @@
+final fx -4.544928
+final fy -4.255044
+final fz -4.255044
+final fx 2.593902
+final fy 5.254977
+final fz -0.938067
+final fx 2.593902
+final fy -0.938067
+final fz 5.254977
+final fx -0.642877
+final fy -0.061866
+final fz -0.061866
