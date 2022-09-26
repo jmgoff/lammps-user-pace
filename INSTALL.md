@@ -1,4 +1,4 @@
-#Build note for lammps with compute_pace
+#Build note for lammps with compute_pace (TO BE UPDATED - SEE README)
 
 First download lammps from git
 

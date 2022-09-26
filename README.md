@@ -2,11 +2,12 @@
 
 ## Installation:
 
-git clone -b master git@github.com:lammps/lammps.git
+git clone -b develop git@github.com:lammps/lammps.git
 
 For known compatible versions of lammps, use:
-git checkout ceb9466172398e9a20cb510528b4b17f719c7cf2
-
+git checkout  e745c8aac4be7301a15f4f6ed458fd4f41aedf64
+or 
+git checkout 10068a0fdeafba786ad0a03d6aa282404e8c2423
 
 
 ### Build with `cmake`
